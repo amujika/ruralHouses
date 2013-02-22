@@ -1,6 +1,4 @@
 package gui;
-//I'm Goiatz hello!
-//ezequiel
 import javax.swing.*;
 import java.awt.*;
 
