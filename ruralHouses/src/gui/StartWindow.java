@@ -7,6 +7,9 @@ import businessLogic.ApplicationFacadeInterface;
 
 import java.rmi.*;
 import configuration.Config;
+import javax.swing.border.BevelBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class StartWindow extends JFrame {
 	
@@ -21,6 +24,7 @@ public class StartWindow extends JFrame {
 	private JButton exitButton = null;
 
 	public static ApplicationFacadeInterface facadeInterface;
+	private JButton btnNewButton;
 	
 	public StartWindow() {
 		super();
@@ -53,7 +57,12 @@ public class StartWindow extends JFrame {
 			jContentPane.add(getCreateOfferButton());
 			jContentPane.add(Box.createRigidArea(new Dimension(0,40)));
 			jContentPane.add(getExitButton());
-			jContentPane.add(Box.createRigidArea(new Dimension(0,40)));
+			Component rigidArea = Box.createRigidArea(new Dimension(0,40));
+			rigidArea.setPreferredSize(new Dimension(0, 10));
+			rigidArea.setMaximumSize(new Dimension(0, 10));
+			rigidArea.setMinimumSize(new Dimension(0, 10));
+			jContentPane.add(rigidArea);
+			jContentPane.add(getBtnNewButton());
 		}
 		return jContentPane;
 	}
@@ -159,4 +168,20 @@ public class StartWindow extends JFrame {
 		a.setVisible(true);
 	}
 
+	private JButton getBtnNewButton() {
+		if (btnNewButton == null) {
+			btnNewButton = new JButton("Login");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {	
+					JFrame a = new UserLoginGUI();
+					a.setVisible(true);
+				}
+			});
+			btnNewButton.setMaximumSize(new Dimension(150, 23));
+			btnNewButton.setPreferredSize(new Dimension(150, 23));
+			btnNewButton.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+			btnNewButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+		}
+		return btnNewButton;
+	}
 } //@jve:decl-index=0:visual-constraint="0,0"

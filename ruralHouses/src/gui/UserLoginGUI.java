@@ -15,12 +15,24 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
+
+import com.db4o.ObjectContainer;
+
+import dataAccess.DB4oManager;
+import java.rmi.RemoteException;
+//Imported by me:
+import java.util.Vector;
+import domain.Owner;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class UserLoginGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -42,10 +54,10 @@ public class UserLoginGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public UserLoginGUI() {
+		setAlwaysOnTop(true);
 		setType(Type.UTILITY);
 		setTitle("User Login");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 333, 262);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -62,38 +74,96 @@ public class UserLoginGUI extends JFrame {
 		textField = new JTextField();
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		final JLabel lblNewLabel_3 = new JLabel("");
 		
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				DB4oManager dbManager = DB4oManager.getInstance();
+				String username = textField.getText();
+				char[] charPass = passwordField.getPassword();
+				String password = new String(charPass);
 				
+				Owner ownerTriesToLogIn = new Owner(null, username, password);
+				
+				System.out.println("El owner que buscamos. NAME: " + ownerTriesToLogIn.getName() + " USER: " + ownerTriesToLogIn.getUsername() + " PASS: " + ownerTriesToLogIn.getPassword());
+				
+				try {
+					Vector<Owner> owners = new Vector<Owner>();
+					owners.addAll(dbManager.getOwners());
+					
+					System.out.println("Size of the owners: " + owners.size());
+					int i = 0;
+					for (i = 0; i < owners.size(); i++) {
+						System.out.println(owners.elementAt(i));
+					} // END for
+					
+					i = 0;
+					boolean encontrado = false;
+					while(encontrado == false && i < owners.size()) {
+						if (owners.elementAt(i).getUsername().equals(username) && owners.elementAt(i).getPassword().equals(password)) {
+							encontrado = true;
+							lblNewLabel_3.setForeground(new Color(0, 128, 0));
+							lblNewLabel_3.setText("ACCESS GRANTED!");
+							textField.setText("");
+							passwordField.setText("");
+						} else {i++;} // END if
+					} // END while
+					
+					if (encontrado == false) {
+						lblNewLabel_3.setForeground(new Color(253, 0, 0));
+						lblNewLabel_3.setText("ACCESS DENIED!");
+						textField.setText("");
+						passwordField.setText("");
+					} // END if
+					
+				} catch (RemoteException e) {
+					System.out.println("There has been a 'Remote Exception' error! Please, contact with your administrator.");
+					System.out.println("Error details:");
+					System.out.println(e);
+					e.printStackTrace();
+					System.out.println();
+				} catch (Exception e) {
+					System.out.println("There has been an unknow error! Please, contact with your administrator.");
+					System.out.println("Error details:");
+					System.out.println(e);
+					e.printStackTrace();
+					System.out.println();
+				}				
 				
 			}
 		}); // END addActionListener
+		
+		passwordField = new JPasswordField();	
+		
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setForeground(new Color(0, 128, 0));
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(71, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(62, Short.MAX_VALUE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(btnNewButton)
 							.addGap(125))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(lblNewLabel)
 							.addGap(105))
-						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblNewLabel_1)
 								.addComponent(lblNewLabel_2))
 							.addGap(39)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(67))))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+								.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+							.addGap(67))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
+							.addGap(53))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -107,8 +177,10 @@ public class UserLoginGUI extends JFrame {
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel_1)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+					.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addGap(7)
 					.addComponent(btnNewButton)
 					.addGap(28))
 		);
