@@ -53,11 +53,12 @@ public class BookRuralHouseGUI extends JFrame {
 	}
 
 	public BookRuralHouseGUI(int houseNumber, Date firstDay, Date lastDay) {
+
 		try {
 
 			jbInit();
 
-			jTextField1.setText(Integer.toString(houseNumber));
+			/*jTextField1.setText(Integer.toString(houseNumber));
 			long nights=(lastDay.getTime()-firstDay.getTime())/(1000*60*60*24);
 			jTextField3.setText(Long.toString(nights));
 			DateFormat dateformat1 = DateFormat.getDateInstance(1);
@@ -76,18 +77,9 @@ public class BookRuralHouseGUI extends JFrame {
 
 			yc.setYear(year);
 			mc.setMonth(month);
-			dc.setDay(day);
+			dc.setDay(day);*/
 
-			RuralHouse auxRH = new RuralHouse();
-			auxRH = BL.getRuralHouseByNumber(houseNumber);
-
-			Offer aux = new Offer(auxRH, firstDay, lastDay, 60);
-			String clientTelephoneNumber = new String("943786456");
-
-			BL.BookRuralHouse(aux, clientTelephoneNumber);
-
-		}
-		catch(Exception e) {
+		} catch(Exception e) {
 			System.out.println("There has been an error in gui > BookRuralHouseGUI in line " + new Throwable().getStackTrace()[0].getLineNumber());
 		}
 	}
@@ -156,6 +148,14 @@ public class BookRuralHouseGUI extends JFrame {
 						BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(book);
 						confirmWindow.setVisible(true);
 					}
+					
+					RuralHouse auxRH = new RuralHouse();
+					auxRH = BL.getRuralHouseByNumber(house.getHouseNumber());
+
+					// I need a real Offer
+					Offer auxOffer = new Offer(auxRH, firstDay, lastDay, 60);
+					
+					BL.BookRuralHouse(auxOffer, telephone);
 				}
 				catch (OfferCanNotBeBooked e1) {
 					jLabel5.setText("Error: Booking is not possible");
