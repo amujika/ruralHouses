@@ -140,7 +140,7 @@ public class DB4oManager {
 	 * @return None
 	 */
 	public Offer createOffer(RuralHouse ruralHouse, Date firstDay, Date lastDay,
-			float price) throws RemoteException, Exception {
+			float price){
 		ObjectContainer db=DB4oManager.getContainer();
 		RuralHouse proto = new RuralHouse(ruralHouse.getHouseNumber(), null, 
 				ruralHouse.getDescription(), ruralHouse.getTown());
