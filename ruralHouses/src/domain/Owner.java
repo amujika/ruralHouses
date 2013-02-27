@@ -6,10 +6,10 @@ import java.util.Vector;
 @SuppressWarnings("serial")
 public class Owner implements Serializable, Comparable<Owner> {
 
-	private String bankAccount = "";
-	private String name="";
-	private String username="";
-	private String password="";
+	private String bankAccount;
+	private String name;
+	private String username;
+	private String password;
 	private Vector<RuralHouse> ruralHouses;
 
 	public Owner(String name,String login, String password) {

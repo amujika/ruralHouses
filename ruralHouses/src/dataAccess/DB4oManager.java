@@ -3,6 +3,7 @@ package dataAccess;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 //import java.util.Enumeration;
 //import java.util.Vector;
@@ -84,7 +85,24 @@ public class DB4oManager {
 		} finally {
 			//db.close();
 		}
-	} 
+	}
+
+	public Owner getOwner(Owner owner) {
+		ObjectContainer db = DB4oManager.getContainer();
+
+		try {
+			List<Owner> result = db.queryByExample(owner);
+
+			if (result.isEmpty()) {
+				return null;
+			} else {
+				return result.get(0);
+			} // END if
+
+		} finally {
+			// db.close();
+		}
+	}
 
 	public Vector<RuralHouse> getAllRuralHouses() throws RemoteException,
 	Exception {

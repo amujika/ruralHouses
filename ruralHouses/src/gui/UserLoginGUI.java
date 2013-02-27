@@ -6,7 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.Window.Type;
+//import java.awt.Window.Type;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -55,7 +55,7 @@ public class UserLoginGUI extends JFrame {
 	 */
 	public UserLoginGUI() {
 		setAlwaysOnTop(true);
-		setType(Type.UTILITY);
+		//setType(Type.UTILITY);
 		setTitle("User Login");
 		setResizable(false);
 		setBounds(100, 100, 333, 262);
@@ -89,16 +89,17 @@ public class UserLoginGUI extends JFrame {
 				System.out.println("The owner we are looking for: NAME: " + ownerTriesToLogIn.getName() + " USER: " + ownerTriesToLogIn.getUsername() + " PASS: " + ownerTriesToLogIn.getPassword());
 
 				try {					
-					Vector<Owner> owners = new Vector<Owner>(dbManager.getOwners());
-					int i = owners.indexOf(ownerTriesToLogIn);
-
-					if (i != -1) { // Correct owner
-						lblNewLabel_3.setForeground(new Color(0, 128, 0));
-						lblNewLabel_3.setText("ACCESS GRANTED!");
-					} else { // Incorrect owner
+				
+					Owner own = dbManager.getOwner(ownerTriesToLogIn);
+					
+					if (own == null) { // Incorrect owner
 						lblNewLabel_3.setForeground(new Color(253, 0, 0));
 						lblNewLabel_3.setText("ACCESS DENIED!");
-					}
+					} else { // Correct owner
+						lblNewLabel_3.setForeground(new Color(0, 128, 0));
+						lblNewLabel_3.setText("ACCESS GRANTED!");
+					} // END if
+					
 					textField.setText("");
 					passwordField.setText("");
 				} catch (Exception e) {
