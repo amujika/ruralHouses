@@ -1,10 +1,12 @@
 package gui;
 
 import businessLogic.ApplicationFacadeInterface;
+import businessLogic.BookRuralHouseBL;
 
 import com.toedter.calendar.*;
 
 import domain.Booking;
+import domain.Offer;
 import domain.RuralHouse;
 
 import exceptions.OfferCanNotBeBooked;
@@ -27,11 +29,14 @@ public class BookRuralHouseGUI extends JFrame {
 	private JLabel jLabel2 = new JLabel();
 	private JLabel jLabel3 = new JLabel();
 	private JLabel jLabel4 = new JLabel();
+	private JTextField jTextField1 = new JTextField();
 	private JTextField jTextField2 = new JTextField();
 	private JTextField jTextField3 = new JTextField();
 	private JTextField jTextField4 = new JTextField();
 	private JButton jButton2 = new JButton();
 	private JButton jButton3 = new JButton();
+
+	private BookRuralHouseBL BL = new BookRuralHouseBL();
 
 	// Code for JCalendar
 	private JCalendar jCalendar1 = new JCalendar();
@@ -43,42 +48,52 @@ public class BookRuralHouseGUI extends JFrame {
 			jbInit();
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("There has been an error in gui > BookRuralHouseGUI in line " + new Throwable().getStackTrace()[0].getLineNumber());
 		}
 	}
 
 	public BookRuralHouseGUI(int houseNumber, Date firstDay, Date lastDay) {
 		try {
+
 			jbInit();
 
-			/*jTextField1.setText(Integer.toString(houseNumber));
- 			long nights=(lastDay.getTime()-firstDay.getTime())/(1000*60*60*24);
- 			jTextField3.setText(Long.toString(nights));
- 			DateFormat dateformat1 = DateFormat.getDateInstance(1);
+			jTextField1.setText(Integer.toString(houseNumber));
+			long nights=(lastDay.getTime()-firstDay.getTime())/(1000*60*60*24);
+			jTextField3.setText(Long.toString(nights));
+			DateFormat dateformat1 = DateFormat.getDateInstance(1);
 
- 			Date first= new Date((long)(firstDay.getTime()));
-  			jTextField2.setText(dateformat1.format(first));
+			Date first= new Date((long)(firstDay.getTime()));
+			jTextField2.setText(dateformat1.format(first));
 			GregorianCalendar cal=new GregorianCalendar();
 			cal.setTime(first);
 			int year=cal.get(Calendar.YEAR);
 			int month=cal.get(Calendar.MONTH);
 			int day=cal.get(Calendar.DAY_OF_MONTH);
 
-			JYearChooser yc=jCalendar1.getYearChooser();
-    		JMonthChooser mc=   jCalendar1.getMonthChooser();
-    		JDayChooser dc= jCalendar1.getDayChooser();
+			JYearChooser yc = jCalendar1.getYearChooser();
+			JMonthChooser mc = jCalendar1.getMonthChooser();
+			JDayChooser dc = jCalendar1.getDayChooser();
 
 			yc.setYear(year);
-    		mc.setMonth(month);
-    		dc.setDay(day); */
+			mc.setMonth(month);
+			dc.setDay(day);
+
+			RuralHouse auxRH = new RuralHouse();
+			auxRH = BL.getRuralHouseByNumber(houseNumber);
+
+			Offer aux = new Offer(auxRH, firstDay, lastDay, 60);
+			String clientTelephoneNumber = new String("943786456");
+
+			BL.BookRuralHouse(aux, clientTelephoneNumber);
 
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("There has been an error in gui > BookRuralHouseGUI in line " + new Throwable().getStackTrace()[0].getLineNumber());
 		}
 	}
 
 	private void jbInit() throws Exception {
+
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(430, 440));
 		this.setTitle("Book Rural House");

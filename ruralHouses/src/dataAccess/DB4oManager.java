@@ -100,6 +100,19 @@ public class DB4oManager {
 			//db.close();
 		}
 	}
+	
+	//Returns the RuralHouse with the specified houseNumber
+	public RuralHouse getRuralHouseByNumber(int houseNumber){
+		try {
+			ObjectContainer db=DB4oManager.getContainer();
+			RuralHouse rh = new RuralHouse(houseNumber, null, null, null);
+			ObjectSet<RuralHouse> result = db.queryByExample(rh);
+			return result.next();
+		} catch (Exception e) {
+			System.out.println("There has been an error in dataAccess > DB4oManager in line " + new Throwable().getStackTrace()[0].getLineNumber());
+			return null;
+		}
+	}
 
 	/**
 	 * This method creates an offer with a house number, first day, last day and price
