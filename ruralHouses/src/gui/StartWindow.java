@@ -46,23 +46,23 @@ public class StartWindow extends JFrame {
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
-//			jContentPane.setLayout(null);
-			jContentPane.setLayout(new BoxLayout(jContentPane,
-					BoxLayout.Y_AXIS));
-			jContentPane.add(Box.createRigidArea(new Dimension(0,40)));
-			jContentPane.add(getBookHouseButton());
-			jContentPane.add(Box.createRigidArea(new Dimension(0,40)));
+			jContentPane.setLayout(null);
 			jContentPane.add(getSearchAvailabilityButton());
-			jContentPane.add(Box.createRigidArea(new Dimension(0,40)));
+			jContentPane.add(getBookHouseButton());
 			jContentPane.add(getCreateOfferButton());
-			jContentPane.add(Box.createRigidArea(new Dimension(0,40)));
 			jContentPane.add(getExitButton());
-			Component rigidArea = Box.createRigidArea(new Dimension(0,40));
-			rigidArea.setPreferredSize(new Dimension(0, 10));
-			rigidArea.setMaximumSize(new Dimension(0, 10));
-			rigidArea.setMinimumSize(new Dimension(0, 10));
-			jContentPane.add(rigidArea);
 			jContentPane.add(getBtnNewButton());
+			
+			JButton btnNewButton_1 = new JButton("Add a Rural House");
+			btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
+			btnNewButton_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JFrame a = new AddRuralHouseGUI();
+					a.setVisible(true);
+				}
+			});
+			btnNewButton_1.setBounds(56, 171, 245, 39);
+			jContentPane.add(btnNewButton_1);
 		}
 		return jContentPane;
 	}
@@ -70,6 +70,7 @@ public class StartWindow extends JFrame {
 	private JButton getBookHouseButton() {
 		if (bookHouseButton == null) {
 			bookHouseButton = new JButton();
+			bookHouseButton.setBounds(56, 114, 245, 37);
 			bookHouseButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			bookHouseButton.setText("Book rural house");
 			bookHouseButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -86,6 +87,7 @@ public class StartWindow extends JFrame {
 	private JButton getCreateOfferButton() {
 		if (createOfferButton == null) {
 			createOfferButton = new JButton();
+			createOfferButton.setBounds(56, 232, 245, 37);
 			createOfferButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			createOfferButton.setText("Introduce new offer");
 			createOfferButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -102,6 +104,7 @@ public class StartWindow extends JFrame {
 	private JButton getSearchAvailabilityButton() {
 		if (searchAvailabilityButton == null) {
 			searchAvailabilityButton = new JButton();
+			searchAvailabilityButton.setBounds(56, 51, 245, 37);
 			searchAvailabilityButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			searchAvailabilityButton.setText("Search availability");
 			searchAvailabilityButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -118,6 +121,7 @@ public class StartWindow extends JFrame {
 	private JButton getExitButton() {
 		if (exitButton == null) {
 			exitButton = new JButton();
+			exitButton.setBounds(134, 280, 71, 37);
 			exitButton.setText("Exit");
 			exitButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -171,6 +175,7 @@ public class StartWindow extends JFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Login");
+			btnNewButton.setBounds(94, 328, 150, 23);
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {	
 					JFrame a = new OwnerLoginGUI();

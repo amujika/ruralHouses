@@ -46,7 +46,6 @@ public class AddRuralHouseGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public AddRuralHouseGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -81,10 +80,11 @@ public class AddRuralHouseGUI extends JFrame {
 		textField_2.setColumns(10);
 		
 		JButton btnBack = new JButton("Back");
-//		btnBack.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//			}
-//		});
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+			}
+		});
 		btnBack.setBounds(131, 228, 89, 23);
 		contentPane.add(btnBack);
 		
@@ -98,6 +98,9 @@ public class AddRuralHouseGUI extends JFrame {
 				
 				Owner aux = new Owner ("Jon", "userJon", "passJon");
 				BL.addRuralHouse(houseNumber, aux, description, town);
+				
+				setVisible(false);
+				
 			}
 		});
 		btnFinish.setBounds(243, 228, 89, 23);

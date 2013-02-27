@@ -16,7 +16,7 @@ public class AddRuralHouseBL {
 	
 	public void addRuralHouse(int houseNumber, Owner owner, String description, String town){ 
 		RuralHouse rh=new RuralHouse(houseNumber, owner, description, town);
-		dbMngr.addRuralHouse(rh);
+		DB4oManager.getInstance().addRuralHouse(rh);		
 	}
 
 }
