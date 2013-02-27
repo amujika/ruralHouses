@@ -173,7 +173,7 @@ public class StartWindow extends JFrame {
 			btnNewButton = new JButton("Login");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {	
-					JFrame a = new UserLoginGUI();
+					JFrame a = new OwnerLoginGUI();
 					a.setVisible(true);
 				}
 			});

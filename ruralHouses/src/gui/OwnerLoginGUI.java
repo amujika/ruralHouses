@@ -17,6 +17,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
+import businessLogic.OwnerLoginBL;
+
 import com.db4o.ObjectContainer;
 
 import dataAccess.DB4oManager;
@@ -28,11 +30,13 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
-public class UserLoginGUI extends JFrame {
+public class OwnerLoginGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	
+	private OwnerLoginBL BL = new OwnerLoginBL();
 
 	/**
 	 * Launch the application.
@@ -41,7 +45,7 @@ public class UserLoginGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UserLoginGUI frame = new UserLoginGUI();
+					OwnerLoginGUI frame = new OwnerLoginGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +57,7 @@ public class UserLoginGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public UserLoginGUI() {
+	public OwnerLoginGUI() {
 		setAlwaysOnTop(true);
 		//setType(Type.UTILITY);
 		setTitle("User Login");
@@ -80,31 +84,24 @@ public class UserLoginGUI extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				DB4oManager dbManager = DB4oManager.getInstance();
 				String username = textField.getText();
 				String password = new String(passwordField.getPassword());
 
 				Owner ownerTriesToLogIn = new Owner(null, username, password);
 
 				System.out.println("The owner we are looking for: NAME: " + ownerTriesToLogIn.getName() + " USER: " + ownerTriesToLogIn.getUsername() + " PASS: " + ownerTriesToLogIn.getPassword());
-
-				try {					
 				
-					Owner own = dbManager.getOwner(ownerTriesToLogIn);
-					
-					if (own == null) { // Incorrect owner
-						lblNewLabel_3.setForeground(new Color(253, 0, 0));
-						lblNewLabel_3.setText("ACCESS DENIED!");
-					} else { // Correct owner
-						lblNewLabel_3.setForeground(new Color(0, 128, 0));
-						lblNewLabel_3.setText("ACCESS GRANTED!");
-					} // END if
-					
-					textField.setText("");
-					passwordField.setText("");
-				} catch (Exception e) {
-					System.out.println("There has been an error in gui>UserLoginGUI in line " + new Throwable().getStackTrace()[0].getLineNumber());
-				}
+				if (BL.ownerloginBL(ownerTriesToLogIn) == null) {
+					lblNewLabel_3.setForeground(new Color(253, 0, 0));
+					lblNewLabel_3.setText("ACCESS DENIED!");
+				} else {
+					lblNewLabel_3.setForeground(new Color(0, 128, 0));
+					lblNewLabel_3.setText("ACCESS GRANTED!");		
+				} // END if
+				
+				textField.setText("");
+				passwordField.setText("");				
+				
 			}
 		}); // END addActionListener
 		
