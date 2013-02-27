@@ -82,56 +82,28 @@ public class UserLoginGUI extends JFrame {
 				
 				DB4oManager dbManager = DB4oManager.getInstance();
 				String username = textField.getText();
-				char[] charPass = passwordField.getPassword();
-				String password = new String(charPass);
-				
+				String password = new String(passwordField.getPassword());
+
 				Owner ownerTriesToLogIn = new Owner(null, username, password);
-				
-				System.out.println("El owner que buscamos. NAME: " + ownerTriesToLogIn.getName() + " USER: " + ownerTriesToLogIn.getUsername() + " PASS: " + ownerTriesToLogIn.getPassword());
-				
-				try {
-					Vector<Owner> owners = new Vector<Owner>();
-					owners.addAll(dbManager.getOwners());
-					
-					System.out.println("Size of the owners: " + owners.size());
-					int i = 0;
-					for (i = 0; i < owners.size(); i++) {
-						System.out.println(owners.elementAt(i));
-					} // END for
-					
-					i = 0;
-					boolean encontrado = false;
-					while(encontrado == false && i < owners.size()) {
-						if (owners.elementAt(i).getUsername().equals(username) && owners.elementAt(i).getPassword().equals(password)) {
-							encontrado = true;
-							lblNewLabel_3.setForeground(new Color(0, 128, 0));
-							lblNewLabel_3.setText("ACCESS GRANTED!");
-							textField.setText("");
-							passwordField.setText("");
-						} else {i++;} // END if
-					} // END while
-					
-					if (encontrado == false) {
+
+				System.out.println("The owner we are looking for: NAME: " + ownerTriesToLogIn.getName() + " USER: " + ownerTriesToLogIn.getUsername() + " PASS: " + ownerTriesToLogIn.getPassword());
+
+				try {					
+					Vector<Owner> owners = new Vector<Owner>(dbManager.getOwners());
+					int i = owners.indexOf(ownerTriesToLogIn);
+
+					if (i != -1) { // Correct owner
+						lblNewLabel_3.setForeground(new Color(0, 128, 0));
+						lblNewLabel_3.setText("ACCESS GRANTED!");
+					} else { // Incorrect owner
 						lblNewLabel_3.setForeground(new Color(253, 0, 0));
 						lblNewLabel_3.setText("ACCESS DENIED!");
-						textField.setText("");
-						passwordField.setText("");
-					} // END if
-					
-				} catch (RemoteException e) {
-					System.out.println("There has been a 'Remote Exception' error! Please, contact with your administrator.");
-					System.out.println("Error details:");
-					System.out.println(e);
-					e.printStackTrace();
-					System.out.println();
+					}
+					textField.setText("");
+					passwordField.setText("");
 				} catch (Exception e) {
-					System.out.println("There has been an unknow error! Please, contact with your administrator.");
-					System.out.println("Error details:");
-					System.out.println(e);
-					e.printStackTrace();
-					System.out.println();
-				}				
-				
+					System.out.println("There has been an error in gui>UserLoginGUI in line " + new Throwable().getStackTrace()[0].getLineNumber());
+				}
 			}
 		}); // END addActionListener
 		

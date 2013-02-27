@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Vector;
 
 @SuppressWarnings("serial")
-public class Owner implements Serializable {
+public class Owner implements Serializable, Comparable<Owner> {
 
 	private String bankAccount = "";
 	private String name="";
@@ -73,4 +73,14 @@ public class Owner implements Serializable {
 		return name;
 	}
 
+	public int compareTo(Owner other) {
+		return (this.bankAccount + '\n' + this.name + '\n' + this.password
+				+ '\n' + this.username).compareTo(other.bankAccount + '\n'
+				+ other.name + '\n' + other.password + '\n' + other.username);
+	}
+	
+	public boolean equals(Object o) {
+		Owner other= (Owner) o;		
+		return ( this.password + '\n' + this.username).equals(other.password + '\n' + other.username);
+	}
 }
