@@ -151,6 +151,7 @@ public class DB4oManager {
 		db.commit(); 
 		return o;
 	}
+	
 
 	public RuralHouse getRuralHouse(RuralHouse rh){
 		try {

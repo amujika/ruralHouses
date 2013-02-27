@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import businessLogic.ApplicationFacadeInterface;
+import businessLogic.IntroduceOfferBL;
 
 import com.toedter.calendar.JCalendar;
 
@@ -36,6 +37,8 @@ public class IntroduceOffer2GUI extends JFrame  {
 	private Calendar calendarFin = null;
 	private JButton jButton2 = new JButton();
 	private JLabel jLabel5 = new JLabel();
+	
+	private IntroduceOfferBL BL = new IntroduceOfferBL();
 
 	public IntroduceOffer2GUI(Vector<RuralHouse> v)	{
 		try	{
@@ -153,9 +156,9 @@ public class IntroduceOffer2GUI extends JFrame  {
 		float price= Float.parseFloat(jTextField3.getText());
 		try {
 			//Obtain the business logic from a StartWindow class (local or remote)
-			ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
+			//ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
-			facade.createOffer(ruralHouse, firstDay, lastDay, price); 
+			BL.createOffer(ruralHouse, firstDay, lastDay, price); 
 
 			this.setVisible(false);
 		}
