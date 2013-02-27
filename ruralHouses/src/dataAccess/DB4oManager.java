@@ -168,6 +168,11 @@ public class DB4oManager {
 			return null;
 		}
 	}
+	
+	public void addRuralHouse(RuralHouse rh){
+		db.store(rh);
+		db.commit();
+	}
 
 	/**
 	 * This method returns the instance of the DB4oManager class 
