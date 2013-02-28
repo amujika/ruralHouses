@@ -179,6 +179,7 @@ public class DB4oManager {
 		try {
 			Booking b=null;
 			if (offer!=null) {
+				System.out.println("aaaa");
 				b=offer.createBook(clientTelephoneNumber);
 				db.store(b);
 				db.store(offer);
