@@ -1,13 +1,20 @@
 package gui;
 import javax.swing.*;
+
 import java.awt.*;
 
 import businessLogic.FacadeImplementation;
 import businessLogic.ApplicationFacadeInterface;
 
 import java.rmi.*;
+import java.util.Vector;
+
 import configuration.Config;
 import javax.swing.border.BevelBorder;
+
+import domain.Owner;
+import domain.RuralHouse;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -16,6 +23,8 @@ public class StartWindow extends JFrame {
 	public static boolean clientServer = false;
 
 	private static final long serialVersionUID = 1L;
+	
+	public static Owner OWNER;
 
 	private JPanel jContentPane = null;
 	private JButton bookHouseButton = null;
@@ -93,8 +102,25 @@ public class StartWindow extends JFrame {
 			createOfferButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 			createOfferButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					JFrame a = new IntroduceOfferGUI();
-					a.setVisible(true);
+					Owner owner = OWNER;
+					System.out.println(owner.getUsername());
+					Vector<RuralHouse> houseList=null;
+					try {
+						//Obtain the business logic from a StartWindow class (local or remote)
+						ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
+						houseList=facade.getRuralHouses(owner);
+
+					}
+					catch (Exception e1) {
+						e1.printStackTrace();
+					}
+					if (houseList.isEmpty()!=true) {
+						JFrame a = new IntroduceOffer2GUI(houseList);
+						a.setVisible(true);
+					}
+					else if (houseList.isEmpty()==true) {
+						System.out.print("Owner does not exist or has no registered houses ");
+					} 	
 				}
 			});
 		}
@@ -104,6 +130,7 @@ public class StartWindow extends JFrame {
 	private JButton getSearchAvailabilityButton() {
 		if (searchAvailabilityButton == null) {
 			searchAvailabilityButton = new JButton();
+			searchAvailabilityButton.setEnabled(false);
 			searchAvailabilityButton.setBounds(56, 51, 245, 37);
 			searchAvailabilityButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			searchAvailabilityButton.setText("Search availability");

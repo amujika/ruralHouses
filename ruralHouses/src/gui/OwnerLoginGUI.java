@@ -88,15 +88,19 @@ public class OwnerLoginGUI extends JFrame {
 				String password = new String(passwordField.getPassword());
 
 				Owner ownerTriesToLogIn = new Owner(null, username, password);
-
+				
 				System.out.println("The owner we are looking for: NAME: " + ownerTriesToLogIn.getName() + " USER: " + ownerTriesToLogIn.getUsername() + " PASS: " + ownerTriesToLogIn.getPassword());
 				
-				if (BL.ownerloginBL(ownerTriesToLogIn) == null) {
+				ownerTriesToLogIn = BL.ownerloginBL(ownerTriesToLogIn);
+				
+				if (ownerTriesToLogIn == null) {
 					lblNewLabel_3.setForeground(new Color(253, 0, 0));
 					lblNewLabel_3.setText("ACCESS DENIED!");
 				} else {
 					lblNewLabel_3.setForeground(new Color(0, 128, 0));
-					lblNewLabel_3.setText("ACCESS GRANTED!");		
+					lblNewLabel_3.setText("ACCESS GRANTED!");
+					StartWindow.OWNER = ownerTriesToLogIn;
+					
 				} // END if
 				
 				textField.setText("");

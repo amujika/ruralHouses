@@ -96,7 +96,7 @@ public class AddRuralHouseGUI extends JFrame {
 				String town = textField_1.getText();
 				String description = textField_2.getText();
 				
-				Owner aux = new Owner ("Jon", "userJon", "passJon");
+				Owner aux = StartWindow.OWNER;
 				BL.addRuralHouse(houseNumber, aux, description, town);
 				
 				setVisible(false);
