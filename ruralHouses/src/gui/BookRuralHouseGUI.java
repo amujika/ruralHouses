@@ -128,7 +128,7 @@ public class BookRuralHouseGUI extends JFrame {
 		jButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// House code
-				RuralHouse house=(RuralHouse)jComboBox1.getSelectedItem();
+				RuralHouse ruralHouse=(RuralHouse)jComboBox1.getSelectedItem();
 				// Arrival date
 				Date firstDay= new Date(jCalendar1.getCalendar().getTime().getTime());
 				firstDay=Date.valueOf(firstDay.toString());
@@ -139,28 +139,14 @@ public class BookRuralHouseGUI extends JFrame {
 				// Contact telephone
 				String telephone=jTextField4.getText();
 				try {
-					//Obtain the business logic from a StartWindow class (local or remote)
-					ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
-
-					Booking book=facade.createBooking(house, firstDay, lastDay, telephone);
-					System.out.println(book.getPrice());
-					if (book!=null) {
-						BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(book);
-						confirmWindow.setVisible(true);
-					}
-					
-					RuralHouse auxRH = new RuralHouse();
-					auxRH = BL.getRuralHouseByNumber(house.getHouseNumber());
-
 					// I need a real Offer
-					Offer auxOffer = new Offer(auxRH, firstDay, lastDay, 60);
+					Offer auxOffer = BL.getOffer(ruralHouse, firstDay, lastDay);
 					
-					BL.BookRuralHouse(auxOffer, telephone);
-				}
-				catch (OfferCanNotBeBooked e1) {
-					jLabel5.setText("Error: Booking is not possible");
-					JFrame a = new SearchOffersGUI();
-					a.setVisible(true);
+					BL.bookRuralHouse(auxOffer, telephone);
+
+					//BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(book);
+					System.out.println("reserva hecha");
+					//confirmWindow.setVisible(true);
 				}
 				catch (Exception e1) {
 					e1.printStackTrace();

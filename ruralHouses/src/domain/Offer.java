@@ -24,7 +24,15 @@ public class Offer implements Serializable {
 		  this.ruralHouse=ruralHouse;
 		  this.offerNumber=OfferManager.getNumber();
 	}
-
+	
+	public Offer(RuralHouse ruralHouse, Date firstDay, Date lastDay, float price, int number){
+		  this.firstDay=firstDay;
+		  this.lastDay=lastDay;
+		  this.price=price;
+		  this.ruralHouse=ruralHouse;
+		  this.offerNumber=number;
+	}
+	
 	public RuralHouse getRuralHouse() {
 		return this.ruralHouse;
 	}
@@ -74,4 +82,6 @@ public class Offer implements Serializable {
 		booking=b;
 		return booking;			
 	}
+	
+	
 }

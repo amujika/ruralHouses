@@ -152,7 +152,15 @@ public class DB4oManager {
 		return o;
 	}
 	
+	public Offer getOffer(Offer offer){
+		List<Offer> result = db.queryByExample(offer);
 
+		if (result.isEmpty())
+			return null;
+		else
+			return result.get(0);		
+	} 
+	
 	public RuralHouse getRuralHouse(RuralHouse rh){
 		try {
 			ObjectContainer db=DB4oManager.getContainer();
