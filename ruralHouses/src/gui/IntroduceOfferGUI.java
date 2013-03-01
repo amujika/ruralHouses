@@ -14,8 +14,8 @@ public class IntroduceOfferGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel jContentPane = null;
-	private JComboBox jComboBox = null;
-	private JButton jButton = null;
+	private JComboBox jCBOwner = null;
+	private JButton btnShowHouses = null;
 
 	public IntroduceOfferGUI() {
 		super();
@@ -33,36 +33,36 @@ public class IntroduceOfferGUI extends JFrame {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
 			jContentPane.setLayout(null);
-			jContentPane.add(getJComboBox(), null);
-			jContentPane.add(getJButton(), null);
+			jContentPane.add(getJCBOwner(), null);
+			jContentPane.add(getBtnShowHouses(), null);
 		}
 		return jContentPane;
 	}
 
-	private JComboBox getJComboBox() {
-		if (jComboBox == null) {
+	private JComboBox getJCBOwner() {
+		if (jCBOwner == null) {
 			try {
 				ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 				Vector<Owner> owners=facade.getOwners();
-				jComboBox = new JComboBox(owners);
-				jComboBox.setBounds(new Rectangle(63, 38, 175, 44));
+				jCBOwner = new JComboBox(owners);
+				jCBOwner.setBounds(new Rectangle(63, 38, 175, 44));
 			}
 			catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		return jComboBox;
+		return jCBOwner;
 	}
 
-	private JButton getJButton() {
-		if (jButton == null) {
-			jButton = new JButton();
-			jButton.setBounds(new Rectangle(113, 146, 95, 59));
-			jButton.setText("Show houses");
-			jButton.addActionListener(new java.awt.event.ActionListener() {
+	private JButton getBtnShowHouses() {
+		if (btnShowHouses == null) {
+			btnShowHouses = new JButton();
+			btnShowHouses.setBounds(new Rectangle(113, 146, 95, 59));
+			btnShowHouses.setText("Show houses");
+			btnShowHouses.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					Owner owner=(Owner)jComboBox.getSelectedItem();
+					Owner owner=(Owner)jCBOwner.getSelectedItem();
 					System.out.println(owner.getUsername());
 					Vector<RuralHouse> houseList=null;
 					try {
@@ -84,7 +84,7 @@ public class IntroduceOfferGUI extends JFrame {
 				}
 			});
 		}
-		return jButton;
+		return btnShowHouses;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="222,33"

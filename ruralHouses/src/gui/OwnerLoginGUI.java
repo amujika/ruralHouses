@@ -33,8 +33,8 @@ import javax.swing.SwingConstants;
 public class OwnerLoginGUI extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JPasswordField passwordField;
+	private JTextField txtUsername;
+	private JPasswordField txtPassword;
 	
 	private OwnerLoginBL BL = new OwnerLoginBL();
 
@@ -67,25 +67,25 @@ public class OwnerLoginGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblNewLabel = new JLabel("User authentication:");
+		JLabel lblUserAuthen = new JLabel("User authentication:");
 		
-		JLabel lblNewLabel_1 = new JLabel("Password");
-		lblNewLabel_1.setToolTipText("Please, introduce your password");
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setToolTipText("Please, introduce your password");
 		
-		JLabel lblNewLabel_2 = new JLabel("Username");
-		lblNewLabel_2.setToolTipText("Please, introduce your username");
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setToolTipText("Please, introduce your username");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		txtUsername = new JTextField();
+		txtUsername.setColumns(10);
 		
 		final JLabel lblNewLabel_3 = new JLabel("");
 		
-		JButton btnNewButton = new JButton("Login");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				String username = textField.getText();
-				String password = new String(passwordField.getPassword());
+				String username = txtUsername.getText();
+				String password = new String(txtPassword.getPassword());
 
 				Owner ownerTriesToLogIn = new Owner(null, username, password);
 				
@@ -103,13 +103,13 @@ public class OwnerLoginGUI extends JFrame {
 					
 				} // END if
 				
-				textField.setText("");
-				passwordField.setText("");				
+				txtUsername.setText("");
+				txtPassword.setText("");				
 				
 			}
 		}); // END addActionListener
 		
-		passwordField = new JPasswordField();	
+		txtPassword = new JPasswordField();	
 		
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setForeground(new Color(0, 128, 0));
@@ -121,19 +121,19 @@ public class OwnerLoginGUI extends JFrame {
 					.addContainerGap(62, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btnNewButton)
+							.addComponent(btnLogin)
 							.addGap(125))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblNewLabel)
+							.addComponent(lblUserAuthen)
 							.addGap(105))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel_1)
-								.addComponent(lblNewLabel_2))
+								.addComponent(lblPassword)
+								.addComponent(lblUsername))
 							.addGap(39)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-								.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+								.addComponent(txtUsername, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+								.addComponent(txtPassword, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 							.addGap(67))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
@@ -143,19 +143,19 @@ public class OwnerLoginGUI extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblNewLabel)
+					.addComponent(lblUserAuthen)
 					.addGap(38)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_2)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblUsername)
+						.addComponent(txtUsername, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_1)
-						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblPassword)
+						.addComponent(txtPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
 					.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 					.addGap(7)
-					.addComponent(btnNewButton)
+					.addComponent(btnLogin)
 					.addGap(28))
 		);
 		contentPane.setLayout(gl_contentPane);

@@ -27,13 +27,13 @@ public class StartWindow extends JFrame {
 	public static Owner OWNER;
 
 	private JPanel jContentPane = null;
-	private JButton bookHouseButton = null;
-	private JButton createOfferButton = null;
+	private JButton btnBookRH = null;
+	private JButton btnIntroduceOffer = null;
 	private JButton searchAvailabilityButton = null;
-	private JButton exitButton = null;
+	private JButton btnExit = null;
 
 	public static ApplicationFacadeInterface facadeInterface;
-	private JButton btnNewButton;
+	private JButton btnLogin;
 	
 	public StartWindow() {
 		super();
@@ -57,50 +57,50 @@ public class StartWindow extends JFrame {
 			jContentPane = new JPanel();
 			jContentPane.setLayout(null);
 			jContentPane.add(getSearchAvailabilityButton());
-			jContentPane.add(getBookHouseButton());
-			jContentPane.add(getCreateOfferButton());
-			jContentPane.add(getExitButton());
-			jContentPane.add(getBtnNewButton());
+			jContentPane.add(getBtnBookRH());
+			jContentPane.add(getBtnIntroduceOffer());
+			jContentPane.add(getBtnExit());
+			jContentPane.add(getBtnLogin());
 			
-			JButton btnNewButton_1 = new JButton("Add a Rural House");
-			btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			btnNewButton_1.addActionListener(new ActionListener() {
+			JButton btnAddRH = new JButton("Add a Rural House");
+			btnAddRH.setFont(new Font("Tahoma", Font.PLAIN, 24));
+			btnAddRH.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					JFrame a = new AddRuralHouseGUI();
 					a.setVisible(true);
 				}
 			});
-			btnNewButton_1.setBounds(56, 171, 245, 39);
-			jContentPane.add(btnNewButton_1);
+			btnAddRH.setBounds(56, 171, 245, 39);
+			jContentPane.add(btnAddRH);
 		}
 		return jContentPane;
 	}
 
-	private JButton getBookHouseButton() {
-		if (bookHouseButton == null) {
-			bookHouseButton = new JButton();
-			bookHouseButton.setBounds(56, 114, 245, 37);
-			bookHouseButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			bookHouseButton.setText("Book rural house");
-			bookHouseButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-			bookHouseButton.addActionListener(new java.awt.event.ActionListener() {
+	private JButton getBtnBookRH() {
+		if (btnBookRH == null) {
+			btnBookRH = new JButton();
+			btnBookRH.setBounds(56, 114, 245, 37);
+			btnBookRH.setFont(new Font("Tahoma", Font.PLAIN, 24));
+			btnBookRH.setText("Book rural house");
+			btnBookRH.setAlignmentX(Component.CENTER_ALIGNMENT);
+			btnBookRH.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					JFrame a = new BookRuralHouseGUI();
 					a.setVisible(true);
 				}
 			});
 		}
-		return bookHouseButton;
+		return btnBookRH;
 	}
 
-	private JButton getCreateOfferButton() {
-		if (createOfferButton == null) {
-			createOfferButton = new JButton();
-			createOfferButton.setBounds(56, 232, 245, 37);
-			createOfferButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			createOfferButton.setText("Introduce new offer");
-			createOfferButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-			createOfferButton.addActionListener(new java.awt.event.ActionListener() {
+	private JButton getBtnIntroduceOffer() {
+		if (btnIntroduceOffer == null) {
+			btnIntroduceOffer = new JButton();
+			btnIntroduceOffer.setBounds(56, 232, 245, 37);
+			btnIntroduceOffer.setFont(new Font("Tahoma", Font.PLAIN, 24));
+			btnIntroduceOffer.setText("Introduce new offer");
+			btnIntroduceOffer.setAlignmentX(Component.CENTER_ALIGNMENT);
+			btnIntroduceOffer.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					Owner owner = OWNER;
 					System.out.println(owner.getUsername());
@@ -124,7 +124,7 @@ public class StartWindow extends JFrame {
 				}
 			});
 		}
-		return createOfferButton;
+		return btnIntroduceOffer;
 	}
 	
 	private JButton getSearchAvailabilityButton() {
@@ -145,14 +145,14 @@ public class StartWindow extends JFrame {
 		return searchAvailabilityButton;
 	}
 
-	private JButton getExitButton() {
-		if (exitButton == null) {
-			exitButton = new JButton();
-			exitButton.setBounds(134, 280, 71, 37);
-			exitButton.setText("Exit");
-			exitButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-			exitButton.addActionListener(new java.awt.event.ActionListener() {
+	private JButton getBtnExit() {
+		if (btnExit == null) {
+			btnExit = new JButton();
+			btnExit.setBounds(134, 280, 71, 37);
+			btnExit.setText("Exit");
+			btnExit.setFont(new Font("Tahoma", Font.PLAIN, 24));
+			btnExit.setAlignmentX(Component.CENTER_ALIGNMENT);
+			btnExit.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					//JFrame a = new QueryAvailabilityWindow();
 					ApplicationFacadeInterface facade=StartWindow.facadeInterface;
@@ -167,7 +167,7 @@ public class StartWindow extends JFrame {
 				}
 			});
 		}
-		return exitButton;
+		return btnExit;
 	}
 	
 	public static void main(String[] args) {		
@@ -199,21 +199,21 @@ public class StartWindow extends JFrame {
 		a.setVisible(true);
 	}
 
-	private JButton getBtnNewButton() {
-		if (btnNewButton == null) {
-			btnNewButton = new JButton("Login");
-			btnNewButton.setBounds(94, 328, 150, 23);
-			btnNewButton.addActionListener(new ActionListener() {
+	private JButton getBtnLogin() {
+		if (btnLogin == null) {
+			btnLogin = new JButton("Login");
+			btnLogin.setBounds(94, 328, 150, 23);
+			btnLogin.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {	
 					JFrame a = new OwnerLoginGUI();
 					a.setVisible(true);
 				}
 			});
-			btnNewButton.setMaximumSize(new Dimension(150, 23));
-			btnNewButton.setPreferredSize(new Dimension(150, 23));
-			btnNewButton.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-			btnNewButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+			btnLogin.setMaximumSize(new Dimension(150, 23));
+			btnLogin.setPreferredSize(new Dimension(150, 23));
+			btnLogin.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+			btnLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
 		}
-		return btnNewButton;
+		return btnLogin;
 	}
 } //@jve:decl-index=0:visual-constraint="0,0"

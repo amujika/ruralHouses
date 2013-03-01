@@ -174,10 +174,8 @@ public class DB4oManager {
 		}
 	}
 
-	public Booking createBooking(Offer offer, String clientTelephoneNumber)
-			throws OfferCanNotBeBooked {
-		try {
-			Booking b=null;
+	public Booking createBooking(Offer offer, String clientTelephoneNumber){
+			Booking b = null;
 			if (offer!=null) {
 				System.out.println("aaaa");
 				b=offer.createBook(clientTelephoneNumber);
@@ -186,10 +184,7 @@ public class DB4oManager {
 				db.commit();
 			}
 			return b;
-		} catch (Exception exc) {
-			exc.printStackTrace();
-			return null;
-		}
+
 	}
 	
 	public void addRuralHouse(RuralHouse rh){
