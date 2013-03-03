@@ -15,7 +15,7 @@ public class Config {
 	private final  String db4oFilename = "DBPrestige.yap";
 
 	//Two possible values: "open" or "initialize"
-	private final String dataBaseOpenMode="initialize";
+	private final String dataBaseOpenMode="open";
 
 	private static Config theInstance = new Config();
    

@@ -26,26 +26,11 @@ public class AddRuralHouseGUI extends JFrame {
 	private JTextField txtDescription;
 	private AddRuralHouseBL BL = new AddRuralHouseBL();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AddRuralHouseGUI frame = new AddRuralHouseGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public AddRuralHouseGUI() {
+	public AddRuralHouseGUI(final Owner owner) {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -96,8 +81,8 @@ public class AddRuralHouseGUI extends JFrame {
 				String town = txtTown.getText();
 				String description = txtDescription.getText();
 				
-				Owner aux = StartWindow.OWNER;
-				BL.addRuralHouse(houseNumber, aux, description, town);
+				
+				BL.addRuralHouse(houseNumber, owner , description, town);
 				
 				setVisible(false);
 				

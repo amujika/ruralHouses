@@ -187,7 +187,8 @@ public class DB4oManager {
 
 	}
 	
-	public void addRuralHouse(RuralHouse rh){
+	public void addRuralHouse(Owner owner, RuralHouse rh){
+		db.store(owner);
 		db.store(rh);
 		db.commit();
 	}

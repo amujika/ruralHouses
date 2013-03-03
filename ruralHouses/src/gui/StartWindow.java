@@ -66,7 +66,16 @@ public class StartWindow extends JFrame {
 			btnAddRH.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			btnAddRH.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					JFrame a = new AddRuralHouseGUI();
+					Owner owner = OWNER;
+					
+					if (owner == null){
+						System.out.println("Not logged in. \nLog in please");
+						return;
+					}
+					
+					System.out.println("Logged in as: " + owner.getName());
+					
+					JFrame a = new AddRuralHouseGUI(StartWindow.OWNER);
 					a.setVisible(true);
 				}
 			});
@@ -102,18 +111,16 @@ public class StartWindow extends JFrame {
 			btnIntroduceOffer.setAlignmentX(Component.CENTER_ALIGNMENT);
 			btnIntroduceOffer.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
-					Owner owner = OWNER;
-					System.out.println(owner.getUsername());
-					Vector<RuralHouse> houseList=null;
-					try {
-						//Obtain the business logic from a StartWindow class (local or remote)
-						ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
-						houseList=facade.getRuralHouses(owner);
 
+					
+					if (OWNER == null){
+						System.out.println("Not logged in. \nLog in please");
+						return;
 					}
-					catch (Exception e1) {
-						e1.printStackTrace();
-					}
+					
+					System.out.println("Logged in as: " + OWNER.getName());
+					Vector<RuralHouse> houseList=OWNER.getRuralHouses();
+
 					if (houseList.isEmpty()!=true) {
 						JFrame a = new IntroduceOffer2GUI(houseList);
 						a.setVisible(true);
