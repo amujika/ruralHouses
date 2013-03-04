@@ -1,10 +1,14 @@
 package gui;
 
 import javax.swing.*;
+
+import businessLogic.BookRuralHouseBL;
+
 import java.awt.*;
 import java.awt.event.*;
 
 import domain.Booking;
+import domain.Offer;
 
 public class BookRuralHouseConfirmationWindow extends JFrame {
 
@@ -19,17 +23,19 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 	private JLabel lblDepositAmount = new JLabel();
 	private JTextField txtTotalPayment = new JTextField();
 	private JTextField txtDepositAmount = new JTextField();
+	
+	private BookRuralHouseBL BL = new BookRuralHouseBL();
 
-	public BookRuralHouseConfirmationWindow(Booking booking) {
+	public BookRuralHouseConfirmationWindow(Booking booking, Offer offer) {
 		try {
-			jbInit(booking);
+			jbInit(booking,offer);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void jbInit(Booking booking) throws Exception {
+	private void jbInit(final Booking booking, final Offer offer) throws Exception {
 
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(416, 316));
@@ -54,7 +60,7 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 		btnAccept.setBounds(new Rectangle(135, 235, 130, 30));
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButton1_actionPerformed(e);
+				jButton1_actionPerformed(e,booking,offer);
 			}
 		});
 		lblTotalPayment.setText("Total:");
@@ -80,7 +86,9 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 		this.getContentPane().add(lblBankAccNum, null);
 	}
 
-	private void jButton1_actionPerformed(ActionEvent e) {
+	private void jButton1_actionPerformed(ActionEvent e, Booking booking, Offer offer) {
+		
+		BL.bookRuralHouse(booking, offer);
 		this.setVisible(false);
 	}
 	

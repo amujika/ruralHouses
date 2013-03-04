@@ -42,8 +42,8 @@ public interface ApplicationFacadeInterface extends Remote {
 	 *            day, last day, house number and telephone
 	 * @return a book
 	 */
-	Booking createBooking(RuralHouse ruralHouse, Date firstDay, Date lastDay,
-			String telephoneNumber) throws RemoteException, OfferCanNotBeBooked;
+	/*Booking createBooking(RuralHouse ruralHouse, Date firstDay, Date lastDay,
+			String telephoneNumber) throws RemoteException, OfferCanNotBeBooked;*/
 
 	/**
 	 * This method obtains available offers for a concrete house in a certain period 

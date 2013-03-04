@@ -139,14 +139,14 @@ public class BookRuralHouseGUI extends JFrame {
 				// Contact telephone
 				String telephone=txtTelephone.getText();
 				try {
-					// I need a real Offer
 					Offer auxOffer = BL.getOffer(ruralHouse, firstDay, lastDay);
-					
-					BL.bookRuralHouse(auxOffer, telephone);
-
-					//BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(book);
-					System.out.println("reserva hecha");
-					//confirmWindow.setVisible(true);
+					if(auxOffer!= null){					
+						Booking auxBooking = auxOffer.createBook(telephone);						
+						BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer);
+						confirmWindow.setVisible(true);
+					}
+					else
+						System.out.println("Not a valid offer");
 				}
 				catch (Exception e1) {
 					e1.printStackTrace();

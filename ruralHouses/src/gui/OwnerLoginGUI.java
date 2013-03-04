@@ -89,7 +89,7 @@ public class OwnerLoginGUI extends JFrame {
 
 				Owner ownerTriesToLogIn = new Owner(null, username, password);
 				
-				System.out.println("The owner we are looking for: NAME: " + ownerTriesToLogIn.getName() + " USER: " + ownerTriesToLogIn.getUsername() + " PASS: " + ownerTriesToLogIn.getPassword());
+				//System.out.println("The owner we are looking for: NAME: " + ownerTriesToLogIn.getName() + " USER: " + ownerTriesToLogIn.getUsername() + " PASS: " + ownerTriesToLogIn.getPassword());
 				
 				ownerTriesToLogIn = BL.ownerloginBL(ownerTriesToLogIn);
 				

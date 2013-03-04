@@ -174,16 +174,10 @@ public class DB4oManager {
 		}
 	}
 
-	public Booking createBooking(Offer offer, String clientTelephoneNumber){
-			Booking b = null;
-			if (offer!=null) {
-				System.out.println("aaaa");
-				b=offer.createBook(clientTelephoneNumber);
-				db.store(b);
-				db.store(offer);
-				db.commit();
-			}
-			return b;
+	public void storeBooking(Booking booking, Offer offer){
+		db.store(booking);
+		db.store(offer);
+		db.commit();
 
 	}
 	

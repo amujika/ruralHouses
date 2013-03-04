@@ -79,7 +79,7 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 		DB4oManager.close();
 	}
 
-	public Booking createBooking(RuralHouse ruralHouse, Date firstDate, Date lastDate, String bookTelephoneNumber)
+	/*public Booking createBooking(RuralHouse ruralHouse, Date firstDate, Date lastDate, String bookTelephoneNumber)
 			throws OfferCanNotBeBooked {
 		try {
 			RuralHouse rh=dbMngr.getRuralHouse(ruralHouse);
@@ -90,7 +90,7 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 			exc.printStackTrace();
 			return null;
 		}
-	}
+	}*/
 
 }
 
