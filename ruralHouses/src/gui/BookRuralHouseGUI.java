@@ -140,7 +140,7 @@ public class BookRuralHouseGUI extends JFrame {
 				String telephone=txtTelephone.getText();
 				try {
 					Offer auxOffer = BL.getOffer(ruralHouse, firstDay, lastDay);
-					if(auxOffer!= null){					
+					if(auxOffer!= null && auxOffer.getBooking()==null){					
 						Booking auxBooking = auxOffer.createBook(telephone);						
 						BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer);
 						confirmWindow.setVisible(true);
