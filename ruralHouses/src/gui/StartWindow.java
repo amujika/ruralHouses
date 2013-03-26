@@ -62,6 +62,26 @@ public class StartWindow extends JFrame {
 			jContentPane.add(getBtnExit());
 			jContentPane.add(getBtnLogin());
 			jContentPane.add(getBtnAddRuralHouse());
+			
+			JButton btnRemoveRuralHouse = new JButton("Remove Rural House");
+			btnRemoveRuralHouse.setFont(new Font("Tahoma", Font.PLAIN, 22));
+			btnRemoveRuralHouse.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					Owner owner = OWNER;
+					
+					if (owner == null){
+						System.out.println("Not logged in. \nLog in please");
+						return;
+					}
+					
+					System.out.println("Logged in as: " + owner.getName());
+					
+					JFrame a = new removeRuralHouseGUI();
+					a.setVisible(true);
+				}
+			});
+			btnRemoveRuralHouse.setBounds(56, 184, 245, 37);
+			jContentPane.add(btnRemoveRuralHouse);
 		}
 		return jContentPane;
 	}
@@ -84,7 +104,7 @@ public class StartWindow extends JFrame {
 				a.setVisible(true);
 			}
 		});
-		btnAddRH.setBounds(56, 171, 245, 39);
+		btnAddRH.setBounds(56, 134, 245, 39);
 		return btnAddRH;
 	}
 
@@ -92,7 +112,7 @@ public class StartWindow extends JFrame {
 	private JButton getBtnBookRH() {
 		if (btnBookRH == null) {
 			btnBookRH = new JButton();
-			btnBookRH.setBounds(56, 114, 245, 37);
+			btnBookRH.setBounds(56, 86, 245, 37);
 			btnBookRH.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			btnBookRH.setText("Book rural house");
 			btnBookRH.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -142,7 +162,7 @@ public class StartWindow extends JFrame {
 		if (searchAvailabilityButton == null) {
 			searchAvailabilityButton = new JButton();
 			searchAvailabilityButton.setEnabled(false);
-			searchAvailabilityButton.setBounds(56, 51, 245, 37);
+			searchAvailabilityButton.setBounds(56, 38, 245, 37);
 			searchAvailabilityButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			searchAvailabilityButton.setText("Search availability");
 			searchAvailabilityButton.setAlignmentX(Component.CENTER_ALIGNMENT);
