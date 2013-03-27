@@ -186,6 +186,11 @@ public class DB4oManager {
 		db.store(rh);
 		db.commit();
 	}
+	
+	public void removeRuralHouse(RuralHouse rh){
+		db.delete(rh);
+		db.commit();
+	}
 
 	/**
 	 * This method returns the instance of the DB4oManager class 

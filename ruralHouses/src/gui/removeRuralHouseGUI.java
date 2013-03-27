@@ -11,8 +11,9 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+import businessLogic.AddRuralHouseBL;
 import businessLogic.ApplicationFacadeInterface;
-
+import businessLogic.RemoveRuralHouseBL;
 
 import domain.Owner;
 import domain.RuralHouse;
@@ -24,6 +25,8 @@ import java.util.Vector;
 public class removeRuralHouseGUI extends JFrame {
 
 	private JPanel contentPane = null;	
+	
+	private RemoveRuralHouseBL BL = new RemoveRuralHouseBL();
 	
 	private DefaultComboBoxModel<RuralHouse> ruralHouses = new DefaultComboBoxModel<RuralHouse>();
 
@@ -51,7 +54,9 @@ public class removeRuralHouseGUI extends JFrame {
 		JButton btnAccept = new JButton("Accept");
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-	
+				RuralHouse rh = (RuralHouse) ruralHouses.getSelectedItem();			
+				BL.RemoveRuralHouse(rh);
+				setVisible(false);
 			}
 		});
 		btnAccept.setBounds(97, 201, 89, 23);
