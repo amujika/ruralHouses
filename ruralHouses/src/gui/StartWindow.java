@@ -61,27 +61,8 @@ public class StartWindow extends JFrame {
 			jContentPane.add(getBtnIntroduceOffer());
 			jContentPane.add(getBtnExit());
 			jContentPane.add(getBtnLogin());
-			jContentPane.add(getBtnAddRuralHouse());
-			
-			JButton btnRemoveRuralHouse = new JButton("Remove Rural House");
-			btnRemoveRuralHouse.setFont(new Font("Tahoma", Font.PLAIN, 22));
-			btnRemoveRuralHouse.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					Owner owner = OWNER;
-					
-					if (owner == null){
-						System.out.println("Not logged in. \nLog in please");
-						return;
-					}
-					
-					System.out.println("Logged in as: " + owner.getName());
-					
-					JFrame a = new removeRuralHouseGUI();
-					a.setVisible(true);
-				}
-			});
-			btnRemoveRuralHouse.setBounds(56, 184, 245, 37);
-			jContentPane.add(btnRemoveRuralHouse);
+			jContentPane.add(getBtnAddRuralHouse());	
+			jContentPane.add(getBtnRemoveRuralHouse());
 		}
 		return jContentPane;
 	}
@@ -108,7 +89,28 @@ public class StartWindow extends JFrame {
 		return btnAddRH;
 	}
 
+	private JButton getBtnRemoveRuralHouse(){
+		JButton btnRemoveRH = new JButton("Remove Rural House");
+		btnRemoveRH.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		btnRemoveRH.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Owner owner = OWNER;
 
+				if (owner == null){
+					System.out.println("Not logged in. \nLog in please");
+					return;
+				}
+
+				System.out.println("Logged in as: " + owner.getName());
+
+				JFrame a = new removeRuralHouseGUI();
+				a.setVisible(true);
+			}
+		});
+		btnRemoveRH.setBounds(56, 184, 245, 37);
+		return btnRemoveRH;
+	}	
+	
 	private JButton getBtnBookRH() {
 		if (btnBookRH == null) {
 			btnBookRH = new JButton();

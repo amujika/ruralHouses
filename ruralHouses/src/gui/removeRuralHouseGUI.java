@@ -47,9 +47,9 @@ public class removeRuralHouseGUI extends JFrame {
 		
 		
 		
-		JLabel lblChooseARural = new JLabel("Choose a rural house to remove:");
-		lblChooseARural.setBounds(97, 36, 206, 20);
-		contentPane.add(lblChooseARural);
+		JLabel lblChooseRH = new JLabel("Choose a rural house to remove:");
+		lblChooseRH.setBounds(97, 36, 206, 20);
+		contentPane.add(lblChooseRH);
 		
 		JButton btnAccept = new JButton("Accept");
 		btnAccept.addActionListener(new ActionListener() {
@@ -65,6 +65,7 @@ public class removeRuralHouseGUI extends JFrame {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
 			}
 		});
 		btnCancel.setBounds(214, 201, 89, 23);
@@ -72,8 +73,8 @@ public class removeRuralHouseGUI extends JFrame {
 	}
 	
 	private JComboBox getRuralHousesJCB(){
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(97, 69, 206, 20);
+		JComboBox JCBChooseRH = new JComboBox();
+		JCBChooseRH.setBounds(97, 69, 206, 20);
 		Owner owner = StartWindow.OWNER;
 		Vector<RuralHouse> houseList = null;
 		
@@ -93,9 +94,9 @@ public class removeRuralHouseGUI extends JFrame {
 		for (RuralHouse v : houseList)
 			ruralHouses.addElement(v);
 		
-		comboBox.setModel(ruralHouses);
+		JCBChooseRH.setModel(ruralHouses);
 		
 		
-		return comboBox;
+		return JCBChooseRH;
 	}
 }
