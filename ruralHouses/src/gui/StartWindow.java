@@ -34,6 +34,7 @@ public class StartWindow extends JFrame {
 
 	public static ApplicationFacadeInterface facadeInterface;
 	private JButton btnLogin;
+	private JButton btnRecordPayment;
 	
 	public StartWindow() {
 		super();
@@ -63,6 +64,7 @@ public class StartWindow extends JFrame {
 			jContentPane.add(getBtnLogin());
 			jContentPane.add(getBtnAddRuralHouse());	
 			jContentPane.add(getBtnRemoveRuralHouse());
+			jContentPane.add(getBtnRecordPayment());
 		}
 		return jContentPane;
 	}
@@ -85,7 +87,7 @@ public class StartWindow extends JFrame {
 				a.setVisible(true);
 			}
 		});
-		btnAddRH.setBounds(56, 134, 245, 39);
+		btnAddRH.setBounds(56, 107, 245, 39);
 		return btnAddRH;
 	}
 
@@ -103,18 +105,18 @@ public class StartWindow extends JFrame {
 
 				System.out.println("Logged in as: " + owner.getName());
 
-				JFrame a = new removeRuralHouseGUI();
+				JFrame a = new RemoveRuralHouseGUI();
 				a.setVisible(true);
 			}
 		});
-		btnRemoveRH.setBounds(56, 184, 245, 37);
+		btnRemoveRH.setBounds(56, 194, 245, 37);
 		return btnRemoveRH;
 	}	
 	
 	private JButton getBtnBookRH() {
 		if (btnBookRH == null) {
 			btnBookRH = new JButton();
-			btnBookRH.setBounds(56, 86, 245, 37);
+			btnBookRH.setBounds(56, 59, 245, 37);
 			btnBookRH.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			btnBookRH.setText("Book rural house");
 			btnBookRH.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -131,7 +133,7 @@ public class StartWindow extends JFrame {
 	private JButton getBtnIntroduceOffer() {
 		if (btnIntroduceOffer == null) {
 			btnIntroduceOffer = new JButton();
-			btnIntroduceOffer.setBounds(56, 232, 245, 37);
+			btnIntroduceOffer.setBounds(56, 242, 245, 37);
 			btnIntroduceOffer.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			btnIntroduceOffer.setText("Introduce new offer");
 			btnIntroduceOffer.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -164,7 +166,7 @@ public class StartWindow extends JFrame {
 		if (searchAvailabilityButton == null) {
 			searchAvailabilityButton = new JButton();
 			searchAvailabilityButton.setEnabled(false);
-			searchAvailabilityButton.setBounds(56, 38, 245, 37);
+			searchAvailabilityButton.setBounds(56, 11, 245, 37);
 			searchAvailabilityButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			searchAvailabilityButton.setText("Search availability");
 			searchAvailabilityButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -181,7 +183,7 @@ public class StartWindow extends JFrame {
 	private JButton getBtnExit() {
 		if (btnExit == null) {
 			btnExit = new JButton();
-			btnExit.setBounds(134, 280, 71, 37);
+			btnExit.setBounds(134, 290, 71, 37);
 			btnExit.setText("Exit");
 			btnExit.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			btnExit.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -248,5 +250,26 @@ public class StartWindow extends JFrame {
 			btnLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
 		}
 		return btnLogin;
+	}
+	private JButton getBtnRecordPayment() {
+		btnRecordPayment = new JButton("Record Payment");
+		btnRecordPayment.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Owner owner = OWNER;
+
+				if (owner == null){
+					System.out.println("Not logged in. \nLog in please");
+					return;
+				}
+
+				System.out.println("Logged in as: " + owner.getName());
+
+				JFrame a = new RecordBookingPaymentGUI();
+				a.setVisible(true);
+			}
+		});
+		btnRecordPayment.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		btnRecordPayment.setBounds(56, 157, 245, 26);
+		return btnRecordPayment;
 	}
 } //@jve:decl-index=0:visual-constraint="0,0"

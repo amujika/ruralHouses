@@ -74,6 +74,10 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	Exception {		
 		return dbMngr.getAllRuralHouses();		
 	}
+	
+	public Vector<Booking> getBookings(RuralHouse rh){
+		return dbMngr.getBookingByRH(rh);
+	}
 
 	public void close() throws RemoteException{
 		DB4oManager.close();

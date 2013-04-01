@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.Vector;
 
-public class removeRuralHouseGUI extends JFrame {
+public class RemoveRuralHouseGUI extends JFrame {
 
 	private JPanel contentPane = null;	
 	
@@ -34,7 +34,7 @@ public class removeRuralHouseGUI extends JFrame {
 	 * Create the frame.
 	 */
 	
-	public removeRuralHouseGUI() {
+	public RemoveRuralHouseGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

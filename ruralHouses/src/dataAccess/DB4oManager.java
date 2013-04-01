@@ -173,6 +173,23 @@ public class DB4oManager {
 			return null;
 		}
 	}
+	
+	public Vector<Booking> getBookingByRH(RuralHouse rh){
+		try{
+		ObjectContainer db=DB4oManager.getContainer();
+		Booking proto = new Booking (null, null);
+		RuralHouse ruHo = getRuralHouse(rh);
+		Vector<Offer> of = ruHo.offers;
+		Vector<Booking> bookings = new Vector <Booking>();
+		for (int i=0; i<of.size();i++){
+			bookings.add(of.elementAt(i).getBooking());			
+		}
+		return bookings;
+		}catch(Exception exc){
+			exc.printStackTrace();
+			return null;
+		}
+	}
 
 	public void storeBooking(Booking booking, Offer offer){
 		db.store(booking);
