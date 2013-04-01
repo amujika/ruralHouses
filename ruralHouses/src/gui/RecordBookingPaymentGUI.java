@@ -115,9 +115,7 @@ public class RecordBookingPaymentGUI extends JFrame {
 				try {
 					//Obtain the business logic from a StartWindow class (local or remote)
 					ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
-//					if (ruralHouses.getSelectedItem()!=null)
-						System.out.println("Prueba");
-						bookingList=facade.getBookings(rh);
+					bookingList=facade.getBookings(rh);
 
 				}
 				catch (Exception e1) {
@@ -127,8 +125,10 @@ public class RecordBookingPaymentGUI extends JFrame {
 				if (bookingList.isEmpty()) 
 					System.out.println("Rural house or offers do not exist or have not registered bookings ");
 				
-				for (Booking v : bookingList)
+				for (Booking v : bookingList){
 					bookingNumber.addElement(v.getBookNumber());
+//					System.out.println(v.getBookNumber());
+				}
 				}
 		});
 		
@@ -138,6 +138,7 @@ public class RecordBookingPaymentGUI extends JFrame {
 	private JComboBox getBookingNum(){
 		JComboBox JCBBookingNum = new JComboBox();
 		JCBBookingNum.setBounds(186, 112, 187, 20);
+		JCBBookingNum.setModel(bookingNumber);
 		return JCBBookingNum;
 	}
 }
