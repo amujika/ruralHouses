@@ -28,6 +28,8 @@ public class RecordBookingPaymentGUI extends JFrame {
 	
 	private DefaultComboBoxModel<RuralHouse> ruralHouses = new DefaultComboBoxModel<RuralHouse>();
 	private DefaultComboBoxModel<Integer> bookingNumber= new DefaultComboBoxModel<Integer>();
+	
+
 
 	/**
 	 * Create the frame.
@@ -105,15 +107,9 @@ public class RecordBookingPaymentGUI extends JFrame {
 		
 		JCBRuralHouse.setModel(ruralHouses);
 		
-		
-		return JCBRuralHouse;
-	}
-	
-	private JComboBox getBookingNum(){
-		JComboBox JCBBookingNum = new JComboBox();
-		JCBBookingNum.addActionListener(new ActionListener() {
+		JCBRuralHouse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RuralHouse rh = (RuralHouse) ruralHouses.getSelectedItem();	
+				RuralHouse rh = (RuralHouse) ruralHouses.getSelectedItem();
 				Vector<Booking> bookingList = null;
 				
 				try {
@@ -135,6 +131,12 @@ public class RecordBookingPaymentGUI extends JFrame {
 					bookingNumber.addElement(v.getBookNumber());
 				}
 		});
+		
+		return JCBRuralHouse;
+	}
+	
+	private JComboBox getBookingNum(){
+		JComboBox JCBBookingNum = new JComboBox();
 		JCBBookingNum.setBounds(186, 112, 187, 20);
 		return JCBBookingNum;
 	}
