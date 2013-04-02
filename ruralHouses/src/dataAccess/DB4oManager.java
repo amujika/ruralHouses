@@ -190,6 +190,16 @@ public class DB4oManager {
 			return null;
 		}
 	}
+	
+	public void storePayment(Booking booking){
+		booking.setIsPaid(true);
+		db.store(booking);
+		db.commit();
+	}
+	
+	public boolean paymentDone(Booking booking){
+		return booking.isPaid();
+	}
 
 	public void storeBooking(Booking booking, Offer offer){
 		db.store(booking);

@@ -69,6 +69,12 @@ public interface ApplicationFacadeInterface extends Remote {
 	public Vector<Booking> getBookings(RuralHouse rh)throws RemoteException,
 	Exception;
 	
+	public void storePayment(Booking booking) throws RemoteException,
+	Exception;
+	
+	public boolean paymentDone(Booking booking) throws RemoteException,
+	Exception;
+	
 	public void close() throws RemoteException;
 	
 }

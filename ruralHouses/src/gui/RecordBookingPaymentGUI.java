@@ -20,6 +20,7 @@ import domain.RuralHouse;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.rmi.RemoteException;
 import java.util.Vector;
 
 public class RecordBookingPaymentGUI extends JFrame {
@@ -27,7 +28,7 @@ public class RecordBookingPaymentGUI extends JFrame {
 	private JPanel contentPane;
 	
 	private DefaultComboBoxModel<RuralHouse> ruralHouses = new DefaultComboBoxModel<RuralHouse>();
-	private DefaultComboBoxModel<Integer> bookingNumber= new DefaultComboBoxModel<Integer>();
+	private DefaultComboBoxModel<Booking> bookingNumber= new DefaultComboBoxModel<Booking>();
 	
 
 
@@ -35,7 +36,6 @@ public class RecordBookingPaymentGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public RecordBookingPaymentGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -55,18 +55,32 @@ public class RecordBookingPaymentGUI extends JFrame {
 		
 		contentPane.add(getRuralHouse());
 		
-		JCheckBox chckbxPaid = new JCheckBox("Paid");
-		chckbxPaid.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int bookingNum = (int) (bookingNumber.getSelectedItem());
-			}
-		});
+		
+		final JCheckBox chckbxPaid = new JCheckBox("Paid");
 		chckbxPaid.setBounds(186, 166, 97, 23);
 		contentPane.add(chckbxPaid);
 		
 		JButton btnAccept = new JButton("Accept");
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Booking b= (Booking) bookingNumber.getSelectedItem();
+				ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
+				try {
+					if(facade.paymentDone(b) == false){
+						if(chckbxPaid.isSelected()){
+							try {
+								facade.storePayment(b);
+							} catch (Exception e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}
+					} else
+						System.out.println("Payment is already done.");
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				setVisible(false);
 			}
 		});
@@ -125,10 +139,8 @@ public class RecordBookingPaymentGUI extends JFrame {
 				if (bookingList.isEmpty()) 
 					System.out.println("Rural house or offers do not exist or have not registered bookings ");
 				
-				for (Booking v : bookingList){
-					bookingNumber.addElement(v.getBookNumber());
-//					System.out.println(v.getBookNumber());
-				}
+				for (Booking v : bookingList)
+					bookingNumber.addElement(v);
 				}
 		});
 		

@@ -54,6 +54,10 @@ public class Booking implements Serializable {
 	public void setBookDate(Date bookDate) {
 		this.bookingDate = bookDate;
 	}
+	
+	public void setIsPaid(boolean bool){
+		this.isPaid=bool;
+	}
 
 	public Date getBookDate() {
 		return this.bookingDate;
@@ -79,4 +83,7 @@ public class Booking implements Serializable {
 		return isPaid;
 	}
 	
+	public String toString(){
+		return bookingNumber + "";
+	}
 }
