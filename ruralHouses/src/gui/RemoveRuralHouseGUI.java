@@ -25,31 +25,31 @@ import java.util.Vector;
 public class RemoveRuralHouseGUI extends JFrame {
 
 	private JPanel contentPane = null;	
-	
+
 	private RemoveRuralHouseBL BL = new RemoveRuralHouseBL();
-	
+
 	private DefaultComboBoxModel<RuralHouse> ruralHouses = new DefaultComboBoxModel<RuralHouse>();
 
 	/**
 	 * Create the frame.
 	 */
-	
+
 	public RemoveRuralHouseGUI() {
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 
 		contentPane.add(getRuralHousesJCB());
-		
-		
-		
+
+
+
 		JLabel lblChooseRH = new JLabel("Choose a rural house to remove:");
 		lblChooseRH.setBounds(97, 36, 206, 20);
 		contentPane.add(lblChooseRH);
-		
+
 		JButton btnAccept = new JButton("Accept");
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -60,7 +60,7 @@ public class RemoveRuralHouseGUI extends JFrame {
 		});
 		btnAccept.setBounds(97, 201, 89, 23);
 		contentPane.add(btnAccept);
-		
+
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -70,13 +70,13 @@ public class RemoveRuralHouseGUI extends JFrame {
 		btnCancel.setBounds(214, 201, 89, 23);
 		contentPane.add(btnCancel);
 	}
-	
+
 	private JComboBox getRuralHousesJCB(){
 		JComboBox JCBChooseRH = new JComboBox();
 		JCBChooseRH.setBounds(97, 69, 206, 20);
 		Owner owner = StartWindow.OWNER;
 		Vector<RuralHouse> houseList = null;
-		
+
 		try {
 			//Obtain the business logic from a StartWindow class (local or remote)
 			ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
@@ -86,16 +86,16 @@ public class RemoveRuralHouseGUI extends JFrame {
 		catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		
+
 		if (houseList.isEmpty()) 
 			System.out.println("Owner does not exist or has no registered houses ");
-		
+
 		for (RuralHouse v : houseList)
 			ruralHouses.addElement(v);
-		
+
 		JCBChooseRH.setModel(ruralHouses);
-		
-		
+
+
 		return JCBChooseRH;
 	}
 }

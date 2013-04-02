@@ -14,7 +14,10 @@ public class RemoveRuralHouseBL {
 	
 	public RemoveRuralHouseBL(){}
 	
-	public void RemoveRuralHouse(RuralHouse rh){ 
+	public void RemoveRuralHouse(RuralHouse rh){
+		Owner owner = rh.getOwner();
+		owner.removeRuralHouse(rh);
+		DB4oManager.getInstance().updateOwner(owner);
 		DB4oManager.getInstance().removeRuralHouse(rh);		
 	}
 

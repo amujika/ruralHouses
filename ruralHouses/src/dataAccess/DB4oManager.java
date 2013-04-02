@@ -228,5 +228,10 @@ public class DB4oManager {
 		return theDB4oManager;
 	}
 
+	public void updateOwner(Owner owner) {
+		db.store(owner);
+		db.commit();		
+	}
+
 }
 

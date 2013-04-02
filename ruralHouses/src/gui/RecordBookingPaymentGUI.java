@@ -26,10 +26,10 @@ import java.util.Vector;
 public class RecordBookingPaymentGUI extends JFrame {
 
 	private JPanel contentPane;
-	
+
 	private DefaultComboBoxModel<RuralHouse> ruralHouses = new DefaultComboBoxModel<RuralHouse>();
 	private DefaultComboBoxModel<Booking> bookingNumber= new DefaultComboBoxModel<Booking>();
-	
+
 
 
 	/**
@@ -41,25 +41,25 @@ public class RecordBookingPaymentGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblBookingNum = new JLabel("Booking number:");
 		lblBookingNum.setBounds(67, 111, 109, 23);
 		contentPane.add(lblBookingNum);
-		
+
 
 		contentPane.add(getBookingNum());
-		
+
 		JLabel lblRuralHouse = new JLabel("Rural House:");
 		lblRuralHouse.setBounds(67, 49, 71, 14);
 		contentPane.add(lblRuralHouse);
-		
+
 		contentPane.add(getRuralHouse());
-		
-		
+
+
 		final JCheckBox chckbxPaid = new JCheckBox("Paid");
 		chckbxPaid.setBounds(186, 166, 97, 23);
 		contentPane.add(chckbxPaid);
-		
+
 		JButton btnAccept = new JButton("Accept");
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -86,23 +86,23 @@ public class RecordBookingPaymentGUI extends JFrame {
 		});
 		btnAccept.setBounds(284, 228, 89, 23);
 		contentPane.add(btnAccept);
-		
+
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			setVisible(false);
+				setVisible(false);
 			}
 		});
 		btnCancel.setBounds(67, 228, 89, 23);
 		contentPane.add(btnCancel);
 	}
-	
+
 	private JComboBox getRuralHouse(){
 		JComboBox JCBRuralHouse = new JComboBox();
 		JCBRuralHouse.setBounds(186, 46, 187, 20);
 		Owner owner = StartWindow.OWNER;
 		Vector<RuralHouse> houseList = null;
-		
+
 		try {
 			//Obtain the business logic from a StartWindow class (local or remote)
 			ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
@@ -112,20 +112,20 @@ public class RecordBookingPaymentGUI extends JFrame {
 		catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		
+
 		if (houseList.isEmpty()) 
 			System.out.println("Owner does not exist or has no registered houses ");
-		
+
 		for (RuralHouse v : houseList)
 			ruralHouses.addElement(v);
-		
+
 		JCBRuralHouse.setModel(ruralHouses);
-		
+
 		JCBRuralHouse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RuralHouse rh = (RuralHouse) ruralHouses.getSelectedItem();
 				Vector<Booking> bookingList = null;
-				
+
 				try {
 					//Obtain the business logic from a StartWindow class (local or remote)
 					ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
@@ -135,18 +135,18 @@ public class RecordBookingPaymentGUI extends JFrame {
 				catch (Exception e1) {
 					e1.printStackTrace();
 				}
-				
+
 				if (bookingList.isEmpty()) 
 					System.out.println("Rural house or offers do not exist or have not registered bookings ");
-				
+
 				for (Booking v : bookingList)
 					bookingNumber.addElement(v);
-				}
+			}
 		});
-		
+
 		return JCBRuralHouse;
 	}
-	
+
 	private JComboBox getBookingNum(){
 		JComboBox JCBBookingNum = new JComboBox();
 		JCBBookingNum.setBounds(186, 112, 187, 20);

@@ -41,7 +41,7 @@ public class BookRuralHouseGUI extends JFrame {
 	// Code for JCalendar
 	private JCalendar jCalendar1 = new JCalendar();
 	private Calendar myCalendar = null;
-	private JLabel jLabel5 = new JLabel();
+	private JLabel lblSpace = new JLabel();
 
 	public BookRuralHouseGUI() {
 		try {
@@ -101,13 +101,13 @@ public class BookRuralHouseGUI extends JFrame {
 		txtNumNights.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e) {}
 			public void focusLost(FocusEvent e) {
-				jTextField3_focusLost();
+				txtNumNights_focusLost();
 			}
 		});
 		txtTelephone.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e) { }
 			public void focusLost(FocusEvent e) {
-				jTextField4_focusLost();
+				txtTelephone_focusLost();
 			}
 		});
 		lblArrivalDay.setText("Arrival day:");
@@ -158,14 +158,14 @@ public class BookRuralHouseGUI extends JFrame {
 		btnCancel.setSize(new Dimension(130, 30));
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButton3_actionPerformed(e);
+				btnCancel_actionPerformed(e);
 			}
 		});
-		jLabel5.setBounds(new Rectangle(50, 310, 300, 20));
-		jLabel5.setForeground(Color.red);
+		lblSpace.setBounds(new Rectangle(50, 310, 300, 20));
+		lblSpace.setForeground(Color.red);
 		jCalendar1.setBounds(new Rectangle(155, 50, 235, 145));
 		this.getContentPane().add(jCalendar1, null);
-		this.getContentPane().add(jLabel5, null);
+		this.getContentPane().add(lblSpace, null);
 		this.getContentPane().add(btnCancel, null);
 		this.getContentPane().add(btnAccept, null);
 		this.getContentPane().add(txtTelephone, null);
@@ -195,27 +195,27 @@ public class BookRuralHouseGUI extends JFrame {
 		});
 	}
 
-	private void jButton3_actionPerformed(ActionEvent e) {
+	private void btnCancel_actionPerformed(ActionEvent e) {
 		this.setVisible(false);
 	}
 
-	private void jTextField3_focusLost() {
+	private void txtNumNights_focusLost() {
 		try {
 			new Integer (txtNumNights.getText());
-			jLabel5.setText("");
+			lblSpace.setText("");
 		}
 		catch (NumberFormatException ex) {
-			jLabel5.setText("Error: Please introduce a number");
+			lblSpace.setText("Error: Please introduce a number");
 		}
 	}
 
-	private void jTextField4_focusLost() {
+	private void txtTelephone_focusLost() {
 		try {
 			new Integer (txtTelephone.getText());
-			jLabel5.setText("");
+			lblSpace.setText("");
 		}
 		catch (NumberFormatException ex) {
-			jLabel5.setText("Error: Please introduce a number");
+			lblSpace.setText("Error: Please introduce a number");
 		}
 	}
 

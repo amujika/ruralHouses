@@ -36,7 +36,7 @@ public class IntroduceOffer2GUI extends JFrame  {
 	private Calendar calendarInicio = null;
 	private Calendar calendarFin = null;
 	private JButton btnCancel = new JButton();
-	private JLabel jLabel5 = new JLabel();
+	private JLabel lblSpace = new JLabel();
 	
 	private IntroduceOfferBL BL = new IntroduceOfferBL();
 
@@ -75,24 +75,24 @@ public class IntroduceOffer2GUI extends JFrame  {
 		txtPrice.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e) {}
 			public void focusLost(FocusEvent e) {
-				jTextField3_focusLost();
+				txtPrice_focusLost();
 			}
 		});
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButton1_actionPerformed(e);
+				btnAccept_actionPerformed(e);
 			}
 		});
 		btnCancel.setText("Cancel");
 		btnCancel.setBounds(new Rectangle(270, 360, 130, 30));
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButton2_actionPerformed(e);
+				btnCancel_actionPerformed(e);
 			}
 		});
-		jLabel5.setBounds(new Rectangle(100, 320, 300, 20));
-		jLabel5.setForeground(Color.red);
-		jLabel5.setSize(new Dimension(305, 20));
+		lblSpace.setBounds(new Rectangle(100, 320, 300, 20));
+		lblSpace.setForeground(Color.red);
+		lblSpace.setSize(new Dimension(305, 20));
 		jCalendar1.setBounds(new Rectangle(25, 100, 220, 165));
 		jCalendar2.setBounds(new Rectangle(260, 100, 220, 165));
 
@@ -131,7 +131,7 @@ public class IntroduceOffer2GUI extends JFrame  {
 
 		this.getContentPane().add(jCalendar2, null);
 		this.getContentPane().add(jCalendar1, null);
-		this.getContentPane().add(jLabel5, null);
+		this.getContentPane().add(lblSpace, null);
 		this.getContentPane().add(btnCancel, null);
 		this.getContentPane().add(btnAccept, null);
 		this.getContentPane().add(txtPrice, null);
@@ -144,7 +144,7 @@ public class IntroduceOffer2GUI extends JFrame  {
 		this.getContentPane().add(jCBListHouses, null);
 	}
 
-	private void jButton1_actionPerformed(ActionEvent e) {
+	private void btnAccept_actionPerformed(ActionEvent e) {
 		RuralHouse ruralHouse=((RuralHouse)jCBListHouses.getSelectedItem());
 		Date firstDay=new Date(jCalendar1.getCalendar().getTime().getTime());
 		//Remove the hour:minute:second:ms from the date 
@@ -167,17 +167,17 @@ public class IntroduceOffer2GUI extends JFrame  {
 		}
 	}
 	
-	private void jButton2_actionPerformed(ActionEvent e) {
+	private void btnCancel_actionPerformed(ActionEvent e) {
 		this.setVisible(false);
 	}
 
-	private void jTextField3_focusLost() {
+	private void txtPrice_focusLost() {
 		try {
 			new Integer (txtPrice.getText());
-			jLabel5.setText("");
+			lblSpace.setText("");
 		}
 		catch (NumberFormatException ex) {
-			jLabel5.setText("Error: Please introduce a number");
+			lblSpace.setText("Error: Please introduce a number");
 		}
 	}
 }

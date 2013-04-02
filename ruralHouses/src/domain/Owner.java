@@ -69,6 +69,10 @@ public class Owner implements Serializable, Comparable<Owner> {
 		return rh;
 	}
 	
+	public void removeRuralHouse(RuralHouse rh){
+		ruralHouses.remove(rh);
+	}
+	
 	public String toString(){
 		return name;
 	}

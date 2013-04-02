@@ -32,7 +32,7 @@ public class SearchOffersGUI extends JFrame {
 	// Code for JCalendar
 	private JCalendar jCalendar1 = new JCalendar();
 	private Calendar myCalendar = null;
-	private JLabel jLabel4 = new JLabel();
+	private JLabel lblSpace = new JLabel();
 	private JTextArea jTextArea1 = new JTextArea();
 	private JScrollPane scrollPane = new JScrollPane();
 
@@ -70,7 +70,7 @@ public class SearchOffersGUI extends JFrame {
 		btnAccept.setBounds(new Rectangle(55, 455, 130, 30));
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButton1_actionPerformed(e);
+				btnAccept_actionPerformed(e);
 			}
 		});
 		btnClose.setText("Close");
@@ -79,16 +79,16 @@ public class SearchOffersGUI extends JFrame {
 		txtNumNights.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e) { }
 			public void focusLost(FocusEvent e) {
-				jTextField3_focusLost();
+				txtNumNights_focusLost();
 			}
 		});
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButton2_actionPerformed(e);
+				btnClose_actionPerformed(e);
 			}
 		});
-		jLabel4.setBounds(new Rectangle(55, 300, 305, 30));
-		jLabel4.setForeground(Color.red);
+		lblSpace.setBounds(new Rectangle(55, 300, 305, 30));
+		lblSpace.setForeground(Color.red);
 		jTextArea1.setEditable(false);
 		jCalendar1.setBounds(new Rectangle(190, 60, 225, 150));
 		scrollPane.setBounds(new Rectangle(45, 305, 320, 135));
@@ -97,7 +97,7 @@ public class SearchOffersGUI extends JFrame {
 
 		this.getContentPane().add(scrollPane, null);
 		this.getContentPane().add(jCalendar1, null);
-		this.getContentPane().add(jLabel4, null);
+		this.getContentPane().add(lblSpace, null);
 		this.getContentPane().add(btnClose, null);
 		this.getContentPane().add(btnAccept, null);
 		this.getContentPane().add(txtNumNights, null);
@@ -126,21 +126,21 @@ public class SearchOffersGUI extends JFrame {
 
 	}
 
-	private void jButton2_actionPerformed(ActionEvent e) {
+	private void btnClose_actionPerformed(ActionEvent e) {
 		this.setVisible(false);
 	}
 
-	private void jTextField3_focusLost() {
+	private void txtNumNights_focusLost() {
 		try {
 			new Integer (txtNumNights.getText());
-			jLabel4.setText("");
+			lblSpace.setText("");
 		}
 		catch (NumberFormatException ex) {
-			jLabel4.setText("Error: Please introduce a number");
+			lblSpace.setText("Error: Please introduce a number");
 		}
 	}
 
-	private void jButton1_actionPerformed(ActionEvent e) {		
+	private void btnAccept_actionPerformed(ActionEvent e) {		
 		// House object
 		RuralHouse rh=(RuralHouse)jCBRuralHouse.getSelectedItem();
 		// First day

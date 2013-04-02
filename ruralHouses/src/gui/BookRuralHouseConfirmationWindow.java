@@ -60,7 +60,7 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 		btnAccept.setBounds(new Rectangle(135, 235, 130, 30));
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButton1_actionPerformed(e,booking,offer);
+				btnAccept_actionPerformed(e,booking,offer);
 			}
 		});
 		lblTotalPayment.setText("Total:");
@@ -86,7 +86,7 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 		this.getContentPane().add(lblBankAccNum, null);
 	}
 
-	private void jButton1_actionPerformed(ActionEvent e, Booking booking, Offer offer) {
+	private void btnAccept_actionPerformed(ActionEvent e, Booking booking, Offer offer) {
 		
 		BL.bookRuralHouse(booking, offer);
 		this.setVisible(false);
