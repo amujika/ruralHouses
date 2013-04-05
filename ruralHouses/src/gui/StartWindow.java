@@ -165,7 +165,7 @@ public class StartWindow extends JFrame {
 	private JButton getSearchAvailabilityButton() {
 		if (searchAvailabilityButton == null) {
 			searchAvailabilityButton = new JButton();
-			searchAvailabilityButton.setEnabled(false);
+			searchAvailabilityButton.setEnabled(true);
 			searchAvailabilityButton.setBounds(56, 11, 245, 37);
 			searchAvailabilityButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			searchAvailabilityButton.setText("Search availability");

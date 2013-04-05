@@ -1,6 +1,8 @@
 package domain;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 //import java.util.Vector;
 import java.util.Date;
 import businessLogic.OfferManager;
@@ -81,6 +83,12 @@ public class Offer implements Serializable {
 		Booking b=new Booking(bookTelephoneNumber, this);
 		booking=b;
 		return booking;			
+	}
+	
+	public String toString(){
+		SimpleDateFormat df = new SimpleDateFormat();
+	    df.applyPattern("dd/MM/yyyy");
+		return "From " + df.format(firstDay) + " to " + df.format(lastDay) + " for " + price +"€";
 	}
 	
 	

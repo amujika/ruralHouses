@@ -55,30 +55,7 @@ public class BookRuralHouseGUI extends JFrame {
 	public BookRuralHouseGUI(int houseNumber, Date firstDay, Date lastDay) {
 
 		try {
-
 			jbInit();
-
-			/*jTextField1.setText(Integer.toString(houseNumber));
-			long nights=(lastDay.getTime()-firstDay.getTime())/(1000*60*60*24);
-			jTextField3.setText(Long.toString(nights));
-			DateFormat dateformat1 = DateFormat.getDateInstance(1);
-
-			Date first= new Date((long)(firstDay.getTime()));
-			jTextField2.setText(dateformat1.format(first));
-			GregorianCalendar cal=new GregorianCalendar();
-			cal.setTime(first);
-			int year=cal.get(Calendar.YEAR);
-			int month=cal.get(Calendar.MONTH);
-			int day=cal.get(Calendar.DAY_OF_MONTH);
-
-			JYearChooser yc = jCalendar1.getYearChooser();
-			JMonthChooser mc = jCalendar1.getMonthChooser();
-			JDayChooser dc = jCalendar1.getDayChooser();
-
-			yc.setYear(year);
-			mc.setMonth(month);
-			dc.setDay(day);*/
-
 		} catch(Exception e) {
 			System.out.println("There has been an error in gui > BookRuralHouseGUI in line " + new Throwable().getStackTrace()[0].getLineNumber());
 		}
