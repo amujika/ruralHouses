@@ -39,22 +39,6 @@ public class OwnerLoginGUI extends JFrame {
 	private OwnerLoginBL BL = new OwnerLoginBL();
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					OwnerLoginGUI frame = new OwnerLoginGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public OwnerLoginGUI() {
@@ -87,8 +71,6 @@ public class OwnerLoginGUI extends JFrame {
 
 				Owner ownerTriesToLogIn = new Owner(null, username, password);
 				
-				//System.out.println("The owner we are looking for: NAME: " + ownerTriesToLogIn.getName() + " USER: " + ownerTriesToLogIn.getUsername() + " PASS: " + ownerTriesToLogIn.getPassword());
-				
 				ownerTriesToLogIn = BL.ownerloginBL(ownerTriesToLogIn);
 				
 				if (ownerTriesToLogIn == null) {
@@ -98,14 +80,16 @@ public class OwnerLoginGUI extends JFrame {
 					lblAccess.setForeground(new Color(0, 128, 0));
 					lblAccess.setText("ACCESS GRANTED!");
 					StartWindow.OWNER = ownerTriesToLogIn;
-					
-				} // END if
+					JFrame a = new OwnerGUI();
+					a.setVisible(true);
+					OwnerLoginGUI.this.setVisible(false);					
+				} 
 				
 				txtUsername.setText("");
 				txtPassword.setText("");				
 				
 			}
-		}); // END addActionListener
+		});
 		
 		txtPassword = new JPasswordField();	
 		

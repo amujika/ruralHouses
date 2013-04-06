@@ -27,14 +27,10 @@ public class StartWindow extends JFrame {
 	public static Owner OWNER;
 
 	private JPanel jContentPane = null;
-	private JButton btnBookRH = null;
-	private JButton btnIntroduceOffer = null;
-	private JButton searchAvailabilityButton = null;
-	private JButton btnExit = null;
 
 	public static ApplicationFacadeInterface facadeInterface;
-	private JButton btnLogin;
-	private JButton btnRecordPayment;
+	private JButton btnUser;
+	private JButton btnOwner;
 	
 	public StartWindow() {
 		super();
@@ -48,7 +44,7 @@ public class StartWindow extends JFrame {
 	
 	private void initialize() {
 		// this.setSize(271, 295);
-		this.setSize(350, 400);
+		this.setSize(350, 291);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Use Cases");
 	}
@@ -57,154 +53,12 @@ public class StartWindow extends JFrame {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
 			jContentPane.setLayout(null);
-			jContentPane.add(getSearchAvailabilityButton());
-			jContentPane.add(getBtnBookRH());
-			jContentPane.add(getBtnIntroduceOffer());
-			jContentPane.add(getBtnExit());
-			jContentPane.add(getBtnLogin());
-			jContentPane.add(getBtnAddRuralHouse());	
-			jContentPane.add(getBtnRemoveRuralHouse());
-			jContentPane.add(getBtnRecordPayment());
+			jContentPane.add(getBtnUser());
+			jContentPane.add(getBtnOwner());
 		}
 		return jContentPane;
 	}
-	
-	private JButton getBtnAddRuralHouse(){
-		JButton btnAddRH = new JButton("Add a Rural House");
-		btnAddRH.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		btnAddRH.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Owner owner = OWNER;
-				
-				if (owner == null){
-					System.out.println("Not logged in. \nLog in please");
-					return;
-				}
-				
-				System.out.println("Logged in as: " + owner.getName());
-				
-				JFrame a = new AddRuralHouseGUI(StartWindow.OWNER);
-				a.setVisible(true);
-			}
-		});
-		btnAddRH.setBounds(56, 107, 245, 39);
-		return btnAddRH;
-	}
 
-	private JButton getBtnRemoveRuralHouse(){
-		JButton btnRemoveRH = new JButton("Remove Rural House");
-		btnRemoveRH.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		btnRemoveRH.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Owner owner = OWNER;
-
-				if (owner == null){
-					System.out.println("Not logged in. \nLog in please");
-					return;
-				}
-
-				System.out.println("Logged in as: " + owner.getName());
-
-				JFrame a = new RemoveRuralHouseGUI();
-				a.setVisible(true);
-			}
-		});
-		btnRemoveRH.setBounds(56, 194, 245, 37);
-		return btnRemoveRH;
-	}	
-	
-	private JButton getBtnBookRH() {
-		if (btnBookRH == null) {
-			btnBookRH = new JButton();
-			btnBookRH.setBounds(56, 59, 245, 37);
-			btnBookRH.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			btnBookRH.setText("Book rural house");
-			btnBookRH.setAlignmentX(Component.CENTER_ALIGNMENT);
-			btnBookRH.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					JFrame a = new BookRuralHouseGUI();
-					a.setVisible(true);
-				}
-			});
-		}
-		return btnBookRH;
-	}
-
-	private JButton getBtnIntroduceOffer() {
-		if (btnIntroduceOffer == null) {
-			btnIntroduceOffer = new JButton();
-			btnIntroduceOffer.setBounds(56, 242, 245, 37);
-			btnIntroduceOffer.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			btnIntroduceOffer.setText("Introduce new offer");
-			btnIntroduceOffer.setAlignmentX(Component.CENTER_ALIGNMENT);
-			btnIntroduceOffer.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-
-					
-					if (OWNER == null){
-						System.out.println("Not logged in. \nLog in please");
-						return;
-					}
-					
-					System.out.println("Logged in as: " + OWNER.getName());
-					Vector<RuralHouse> houseList=OWNER.getRuralHouses();
-
-					if (houseList.isEmpty()!=true) {
-						JFrame a = new IntroduceOffer2GUI(houseList);
-						a.setVisible(true);
-					}
-					else if (houseList.isEmpty()==true) {
-						System.out.print("Owner does not exist or has no registered houses ");
-					} 	
-				}
-			});
-		}
-		return btnIntroduceOffer;
-	}
-	
-	private JButton getSearchAvailabilityButton() {
-		if (searchAvailabilityButton == null) {
-			searchAvailabilityButton = new JButton();
-			searchAvailabilityButton.setEnabled(true);
-			searchAvailabilityButton.setBounds(56, 11, 245, 37);
-			searchAvailabilityButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			searchAvailabilityButton.setText("Search availability");
-			searchAvailabilityButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-			searchAvailabilityButton.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					JFrame a = new SearchOffersGUI();
-					a.setVisible(true);
-				}
-			});
-		}
-		return searchAvailabilityButton;
-	}
-
-	private JButton getBtnExit() {
-		if (btnExit == null) {
-			btnExit = new JButton();
-			btnExit.setBounds(134, 290, 71, 37);
-			btnExit.setText("Exit");
-			btnExit.setFont(new Font("Tahoma", Font.PLAIN, 24));
-			btnExit.setAlignmentX(Component.CENTER_ALIGNMENT);
-			btnExit.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					//JFrame a = new QueryAvailabilityWindow();
-					ApplicationFacadeInterface facade=StartWindow.facadeInterface;
-					try {
-						facade.close();
-						setVisible(false);
-					}
-					catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}					
-				}
-			});
-		}
-		return btnExit;
-	}
-	
 	public static void main(String[] args) {		
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -229,47 +83,37 @@ public class StartWindow extends JFrame {
 			//System.out.println(e.toString());
 			e.printStackTrace();
 		}
-		int x=0;
 		JFrame a = new StartWindow();
 		a.setVisible(true);
 	}
-
-	private JButton getBtnLogin() {
-		if (btnLogin == null) {
-			btnLogin = new JButton("Login");
-			btnLogin.setBounds(94, 328, 150, 23);
-			btnLogin.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {	
-					JFrame a = new OwnerLoginGUI();
+	
+	private JButton getBtnUser() {
+		if (btnUser == null) {
+			btnUser = new JButton("User");
+			btnUser.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					StartWindow.this.setVisible(false);
+					JFrame a = new UserGUI();
 					a.setVisible(true);
+					
 				}
 			});
-			btnLogin.setMaximumSize(new Dimension(150, 23));
-			btnLogin.setPreferredSize(new Dimension(150, 23));
-			btnLogin.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-			btnLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
+			btnUser.setBounds(51, 65, 230, 43);
 		}
-		return btnLogin;
+		return btnUser;
 	}
-	private JButton getBtnRecordPayment() {
-		btnRecordPayment = new JButton("Record Payment");
-		btnRecordPayment.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Owner owner = OWNER;
-
-				if (owner == null){
-					System.out.println("Not logged in. \nLog in please");
-					return;
+	private JButton getBtnOwner() {
+		if (btnOwner == null) {
+			btnOwner = new JButton("Owner");
+			btnOwner.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					StartWindow.this.setVisible(false);
+					JFrame a = new OwnerLoginGUI();
+					a.setVisible(true);					
 				}
-
-				System.out.println("Logged in as: " + owner.getName());
-
-				JFrame a = new RecordBookingPaymentGUI();
-				a.setVisible(true);
-			}
-		});
-		btnRecordPayment.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		btnRecordPayment.setBounds(56, 157, 245, 26);
-		return btnRecordPayment;
+			});
+			btnOwner.setBounds(51, 150, 230, 38);
+		}
+		return btnOwner;
 	}
 } //@jve:decl-index=0:visual-constraint="0,0"
