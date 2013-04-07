@@ -18,6 +18,7 @@ import java.text.*;
 import java.util.*;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -25,7 +26,7 @@ public class BookRuralHouseGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JLabel lblRuralHouse = new JLabel();
-	private JComboBox jCBRuralHouse;
+	private JComboBox<RuralHouse> jCBRuralHouse;
 	private JLabel lblArrivalDay = new JLabel();
 	private JLabel lblNumNights = new JLabel();
 	private JLabel lblTelephone = new JLabel();
@@ -35,6 +36,7 @@ public class BookRuralHouseGUI extends JFrame {
 	private JTextField txtTelephone = new JTextField();
 	private JButton btnAccept = new JButton();
 	private JButton btnCancel = new JButton();
+	private JFrame showInfo; 
 
 	private BookRuralHouseBL BL = new BookRuralHouseBL();
 
@@ -70,7 +72,14 @@ public class BookRuralHouseGUI extends JFrame {
 		ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 		Vector<RuralHouse> ruralHouses=facade.getAllRuralHouses();
 
-		jCBRuralHouse = new JComboBox(ruralHouses);
+		jCBRuralHouse = new JComboBox<RuralHouse>(ruralHouses);
+		jCBRuralHouse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				showInfo.setVisible(false);
+				showInfo = new ShowHouseInfoGUI((RuralHouse) jCBRuralHouse.getSelectedItem());
+				showInfo.setVisible(true);
+			}
+		});
 
 		lblRuralHouse.setBounds(new Rectangle(15, 10, 115, 20));
 		jCBRuralHouse.setBounds(new Rectangle(120, 10, 175, 20));
@@ -170,10 +179,14 @@ public class BookRuralHouseGUI extends JFrame {
 				}
 			} 
 		});
+		
+		showInfo = new ShowHouseInfoGUI((RuralHouse) jCBRuralHouse.getSelectedItem());
+		showInfo.setVisible(true);
 	}
 
 	private void btnCancel_actionPerformed(ActionEvent e) {
 		this.setVisible(false);
+		showInfo.setVisible(false);
 	}
 
 	private void txtNumNights_focusLost() {

@@ -6,6 +6,8 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
+
+import javax.swing.ImageIcon;
 //import java.util.Enumeration;
 //import java.util.Vector;
 
@@ -46,7 +48,7 @@ public class DB4oManager {
 			db.ext().configure().updateDepth(5);
 			Owner jon = new Owner("Jon", "userJon", "passJon");
 			Owner alfredo = new Owner("Alfredo","userAlfredo", "passAlfredo");
-			Image img = null;
+			String img = null;
 			jon.addRuralHouse(1, "Ezkioko etxea", img, "Ezkio");
 			jon.addRuralHouse(2, "Eskiatzeko etxea", img, "Jaca");
 			jon.setBankAccount("1349 5677 21 2133567777");

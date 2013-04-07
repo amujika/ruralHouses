@@ -9,6 +9,7 @@ import domain.Offer;
 import domain.RuralHouse;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -31,6 +32,8 @@ public class SearchOffersGUI extends JFrame {
 	private Calendar myCalendar = null;
 	private JList showOffers = new JList();
 	
+	private JFrame showInfo; 
+	
 	private DefaultListModel<Offer> offerList;
 	private JTextField txtTelephone;
 
@@ -47,7 +50,15 @@ public class SearchOffersGUI extends JFrame {
 		ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 		Vector<RuralHouse> rhs=facade.getAllRuralHouses();
-		jCBRuralHouse = new JComboBox(rhs);
+		jCBRuralHouse = new JComboBox<RuralHouse>(rhs);
+		jCBRuralHouse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				showInfo.setVisible(false);
+				showInfo = new ShowHouseInfoGUI((RuralHouse) jCBRuralHouse.getSelectedItem());
+				showInfo.setVisible(true);
+				btnAccept_actionPerformed(arg0);
+			}
+		});
 
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(440, 375));
@@ -100,11 +111,15 @@ public class SearchOffersGUI extends JFrame {
 		label.setBounds(new Rectangle(15, 270, 140, 20));
 		label.setBounds(55, 87, 140, 20);
 		getContentPane().add(label);
+		
+		showInfo = new ShowHouseInfoGUI((RuralHouse) jCBRuralHouse.getSelectedItem());
+		showInfo.setVisible(true);
 
 	}
 
 	private void btnClose_actionPerformed(ActionEvent e) {
 		this.setVisible(false);
+		showInfo.setVisible(false);
 	}
 
 	private void btnAccept_actionPerformed(ActionEvent e) {	

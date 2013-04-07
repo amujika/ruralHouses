@@ -6,13 +6,15 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
+
 public class RuralHouse implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private int houseNumber;
 	private String description;
-	private Image image;
+	private String image;
 	private Owner owner;
 	private String town; 
 	public Vector<Offer> offers;
@@ -21,7 +23,7 @@ public class RuralHouse implements Serializable {
 		super();
 	}
 
-	public RuralHouse(int houseNumber, Owner owner, String description, Image image, String town) {
+	public RuralHouse(int houseNumber, Owner owner, String description, String image, String town) {
 		this.houseNumber = houseNumber;
 		this.description = description;
 		this.image = image;
@@ -46,11 +48,11 @@ public class RuralHouse implements Serializable {
 		this.description=description;
 	}
 
-	public Image getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(Image image) {
+	public void setImage(String image) {
 		this.image=image;
 	}
 

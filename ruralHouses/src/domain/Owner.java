@@ -4,6 +4,8 @@ import java.awt.Image;
 import java.io.Serializable;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
+
 @SuppressWarnings("serial")
 public class Owner implements Serializable, Comparable<Owner> {
 
@@ -64,7 +66,7 @@ public class Owner implements Serializable, Comparable<Owner> {
 		return ruralHouses;
 	}
 
-	public RuralHouse addRuralHouse(int houseNumber, String description, Image image, String city) {
+	public RuralHouse addRuralHouse(int houseNumber, String description, String image, String city) {
 		RuralHouse rh=new RuralHouse(houseNumber,  this,  description, image,  city);
 		ruralHouses.add(rh);
 		return rh;

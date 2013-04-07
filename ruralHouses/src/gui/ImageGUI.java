@@ -44,7 +44,7 @@ public class ImageGUI extends JFrame {
 		JLabel lblImg = new JLabel("Jaca House");
 		lblImg.setBounds(-32, -39, 674, 442);
 		//Change when show information is done, we have to pass a house and display image
-		lblImg.setIcon(new ImageIcon("/home/ezequiel/Desktop/tmp/SE/RHJaca.jpg"));
+		lblImg.setIcon(new ImageIcon("C:\\Users\\AAA\\Desktop\\Main.jpg"));
 		contentPane.add(lblImg);	
 	}
 

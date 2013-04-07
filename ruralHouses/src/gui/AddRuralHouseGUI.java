@@ -3,6 +3,7 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -83,7 +84,7 @@ public class AddRuralHouseGUI extends JFrame {
 				String town = txtTown.getText();
 				String description = txtDescription.getText();
 				//chooser returns File but we need Image
-				Image image = (Image)chooser.getSelectedFile();
+				String image = chooser.getSelectedFile().getAbsolutePath();
 
 				BL.addRuralHouse(houseNumber, owner , description, image, town);
 
@@ -91,7 +92,7 @@ public class AddRuralHouseGUI extends JFrame {
 
 			}
 		});
-		btnFinish.setBounds(243, 228, 89, 23);
+	btnFinish.setBounds(243, 228, 89, 23);
 
 		contentPane.add(btnFinish);
 
