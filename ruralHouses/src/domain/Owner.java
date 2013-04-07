@@ -1,5 +1,6 @@
 package domain;
 
+import java.awt.Image;
 import java.io.Serializable;
 import java.util.Vector;
 
@@ -63,16 +64,16 @@ public class Owner implements Serializable, Comparable<Owner> {
 		return ruralHouses;
 	}
 
-	public RuralHouse addRuralHouse(int houseNumber, String description, String city) {
-		RuralHouse rh=new RuralHouse(houseNumber,  this,  description,  city);
+	public RuralHouse addRuralHouse(int houseNumber, String description, Image image, String city) {
+		RuralHouse rh=new RuralHouse(houseNumber,  this,  description, image,  city);
 		ruralHouses.add(rh);
 		return rh;
 	}
-	
+
 	public void removeRuralHouse(RuralHouse rh){
 		ruralHouses.remove(rh);
 	}
-	
+
 	public String toString(){
 		return name;
 	}
@@ -80,9 +81,9 @@ public class Owner implements Serializable, Comparable<Owner> {
 	public int compareTo(Owner other) {
 		return (this.bankAccount + '\n' + this.name + '\n' + this.password
 				+ '\n' + this.username).compareTo(other.bankAccount + '\n'
-				+ other.name + '\n' + other.password + '\n' + other.username);
+						+ other.name + '\n' + other.password + '\n' + other.username);
 	}
-	
+
 	public boolean equals(Object o) {
 		Owner other= (Owner) o;		
 		return ( this.password + '\n' + this.username).equals(other.password + '\n' + other.username);

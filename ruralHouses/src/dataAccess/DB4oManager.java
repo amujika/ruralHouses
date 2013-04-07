@@ -1,5 +1,6 @@
 package dataAccess;
 
+import java.awt.Image;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.util.Date;
@@ -45,11 +46,12 @@ public class DB4oManager {
 			db.ext().configure().updateDepth(5);
 			Owner jon = new Owner("Jon", "userJon", "passJon");
 			Owner alfredo = new Owner("Alfredo","userAlfredo", "passAlfredo");
-			jon.addRuralHouse(1, "Ezkioko etxea","Ezkio");
-			jon.addRuralHouse(2, "Eskiatzeko etxea","Jaca");
+			Image img = null;
+			jon.addRuralHouse(1, "Ezkioko etxea", img, "Ezkio");
+			jon.addRuralHouse(2, "Eskiatzeko etxea", img, "Jaca");
 			jon.setBankAccount("1349 5677 21 2133567777");
-			alfredo.addRuralHouse(3, "Casa del abuelo","Pitillas");
-			alfredo.addRuralHouse(4, "Refugio","Murgia");
+			alfredo.addRuralHouse(3, "Casa del abuelo", img, "Pitillas");
+			alfredo.addRuralHouse(4, "Refugio", img, "Murgia");
 			alfredo.setBankAccount("4144 0087 23 9700002133");
 
 			db.store(jon);
@@ -66,7 +68,7 @@ public class DB4oManager {
 		db.close();
 		System.out.println("DataBase closed");
 	}
-	
+
 	/**
 	 * This method finds all existing  owners 
 	 * 
@@ -108,7 +110,7 @@ public class DB4oManager {
 	Exception {
 		ObjectContainer db=DB4oManager.getContainer();
 		try {
-			RuralHouse proto = new RuralHouse(0,null,null,null);
+			RuralHouse proto = new RuralHouse(0,null,null,null, null);
 			ObjectSet result = db.queryByExample(proto);
 			Vector<RuralHouse> ruralHouses=new Vector<RuralHouse>();
 			while(result.hasNext()) 
@@ -118,12 +120,12 @@ public class DB4oManager {
 			//db.close();
 		}
 	}
-	
+
 	//Returns the RuralHouse with the specified houseNumber
 	public RuralHouse getRuralHouseByNumber(int houseNumber){
 		try {
 			ObjectContainer db=DB4oManager.getContainer();
-			RuralHouse rh = new RuralHouse(houseNumber, null, null, null);
+			RuralHouse rh = new RuralHouse(houseNumber, null, null, null, null);
 			ObjectSet<RuralHouse> result = db.queryByExample(rh);
 			return result.next();
 		} catch (Exception e) {
@@ -143,7 +145,7 @@ public class DB4oManager {
 			float price){
 		ObjectContainer db=DB4oManager.getContainer();
 		RuralHouse proto = new RuralHouse(ruralHouse.getHouseNumber(), null, 
-				ruralHouse.getDescription(), ruralHouse.getTown());
+				ruralHouse.getDescription(), ruralHouse.getImage(), ruralHouse.getTown());
 		ObjectSet result = db.queryByExample(proto);
 		RuralHouse rh=(RuralHouse)result.next();
 		Offer o=rh.createOffer(firstDay, lastDay, price);
@@ -151,7 +153,7 @@ public class DB4oManager {
 		db.commit(); 
 		return o;
 	}
-	
+
 	public Offer getOffer(Offer offer){
 		List<Offer> result = db.queryByExample(offer);
 
@@ -160,12 +162,12 @@ public class DB4oManager {
 		else
 			return result.get(0);		
 	} 
-	
+
 	public RuralHouse getRuralHouse(RuralHouse rh){
 		try {
 			ObjectContainer db=DB4oManager.getContainer();
 			RuralHouse proto = new RuralHouse(rh.getHouseNumber(), null,
-					rh.getDescription(), rh.getTown());
+					rh.getDescription(), rh.getImage(), rh.getTown());
 			ObjectSet result = db.queryByExample(proto);
 			return  rh=(RuralHouse)result.next();
 		} catch (Exception exc) {
@@ -173,30 +175,30 @@ public class DB4oManager {
 			return null;
 		}
 	}
-	
+
 	public Vector<Booking> getBookingByRH(RuralHouse rh){
 		try{
-		ObjectContainer db=DB4oManager.getContainer();
-		Booking proto = new Booking (null, null);
-		RuralHouse ruHo = getRuralHouse(rh);
-		Vector<Offer> of = ruHo.offers;
-		Vector<Booking> bookings = new Vector <Booking>();
-		for (int i=0; i<of.size();i++){
-			bookings.add(of.elementAt(i).getBooking());			
-		}
-		return bookings;
+			ObjectContainer db=DB4oManager.getContainer();
+			Booking proto = new Booking (null, null);
+			RuralHouse ruHo = getRuralHouse(rh);
+			Vector<Offer> of = ruHo.offers;
+			Vector<Booking> bookings = new Vector <Booking>();
+			for (int i=0; i<of.size();i++){
+				bookings.add(of.elementAt(i).getBooking());			
+			}
+			return bookings;
 		}catch(Exception exc){
 			exc.printStackTrace();
 			return null;
 		}
 	}
-	
+
 	public void storePayment(Booking booking){
 		booking.setIsPaid(true);
 		db.store(booking);
 		db.commit();
 	}
-	
+
 	public boolean paymentDone(Booking booking){
 		return booking.isPaid();
 	}
@@ -207,13 +209,13 @@ public class DB4oManager {
 		db.commit();
 
 	}
-	
+
 	public void addRuralHouse(Owner owner, RuralHouse rh){
 		db.store(owner);
 		db.store(rh);
 		db.commit();
 	}
-	
+
 	public void removeRuralHouse(RuralHouse rh){
 		db.delete(rh);
 		db.commit();

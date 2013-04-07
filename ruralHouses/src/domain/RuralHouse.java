@@ -1,5 +1,6 @@
 package domain;
 
+import java.awt.Image;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Iterator;
@@ -11,17 +12,19 @@ public class RuralHouse implements Serializable {
 
 	private int houseNumber;
 	private String description;
+	private Image image;
 	private Owner owner;
 	private String town; 
 	public Vector<Offer> offers;
-	
+
 	public RuralHouse() {
 		super();
 	}
 
-	public RuralHouse(int houseNumber, Owner owner, String description, String town) {
+	public RuralHouse(int houseNumber, Owner owner, String description, Image image, String town) {
 		this.houseNumber = houseNumber;
 		this.description = description;
+		this.image = image;
 		this.owner = owner;
 		this.town = town;
 		offers=new Vector<Offer>();
@@ -38,9 +41,17 @@ public class RuralHouse implements Serializable {
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public void setDescription(String description) {
 		this.description=description;
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image=image;
 	}
 
 	public Owner getOwner() {
@@ -50,23 +61,23 @@ public class RuralHouse implements Serializable {
 	public void setOwner(Owner owner) {
 		this.owner=owner;
 	}
-	
+
 	public String getTown() {
 		return town;
 	}
-	
+
 	public void setTown(String town) {
 		this.town=town;
 	}
-	
+
 	public String toString() {
 		return this.houseNumber + ": " + this.town;
 	}
-	
+
 	public Offer createOffer(Date firstDay, Date lastDay, float price) {
-        Offer off=new Offer(this, firstDay, lastDay, price);
-        offers.add(off);
-        return off;
+		Offer off=new Offer(this, firstDay, lastDay, price);
+		offers.add(off);
+		return off;
 	}
 
 	@Override
@@ -90,7 +101,7 @@ public class RuralHouse implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 	public String getAccountNumber(int houseNumber) {
 		/*try {
 			dbMngr=DBManager.getInstance();
@@ -102,7 +113,7 @@ public class RuralHouse implements Serializable {
 			return null;
 		}*/ return null;
 	}
-	
+
 	/**
 	 * This method obtains available offers for a concrete house in a certain period 
 	 * 
@@ -122,7 +133,7 @@ public class RuralHouse implements Serializable {
 		}
 		return availableOffers;
 	}
-	
+
 	/**
 	 * This method obtains the offer that match exactly with a given dates that has not been booked
 	 * 
