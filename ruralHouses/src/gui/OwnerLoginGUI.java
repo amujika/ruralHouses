@@ -42,6 +42,7 @@ public class OwnerLoginGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public OwnerLoginGUI() {
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setAlwaysOnTop(true);
 		//setType(Type.UTILITY);
 		setTitle("User Login");

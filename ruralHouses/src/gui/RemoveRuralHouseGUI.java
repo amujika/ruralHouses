@@ -88,8 +88,7 @@ public class RemoveRuralHouseGUI extends JFrame {
 		}
 
 		if (houseList.isEmpty()) 
-			JOptionPane.showMessageDialog(null, "Owner does not exist or has no registered houses");
-			//System.out.println("Owner does not exist or has no registered houses ");
+			System.out.println("Owner does not exist or has no registered houses ");
 
 		for (RuralHouse v : houseList)
 			ruralHouses.addElement(v);

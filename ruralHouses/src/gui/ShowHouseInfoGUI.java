@@ -40,5 +40,6 @@ public class ShowHouseInfoGUI extends JFrame {
 		}
 		lblHouseNum.setBounds(10, 200, 312, 58);
 		contentPane.add(lblHouseNum);
+		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 }

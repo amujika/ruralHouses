@@ -116,8 +116,7 @@ public class RecordBookingPaymentGUI extends JFrame {
 		}
 
 		if (houseList.isEmpty()) 
-			JOptionPane.showMessageDialog(null, "Owner does not exist or has no registered houses ");
-			//System.out.println("Owner does not exist or has no registered houses ");
+			System.out.println("Owner does not exist or has no registered houses ");
 
 		for (RuralHouse v : houseList)
 			ruralHouses.addElement(v);
@@ -140,8 +139,7 @@ public class RecordBookingPaymentGUI extends JFrame {
 				}
 
 				if (bookingList.isEmpty())
-					JOptionPane.showMessageDialog(null, "Rural house or offers do not exist or have not registered bookings ");
-					//System.out.println("Rural house or offers do not exist or have not registered bookings ");
+					System.out.println("Rural house or offers do not exist or have not registered bookings ");
 
 				for (Booking v : bookingList)
 					bookingNumber.addElement(v);
