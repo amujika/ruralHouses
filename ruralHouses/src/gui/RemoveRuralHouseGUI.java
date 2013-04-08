@@ -10,6 +10,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import businessLogic.AddRuralHouseBL;
 import businessLogic.ApplicationFacadeInterface;
@@ -87,7 +88,8 @@ public class RemoveRuralHouseGUI extends JFrame {
 		}
 
 		if (houseList.isEmpty()) 
-			System.out.println("Owner does not exist or has no registered houses ");
+			JOptionPane.showMessageDialog(null, "Owner does not exist or has no registered houses");
+			//System.out.println("Owner does not exist or has no registered houses ");
 
 		for (RuralHouse v : houseList)
 			ruralHouses.addElement(v);

@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+
 import java.awt.Rectangle;
 
 import java.util.Vector;
@@ -79,7 +80,8 @@ public class IntroduceOfferGUI extends JFrame {
 						a.setVisible(true);
 					}
 					else if (houseList.isEmpty()==true) {
-						System.out.print("Owner does not exist or has no registered houses ");
+						JOptionPane.showMessageDialog(null, "Owner does not exist or has no registered houses");
+						//System.out.print("Owner does not exist or has no registered houses");
 					} 		
 				}
 			});

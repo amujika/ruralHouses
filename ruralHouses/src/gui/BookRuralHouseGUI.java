@@ -132,7 +132,8 @@ public class BookRuralHouseGUI extends JFrame {
 						confirmWindow.setVisible(true);
 					}
 					else
-						System.out.println("Not a valid offer");
+						JOptionPane.showMessageDialog(null, "Not a valid offer");
+						//System.out.println("Not a valid offer");
 				}
 				catch (Exception e1) {
 					e1.printStackTrace();

@@ -68,11 +68,13 @@ public class OwnerGUI extends JFrame {
 				Owner owner = StartWindow.OWNER;
 				
 				if (owner == null){
-					System.out.println("Not logged in. \nLog in please");
+					JOptionPane.showMessageDialog(null, "Not logged in. \nLog in please");
+					//System.out.println("Not logged in. \nLog in please");
 					return;
 				}
 				
-				System.out.println("Logged in as: " + owner.getName());
+				JOptionPane.showMessageDialog(null, "Logged in as: " + owner.getName());
+				//System.out.println("Logged in as: " + owner.getName());
 				
 				JFrame a = new AddRuralHouseGUI(StartWindow.OWNER);
 				a.setVisible(true);
@@ -90,11 +92,13 @@ public class OwnerGUI extends JFrame {
 				Owner owner = StartWindow.OWNER;
 
 				if (owner == null){
-					System.out.println("Not logged in. \nLog in please");
+					JOptionPane.showMessageDialog(null, "Not logged in. \nLog in please");
+					//System.out.println("Not logged in. \nLog in please");
 					return;
 				}
 
-				System.out.println("Logged in as: " + owner.getName());
+				JOptionPane.showMessageDialog(null, "Logged in as: " + owner.getName());
+				//System.out.println("Logged in as: " + owner.getName());
 
 				JFrame a = new RemoveRuralHouseGUI();
 				a.setVisible(true);
@@ -116,11 +120,13 @@ public class OwnerGUI extends JFrame {
 
 					
 					if (StartWindow.OWNER == null){
-						System.out.println("Not logged in. \nLog in please");
+						JOptionPane.showMessageDialog(null, "Not logged in. \nLog in please");
+						//System.out.println("Not logged in. \nLog in please");
 						return;
 					}
 					
-					System.out.println("Logged in as: " + StartWindow.OWNER.getName());
+					JOptionPane.showMessageDialog(null, "Logged in as: " + StartWindow.OWNER.getName());
+					//System.out.println("Logged in as: " + StartWindow.OWNER.getName());
 					Vector<RuralHouse> houseList = StartWindow.OWNER.getRuralHouses();
 
 					if (houseList.isEmpty()!=true) {
@@ -128,7 +134,8 @@ public class OwnerGUI extends JFrame {
 						a.setVisible(true);
 					}
 					else if (houseList.isEmpty()==true) {
-						System.out.print("Owner does not exist or has no registered houses ");
+						JOptionPane.showMessageDialog(null, "Owner does not exist or has no registered houses");
+						//System.out.print("Owner does not exist or has no registered houses");
 					} 	
 				}
 			});
@@ -142,11 +149,13 @@ public class OwnerGUI extends JFrame {
 				Owner owner = StartWindow.OWNER;
 
 				if (owner == null){
-					System.out.println("Not logged in. \nLog in please");
+					JOptionPane.showMessageDialog(null, "Not logged in. \nLog in please");
+					//System.out.println("Not logged in. \nLog in please");
 					return;
 				}
 
-				System.out.println("Logged in as: " + owner.getName());
+				JOptionPane.showMessageDialog(null, "Logged in as: " + owner.getName());
+				//System.out.println("Logged in as: " + owner.getName());
 
 				JFrame a = new RecordBookingPaymentGUI();
 				a.setVisible(true);

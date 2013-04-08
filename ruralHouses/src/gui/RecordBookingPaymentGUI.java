@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import businessLogic.ApplicationFacadeInterface;
 
@@ -76,7 +77,8 @@ public class RecordBookingPaymentGUI extends JFrame {
 							}
 						}
 					} else
-						System.out.println("Payment is already done.");
+						JOptionPane.showMessageDialog(null, "Payment is already done.");
+						//System.out.println("Payment is already done.");
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -114,7 +116,8 @@ public class RecordBookingPaymentGUI extends JFrame {
 		}
 
 		if (houseList.isEmpty()) 
-			System.out.println("Owner does not exist or has no registered houses ");
+			JOptionPane.showMessageDialog(null, "Owner does not exist or has no registered houses ");
+			//System.out.println("Owner does not exist or has no registered houses ");
 
 		for (RuralHouse v : houseList)
 			ruralHouses.addElement(v);
@@ -136,8 +139,9 @@ public class RecordBookingPaymentGUI extends JFrame {
 					e1.printStackTrace();
 				}
 
-				if (bookingList.isEmpty()) 
-					System.out.println("Rural house or offers do not exist or have not registered bookings ");
+				if (bookingList.isEmpty())
+					JOptionPane.showMessageDialog(null, "Rural house or offers do not exist or have not registered bookings ");
+					//System.out.println("Rural house or offers do not exist or have not registered bookings ");
 
 				for (Booking v : bookingList)
 					bookingNumber.addElement(v);
