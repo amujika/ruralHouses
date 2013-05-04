@@ -5,6 +5,7 @@ import java.rmi.*;
 import java.util.Vector;
 import java.util.Date;
 
+import dataAccess.DB4oManager;
 import domain.Booking;
 import domain.Offer;
 import domain.Owner;
@@ -76,5 +77,13 @@ public interface ApplicationFacadeInterface extends Remote {
 	Exception;
 	
 	public void close() throws RemoteException;
+	
+	//addRuralHouse
+	public void addRuralHouse(int houseNumber, Owner owner, String description, String image, String town) throws RemoteException;
+	
+	//introduceOffer
+	public void createOffer(RuralHouse rh, Date firstDay, Date lastDay, Float price) throws RemoteException;
+	
+		
 	
 }

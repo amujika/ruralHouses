@@ -38,7 +38,8 @@ public class IntroduceOffer2GUI extends JFrame  {
 	private JButton btnCancel = new JButton();
 	private JLabel lblSpace = new JLabel();
 	
-	private IntroduceOfferBL BL = new IntroduceOfferBL();
+//	private IntroduceOfferBL BL = new IntroduceOfferBL();
+	private ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 	public IntroduceOffer2GUI(Vector<RuralHouse> v)	{
 		try	{
@@ -158,7 +159,7 @@ public class IntroduceOffer2GUI extends JFrame  {
 			//Obtain the business logic from a StartWindow class (local or remote)
 			//ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
-			BL.createOffer(ruralHouse, firstDay, lastDay, price); 
+			facade.createOffer(ruralHouse, firstDay, lastDay, price); 
 
 			this.setVisible(false);
 		}

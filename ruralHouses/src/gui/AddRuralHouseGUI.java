@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import businessLogic.AddRuralHouseBL;
+import businessLogic.ApplicationFacadeInterface;
 
 import domain.Owner;
 
@@ -19,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.rmi.RemoteException;
 
 public class AddRuralHouseGUI extends JFrame {
 
@@ -28,7 +30,8 @@ public class AddRuralHouseGUI extends JFrame {
 	private JTextField txtDescription;
 	private JFileChooser chooser; 
 
-	private AddRuralHouseBL BL = new AddRuralHouseBL();
+//	private AddRuralHouseBL BL = new AddRuralHouseBL();
+	private ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 	/**
 	 * Create the frame.
@@ -86,7 +89,12 @@ public class AddRuralHouseGUI extends JFrame {
 				//chooser returns File but we need Image
 				String image = chooser.getSelectedFile().getAbsolutePath();
 
-				BL.addRuralHouse(houseNumber, owner , description, image, town);
+				try {
+					facade.addRuralHouse(houseNumber, owner , description, image, town);
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 				setVisible(false);
 

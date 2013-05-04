@@ -8,9 +8,9 @@ import java.util.Vector;
 
 import java.sql.SQLException;
 
-import com.db4o.ObjectContainer;
-import com.db4o.ObjectSet;
-import configuration.Config;
+//import com.db4o.ObjectContainer;
+//import com.db4o.ObjectSet;
+//import configuration.Config;
 
 import dataAccess.DB4oManager;
 
@@ -19,7 +19,7 @@ import domain.Offer;
 import domain.Owner;
 import domain.RuralHouse;
 
-import exceptions.OfferCanNotBeBooked;
+//import exceptions.OfferCanNotBeBooked;
 
 public class FacadeImplementation extends UnicastRemoteObject implements ApplicationFacadeInterface {
 
@@ -90,6 +90,19 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	public void close() throws RemoteException{
 		DB4oManager.close();
 	}
+	
+	//addRuralHouse
+	
+	public void addRuralHouse(int houseNumber, Owner owner, String description, String image, String town){ 
+		RuralHouse rh=owner.addRuralHouse(houseNumber, description, image, town);
+		DB4oManager.getInstance().addRuralHouse(owner,rh);}
+	
+	//introduceOffer
+	
+	public void createOffer(RuralHouse rh, Date firstDay, Date lastDay, Float price){ 
+		DB4oManager.getInstance().createOffer(rh, firstDay, lastDay, price);		
+	}
+	
 
 	/*public Booking createBooking(RuralHouse ruralHouse, Date firstDate, Date lastDate, String bookTelephoneNumber)
 			throws OfferCanNotBeBooked {
