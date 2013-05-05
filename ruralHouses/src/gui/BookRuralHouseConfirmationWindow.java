@@ -2,10 +2,12 @@ package gui;
 
 import javax.swing.*;
 
+import businessLogic.ApplicationFacadeInterface;
 import businessLogic.BookRuralHouseBL;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.rmi.RemoteException;
 
 import domain.Booking;
 import domain.Offer;
@@ -24,7 +26,8 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 	private JTextField txtTotalPayment = new JTextField();
 	private JTextField txtDepositAmount = new JTextField();
 	
-	private BookRuralHouseBL BL = new BookRuralHouseBL();
+//	private BookRuralHouseBL BL = new BookRuralHouseBL();
+	private ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 	public BookRuralHouseConfirmationWindow(Booking booking, Offer offer) {
 		try {
@@ -88,7 +91,12 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 
 	private void btnAccept_actionPerformed(ActionEvent e, Booking booking, Offer offer) {
 		
-		BL.bookRuralHouse(booking, offer);
+		try {
+			facade.bookRuralHouse(booking, offer);
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		this.setVisible(false);
 	}
 	

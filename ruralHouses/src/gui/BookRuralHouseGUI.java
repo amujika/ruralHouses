@@ -38,7 +38,8 @@ public class BookRuralHouseGUI extends JFrame {
 	private JButton btnCancel = new JButton();
 	private JFrame showInfo; 
 
-	private BookRuralHouseBL BL = new BookRuralHouseBL();
+	//private BookRuralHouseBL BL = new BookRuralHouseBL();
+	private ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 	// Code for JCalendar
 	private JCalendar jCalendar1 = new JCalendar();
@@ -69,7 +70,7 @@ public class BookRuralHouseGUI extends JFrame {
 		this.setSize(new Dimension(430, 440));
 		this.setTitle("Book Rural House");
 		lblRuralHouse.setText("Rural house:");
-		ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
+		final ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 		Vector<RuralHouse> ruralHouses=facade.getAllRuralHouses();
 
 		jCBRuralHouse = new JComboBox<RuralHouse>(ruralHouses);
@@ -125,7 +126,7 @@ public class BookRuralHouseGUI extends JFrame {
 				// Contact telephone
 				String telephone=txtTelephone.getText();
 				try {
-					Offer auxOffer = BL.getOffer(ruralHouse, firstDay, lastDay);
+					Offer auxOffer = facade.getOffer(ruralHouse, firstDay, lastDay);
 					if(auxOffer!= null && auxOffer.getBooking()==null){					
 						Booking auxBooking = auxOffer.createBook(telephone);						
 						BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer);
