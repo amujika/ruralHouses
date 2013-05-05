@@ -10,12 +10,14 @@ public class Client implements Serializable, Comparable<Client> {
 	private String name;
 	private String username;
 	private String password;
+	private Vector<Booking> bookings;
 	//private Vector<RuralHouse> ruralHouses;
 
 	public Client(String name,String login, String password) {
 		this.name=name;
 		this.username=login;
 		this.password=password;
+		bookings=new Vector<Booking>();
 		//ruralHouses=new Vector<RuralHouse>();		
 	}
 
@@ -24,6 +26,7 @@ public class Client implements Serializable, Comparable<Client> {
 		this.name=name;
 		this.username=login;
 		this.password=password;
+		bookings=new Vector<Booking>();
 		//ruralHouses=new Vector<RuralHouse>();		
 	}
 
@@ -57,6 +60,14 @@ public class Client implements Serializable, Comparable<Client> {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public Vector<Booking> getBookings(){
+		return this.bookings;
+	}
+	
+	public void addBooking (Booking b){
+		this.bookings.add(b);
 	}
 
 	//	public Vector<RuralHouse> getRuralHouses() {

@@ -10,6 +10,7 @@ import java.awt.event.*;
 import java.rmi.RemoteException;
 
 import domain.Booking;
+import domain.Client;
 import domain.Offer;
 
 public class BookRuralHouseConfirmationWindow extends JFrame {
@@ -92,7 +93,9 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 	private void btnAccept_actionPerformed(ActionEvent e, Booking booking, Offer offer) {
 		
 		try {
-			facade.bookRuralHouse(booking, offer);
+			//TO CHANGE!
+			Client client=new Client("Bob","userBob","passBob");
+			facade.bookRuralHouse(booking, offer,client);
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

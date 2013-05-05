@@ -84,6 +84,6 @@ public class Booking implements Serializable {
 	}
 	
 	public String toString(){
-		return bookingNumber + "";
+		return bookingNumber + "" + bookingDate;
 	}
 }

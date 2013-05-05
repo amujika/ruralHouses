@@ -4,6 +4,7 @@ import java.util.Date;
 
 import dataAccess.DB4oManager;
 import domain.Booking;
+import domain.Client;
 import domain.Offer;
 import domain.RuralHouse;
 
@@ -13,10 +14,10 @@ public class BookRuralHouseBL {
 	public BookRuralHouseBL() {
 	}
 
-	public void bookRuralHouse (Booking booking, Offer offer) {
+	public void bookRuralHouse (Booking booking, Offer offer, Client client) {
 		try {
 			DB4oManager dbManager = DB4oManager.getInstance();
-			dbManager.storeBooking(booking, offer);
+			dbManager.storeBooking(booking, offer,client);
 		} catch (Exception e) {
 			System.out.println("There has been an error in businessLogic > DBookRuralHouseBL in line " + new Throwable().getStackTrace()[0].getLineNumber());
 		}

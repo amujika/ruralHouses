@@ -18,6 +18,7 @@ import com.db4o.*;
 import configuration.Config;
 
 import domain.Booking;
+import domain.Client;
 import domain.Offer;
 import domain.Owner;
 import domain.RuralHouse;
@@ -205,7 +206,9 @@ public class DB4oManager {
 		return booking.isPaid();
 	}
 
-	public void storeBooking(Booking booking, Offer offer){
+	public void storeBooking(Booking booking, Offer offer, Client client){
+		client.addBooking(booking);
+		db.store(client);
 		db.store(booking);
 		db.store(offer);
 		db.commit();

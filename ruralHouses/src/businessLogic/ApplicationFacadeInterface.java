@@ -7,6 +7,7 @@ import java.util.Date;
 
 import dataAccess.DB4oManager;
 import domain.Booking;
+import domain.Client;
 import domain.Offer;
 import domain.Owner;
 import domain.RuralHouse;
@@ -91,10 +92,12 @@ public interface ApplicationFacadeInterface extends Remote {
 	public void RemoveRuralHouse(RuralHouse rh)throws RemoteException;
 	
 	//bookRuralHouse
-	public void bookRuralHouse (Booking booking, Offer offer) throws RemoteException;
+	public void bookRuralHouse (Booking booking, Offer offer, Client client) throws RemoteException;
 
 	public RuralHouse getRuralHouseByNumber (int houseNumber) throws RemoteException;
 	
 	public Offer getOffer(RuralHouse ruralHouse, Date firstDay, Date lastDay) throws RemoteException;
 	
+	//cancelBooking
+	public Vector<Booking> getBookings(Client client) throws RemoteException;
 }
