@@ -21,13 +21,15 @@ import domain.RuralHouse;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.rmi.RemoteException;
 import java.util.Vector;
 
 public class RemoveRuralHouseGUI extends JFrame {
 
 	private JPanel contentPane = null;	
 
-	private RemoveRuralHouseBL BL = new RemoveRuralHouseBL();
+//	private RemoveRuralHouseBL BL = new RemoveRuralHouseBL();
+	private ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 	private DefaultComboBoxModel<RuralHouse> ruralHouses = new DefaultComboBoxModel<RuralHouse>();
 
@@ -55,7 +57,12 @@ public class RemoveRuralHouseGUI extends JFrame {
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RuralHouse rh = (RuralHouse) ruralHouses.getSelectedItem();			
-				BL.RemoveRuralHouse(rh);
+				try {
+					facade.RemoveRuralHouse(rh);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				setVisible(false);
 			}
 		});

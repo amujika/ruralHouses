@@ -84,6 +84,17 @@ public interface ApplicationFacadeInterface extends Remote {
 	//introduceOffer
 	public void createOffer(RuralHouse rh, Date firstDay, Date lastDay, Float price) throws RemoteException;
 	
-		
+	//ownerLogin
+	public Owner ownerloginBL (Owner own) throws RemoteException;
+	
+	//removeRuralHouse
+	public void RemoveRuralHouse(RuralHouse rh)throws RemoteException;
+	
+	//bookRuralHouse
+	public void bookRuralHouse (Booking booking, Offer offer) throws RemoteException;
+
+	public RuralHouse getRuralHouseByNumber (int houseNumber) throws RemoteException;
+	
+	public Offer getOffer(RuralHouse ruralHouse, Date firstDay, Date lastDay) throws RemoteException;
 	
 }

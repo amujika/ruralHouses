@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
+import businessLogic.ApplicationFacadeInterface;
 import businessLogic.OwnerLoginBL;
 
 import com.db4o.ObjectContainer;
@@ -36,7 +37,8 @@ public class OwnerLoginGUI extends JFrame {
 	private JTextField txtUsername;
 	private JPasswordField txtPassword;
 	
-	private OwnerLoginBL BL = new OwnerLoginBL();
+	//	private OwnerLoginBL BL = new OwnerLoginBL();
+	private ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 	/**
 	 * Create the frame.
@@ -72,7 +74,12 @@ public class OwnerLoginGUI extends JFrame {
 
 				Owner ownerTriesToLogIn = new Owner(null, username, password);
 				
-				ownerTriesToLogIn = BL.ownerloginBL(ownerTriesToLogIn);
+				try {
+					ownerTriesToLogIn = facade.ownerloginBL(ownerTriesToLogIn);
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 				if (ownerTriesToLogIn == null) {
 					lblAccess.setForeground(new Color(253, 0, 0));

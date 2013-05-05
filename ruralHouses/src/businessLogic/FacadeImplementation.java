@@ -103,6 +103,42 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 		DB4oManager.getInstance().createOffer(rh, firstDay, lastDay, price);		
 	}
 	
+	//ownerLogin
+	
+	public Owner ownerloginBL (Owner own) {		
+		DB4oManager dbManager = DB4oManager.getInstance();		
+		return dbManager.getOwner(own);		
+	}
+	
+	//removeRuralHouse
+	
+	public void RemoveRuralHouse(RuralHouse rh){
+		Owner owner = rh.getOwner();
+		owner.removeRuralHouse(rh);
+		DB4oManager.getInstance().updateOwner(owner);
+		DB4oManager.getInstance().removeRuralHouse(rh);		
+	}
+	
+	//bookRuralHouse
+	
+	public void bookRuralHouse (Booking booking, Offer offer) {
+		try {
+			DB4oManager dbManager = DB4oManager.getInstance();
+			dbManager.storeBooking(booking, offer);
+		} catch (Exception e) {
+			System.out.println("There has been an error in businessLogic > DBookRuralHouseBL in line " + new Throwable().getStackTrace()[0].getLineNumber());
+		}
+	}
+
+	public RuralHouse getRuralHouseByNumber (int houseNumber) {
+		DB4oManager dbManager = DB4oManager.getInstance();
+		return dbManager.getRuralHouseByNumber(houseNumber);
+	}
+	
+	public Offer getOffer(RuralHouse ruralHouse, Date firstDay, Date lastDay){
+		DB4oManager dbManager = DB4oManager.getInstance();
+		return dbManager.getOffer(new Offer(ruralHouse, firstDay, lastDay, 0, 0)); 
+	}
 
 	/*public Booking createBooking(RuralHouse ruralHouse, Date firstDate, Date lastDate, String bookTelephoneNumber)
 			throws OfferCanNotBeBooked {
