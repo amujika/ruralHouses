@@ -43,7 +43,7 @@ public class OwnerGUI extends JFrame {
 
 	private void initialize() {
 		// this.setSize(271, 295);
-		this.setSize(350, 276);
+		this.setSize(355, 305);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Use Cases");
 	}
@@ -56,13 +56,14 @@ public class OwnerGUI extends JFrame {
 			jContentPane.add(getBtnAddRuralHouse());
 			jContentPane.add(getBtnRemoveRuralHouse());
 			jContentPane.add(getBtnRecordPayment());
+			jContentPane.add(getBtnChangeProperties());			
 		}
 		return jContentPane;
 	}
 
 	private JButton getBtnAddRuralHouse() {
 		JButton btnAddRH = new JButton("Add a Rural House");
-		btnAddRH.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		btnAddRH.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		btnAddRH.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Owner owner = StartWindow.OWNER;
@@ -82,6 +83,32 @@ public class OwnerGUI extends JFrame {
 		});
 		btnAddRH.setBounds(57, 23, 245, 39);
 		return btnAddRH;
+	}
+
+	private JButton getBtnChangeProperties() {
+		JButton	btnChangeProperties = new JButton("Change Properties");
+		btnChangeProperties.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		btnChangeProperties.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Owner owner = StartWindow.OWNER;
+
+				if (owner == null) {
+					JOptionPane.showMessageDialog(null,
+							"Not logged in. \nLog in please");
+					// System.out.println("Not logged in. \nLog in please");
+					return;
+				}
+
+				System.out.println("Logged in as: " + owner.getName());
+
+				JFrame a = new ChangePropertiesRuralHouseGUI();
+				a.setVisible(true);
+			}
+		});
+		btnChangeProperties.setText("Change Properties");
+
+		btnChangeProperties.setBounds(57, 73, 245, 37);
+		return btnChangeProperties;
 	}
 
 	private JButton getBtnRemoveRuralHouse() {
@@ -111,33 +138,33 @@ public class OwnerGUI extends JFrame {
 	private JButton getBtnIntroduceOffer() {
 		if (btnIntroduceOffer == null) {
 			btnIntroduceOffer = new JButton();
-			btnIntroduceOffer.setBounds(57, 170, 245, 37);
-			btnIntroduceOffer.setFont(new Font("Tahoma", Font.PLAIN, 24));
+			btnIntroduceOffer.setBounds(57, 169, 245, 37);
+			btnIntroduceOffer.setFont(new Font("Tahoma", Font.PLAIN, 22));
 			btnIntroduceOffer.setText("Introduce new offer");
 			btnIntroduceOffer.setAlignmentX(Component.CENTER_ALIGNMENT);
 			btnIntroduceOffer
-					.addActionListener(new java.awt.event.ActionListener() {
-						public void actionPerformed(java.awt.event.ActionEvent e) {
+			.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
 
-							if (StartWindow.OWNER == null) {
-								JOptionPane.showMessageDialog(null,
-										"Not logged in. \nLog in please");
-								// System.out.println("Not logged in. \nLog in please");
-								return;
-							}
+					if (StartWindow.OWNER == null) {
+						JOptionPane.showMessageDialog(null,
+								"Not logged in. \nLog in please");
+						// System.out.println("Not logged in. \nLog in please");
+						return;
+					}
 
-							 System.out.println("Logged in as: " + StartWindow.OWNER.getName());
-							Vector<RuralHouse> houseList = StartWindow.OWNER
-									.getRuralHouses();
+					System.out.println("Logged in as: " + StartWindow.OWNER.getName());
+					Vector<RuralHouse> houseList = StartWindow.OWNER
+							.getRuralHouses();
 
-							if (houseList.isEmpty() != true) {
-								JFrame a = new IntroduceOffer2GUI(houseList);
-								a.setVisible(true);
-							} else if (houseList.isEmpty() == true) {
-								// System.out.print("Owner does not exist or has no registered houses");
-							}
-						}
-					});
+					if (houseList.isEmpty() != true) {
+						JFrame a = new IntroduceOffer2GUI(houseList);
+						a.setVisible(true);
+					} else if (houseList.isEmpty() == true) {
+						// System.out.print("Owner does not exist or has no registered houses");
+					}
+				}
+			});
 		}
 		return btnIntroduceOffer;
 	}
@@ -162,7 +189,7 @@ public class OwnerGUI extends JFrame {
 			}
 		});
 		btnRecordPayment.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		btnRecordPayment.setBounds(57, 73, 245, 38);
+		btnRecordPayment.setBounds(57, 217, 245, 38);
 		return btnRecordPayment;
 	}
 } // @jve:decl-index=0:visual-constraint="0,0"
