@@ -56,12 +56,16 @@ public class ChangePropertiesRuralHouseGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				RuralHouse rh = (RuralHouse) ruralHouses.getSelectedItem();
 				String properties = txtProperties.getText();
+
+				rh.setDescription(properties);
+
+				setVisible(false);
+				
 				try {
-					facade.ChangePropertiesRuralHouse(rh, properties);
+					facade.storeRuralHouse(rh);
 				} catch (RemoteException e1) {
 					e1.printStackTrace();
 				}
-				setVisible(false);
 			}
 		});
 		btnAccept.setBounds(97, 201, 89, 23);

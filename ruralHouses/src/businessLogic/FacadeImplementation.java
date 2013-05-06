@@ -75,53 +75,53 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	Exception {		
 		return dbMngr.getAllRuralHouses();		
 	}
-	
+
 	public Vector<Booking> getBookings(RuralHouse rh){
 		return dbMngr.getBookingByRH(rh);
 	}
-	
+
 	public void storePayment(Booking booking){
 		dbMngr.storePayment(booking);
 	}
-	
+
 	public boolean paymentDone(Booking booking){
 		return dbMngr.paymentDone(booking);
 	}
-	
+
 	public void close() throws RemoteException{
 		DB4oManager.close();
 	}
-	
+
 	//addRuralHouse
-	
+
 	public void addRuralHouse(int houseNumber, Owner owner, String description, String image, String town){ 
 		RuralHouse rh=owner.addRuralHouse(houseNumber, description, image, town);
 		DB4oManager.getInstance().addRuralHouse(owner,rh);}
-	
+
 	//introduceOffer
-	
+
 	public void createOffer(RuralHouse rh, Date firstDay, Date lastDay, Float price){ 
 		DB4oManager.getInstance().createOffer(rh, firstDay, lastDay, price);		
 	}
-	
+
 	//ownerLogin
-	
+
 	public Owner ownerloginBL (Owner own) {		
 		DB4oManager dbManager = DB4oManager.getInstance();		
 		return dbManager.getOwner(own);		
 	}
-	
+
 	//removeRuralHouse
-	
+
 	public void RemoveRuralHouse(RuralHouse rh){
 		Owner owner = rh.getOwner();
 		owner.removeRuralHouse(rh);
 		DB4oManager.getInstance().updateOwner(owner);
 		DB4oManager.getInstance().removeRuralHouse(rh);		
 	}
-	
+
 	//bookRuralHouse
-	
+
 	public void bookRuralHouse (Booking booking, Offer offer,Client client) {
 		try {
 			DB4oManager dbManager = DB4oManager.getInstance();
@@ -135,16 +135,21 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 		DB4oManager dbManager = DB4oManager.getInstance();
 		return dbManager.getRuralHouseByNumber(houseNumber);
 	}
-	
+
 	public Offer getOffer(RuralHouse ruralHouse, Date firstDay, Date lastDay){
 		DB4oManager dbManager = DB4oManager.getInstance();
 		return dbManager.getOffer(new Offer(ruralHouse, firstDay, lastDay, 0, 0)); 
 	}
-	
+
 	//cancelBooking
-	
+
 	public Vector<Booking> getBookings(Client client){
 		return client.getBookings();
+	}
+
+	@Override
+	public void storeRuralHouse(RuralHouse rh) throws RemoteException {
+		dbMngr.storeRuralHouse(rh);
 	}
 
 	/*public Booking createBooking(RuralHouse ruralHouse, Date firstDate, Date lastDate, String bookTelephoneNumber)

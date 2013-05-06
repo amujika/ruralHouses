@@ -240,5 +240,10 @@ public class DB4oManager {
 		db.commit();		
 	}
 
+	public void storeRuralHouse(RuralHouse rh) {
+		db.store(rh);
+		db.commit();
+	}
+
 }
 

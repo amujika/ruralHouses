@@ -88,6 +88,9 @@ public interface ApplicationFacadeInterface extends Remote {
 	//ownerLogin
 	public Owner ownerloginBL (Owner own) throws RemoteException;
 	
+	//storeRuralHouse
+	public void storeRuralHouse(RuralHouse rh) throws RemoteException;
+	
 	//removeRuralHouse
 	public void RemoveRuralHouse(RuralHouse rh)throws RemoteException;
 	
@@ -100,4 +103,7 @@ public interface ApplicationFacadeInterface extends Remote {
 	
 	//cancelBooking
 	public Vector<Booking> getBookings(Client client) throws RemoteException;
+
+	
+
 }
