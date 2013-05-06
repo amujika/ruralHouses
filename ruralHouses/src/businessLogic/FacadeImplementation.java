@@ -146,6 +146,11 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	public Vector<Booking> getBookings(Client client){
 		return client.getBookings();
 	}
+	
+	public void cancelBooking(Booking b){
+		DB4oManager dbManager = DB4oManager.getInstance();
+		dbManager.removeBooking(b);
+	}
 
 	@Override
 	public void storeRuralHouse(RuralHouse rh) throws RemoteException {

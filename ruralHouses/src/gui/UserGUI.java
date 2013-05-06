@@ -27,6 +27,7 @@ public class UserGUI extends JFrame {
 	private JPanel jContentPane = null;
 	private JButton btnBookRH = null;
 	private JButton searchAvailabilityButton = null;
+	private JButton cancelBookingButton = null;
 
 	public static ApplicationFacadeInterface facadeInterface;
 	
@@ -53,6 +54,7 @@ public class UserGUI extends JFrame {
 			jContentPane.setLayout(null);
 			jContentPane.add(getSearchAvailabilityButton());
 			jContentPane.add(getBtnBookRH());
+			jContentPane.add(getCancelBookingButton());
 		}
 		return jContentPane;
 	}
@@ -60,7 +62,7 @@ public class UserGUI extends JFrame {
 	private JButton getBtnBookRH() {
 		if (btnBookRH == null) {
 			btnBookRH = new JButton();
-			btnBookRH.setBounds(56, 135, 245, 37);
+			btnBookRH.setBounds(56, 86, 245, 37);
 			btnBookRH.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			btnBookRH.setText("Book rural house");
 			btnBookRH.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -92,4 +94,21 @@ public class UserGUI extends JFrame {
 		return searchAvailabilityButton;
 	}
 	
+	private JButton getCancelBookingButton(){
+		if (cancelBookingButton == null) {
+			cancelBookingButton = new JButton();
+			cancelBookingButton.setEnabled(true);
+			cancelBookingButton.setBounds(56, 134, 245, 37);
+			cancelBookingButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
+			cancelBookingButton.setText("Cancel booking");
+			cancelBookingButton.setAlignmentX(Component.CENTER_ALIGNMENT);		
+			cancelBookingButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame a = new CancelBookingGUI();
+				a.setVisible(true);			
+			}
+			});
+		}
+		return cancelBookingButton;
+	}
 }

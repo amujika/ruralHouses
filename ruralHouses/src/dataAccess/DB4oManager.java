@@ -225,6 +225,11 @@ public class DB4oManager {
 		db.delete(rh);
 		db.commit();
 	}
+	
+	public void removeBooking(Booking b){
+		db.delete(b);
+		db.commit();
+	}
 
 	/**
 	 * This method returns the instance of the DB4oManager class 
