@@ -104,7 +104,7 @@ public interface ApplicationFacadeInterface extends Remote {
 	//cancelBooking
 	public Vector<Booking> getBookings(Client client) throws RemoteException;
 	
-	public void cancelBooking(Booking b)throws RemoteException;
+	public void cancelBooking(Booking booking, Client client)throws RemoteException;
 	
 	
 

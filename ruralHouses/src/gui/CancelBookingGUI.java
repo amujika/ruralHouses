@@ -66,7 +66,8 @@ public class CancelBookingGUI extends JFrame {
 				Booking b= (Booking) bookings.getSelectedItem();
 				ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 				try {
-					facade.cancelBooking(b);
+					Client client = new Client("Bob","userBob","passBob");
+					facade.cancelBooking(b,client);
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

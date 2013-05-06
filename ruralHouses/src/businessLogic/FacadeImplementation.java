@@ -147,9 +147,9 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 		return client.getBookings();
 	}
 	
-	public void cancelBooking(Booking b){
+	public void cancelBooking(Booking booking, Client client){
 		DB4oManager dbManager = DB4oManager.getInstance();
-		dbManager.removeBooking(b);
+		dbManager.removeBooking(booking,client);
 	}
 
 	@Override

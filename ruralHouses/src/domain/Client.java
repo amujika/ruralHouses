@@ -69,6 +69,10 @@ public class Client implements Serializable, Comparable<Client> {
 	public void addBooking (Booking b){
 		this.bookings.add(b);
 	}
+	
+	public void removeBooking (Booking b){
+		this.bookings.remove(b);
+	}
 
 	//	public Vector<RuralHouse> getRuralHouses() {
 	//		return ruralHouses;

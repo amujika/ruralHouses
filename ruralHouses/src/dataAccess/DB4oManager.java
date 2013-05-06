@@ -226,8 +226,10 @@ public class DB4oManager {
 		db.commit();
 	}
 	
-	public void removeBooking(Booking b){
-		db.delete(b);
+	public void removeBooking(Booking booking, Client client){
+		client.removeBooking(booking);
+		db.store(client);
+		db.delete(booking);
 		db.commit();
 	}
 
