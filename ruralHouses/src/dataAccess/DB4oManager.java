@@ -108,6 +108,28 @@ public class DB4oManager {
 			// db.close();
 		}
 	}
+	
+	public boolean getClient(Client client) {
+		ObjectContainer db = DB4oManager.getContainer();
+
+		try {
+			List<Client> result = db.queryByExample(client);
+
+			if (result.isEmpty()) {
+				return false;
+			} else {
+				return true;
+			} // END if
+
+		} finally {
+			// db.close();
+		}
+	}
+	
+	public void registerClient(Client client){
+		db.store(client);
+		db.commit();
+	}
 
 	public Vector<RuralHouse> getAllRuralHouses() throws RemoteException,
 	Exception {

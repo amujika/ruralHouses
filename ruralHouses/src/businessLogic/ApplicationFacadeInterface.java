@@ -88,6 +88,10 @@ public interface ApplicationFacadeInterface extends Remote {
 	//ownerLogin
 	public Owner ownerloginBL (Owner own) throws RemoteException;
 	
+	//clientRegistration
+	public boolean clientRegistered (Client cli) throws RemoteException;
+	public void registerClient (Client cli) throws RemoteException;
+	
 	//storeRuralHouse
 	public void storeRuralHouse(RuralHouse rh) throws RemoteException;
 	

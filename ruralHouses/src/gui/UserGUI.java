@@ -30,6 +30,8 @@ public class UserGUI extends JFrame {
 	private JButton cancelBookingButton = null;
 
 	public static ApplicationFacadeInterface facadeInterface;
+	private JButton btnRegistrate;
+	private JButton btnAuthenticate;
 	
 	public UserGUI() {
 		super();
@@ -55,6 +57,8 @@ public class UserGUI extends JFrame {
 			jContentPane.add(getSearchAvailabilityButton());
 			jContentPane.add(getBtnBookRH());
 			jContentPane.add(getCancelBookingButton());
+			jContentPane.add(getBtnRegistrate());
+			jContentPane.add(getBtnAuthenticate());
 		}
 		return jContentPane;
 	}
@@ -62,7 +66,7 @@ public class UserGUI extends JFrame {
 	private JButton getBtnBookRH() {
 		if (btnBookRH == null) {
 			btnBookRH = new JButton();
-			btnBookRH.setBounds(56, 86, 245, 37);
+			btnBookRH.setBounds(56, 59, 245, 37);
 			btnBookRH.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			btnBookRH.setText("Book rural house");
 			btnBookRH.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -80,7 +84,7 @@ public class UserGUI extends JFrame {
 		if (searchAvailabilityButton == null) {
 			searchAvailabilityButton = new JButton();
 			searchAvailabilityButton.setEnabled(true);
-			searchAvailabilityButton.setBounds(56, 38, 245, 37);
+			searchAvailabilityButton.setBounds(56, 11, 245, 37);
 			searchAvailabilityButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			searchAvailabilityButton.setText("Search availability");
 			searchAvailabilityButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -98,7 +102,7 @@ public class UserGUI extends JFrame {
 		if (cancelBookingButton == null) {
 			cancelBookingButton = new JButton();
 			cancelBookingButton.setEnabled(true);
-			cancelBookingButton.setBounds(56, 134, 245, 37);
+			cancelBookingButton.setBounds(56, 107, 245, 37);
 			cancelBookingButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
 			cancelBookingButton.setText("Cancel booking");
 			cancelBookingButton.setAlignmentX(Component.CENTER_ALIGNMENT);		
@@ -110,5 +114,24 @@ public class UserGUI extends JFrame {
 			});
 		}
 		return cancelBookingButton;
+	}
+	private JButton getBtnRegistrate() {
+		if (btnRegistrate == null) {
+			btnRegistrate = new JButton("Registrate");
+			btnRegistrate.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JFrame a = new ClientRegistrationGUI();
+					a.setVisible(true);}
+			});
+			btnRegistrate.setBounds(53, 155, 89, 23);
+		}
+		return btnRegistrate;
+	}
+	private JButton getBtnAuthenticate() {
+		if (btnAuthenticate == null) {
+			btnAuthenticate = new JButton("Authenticate");
+			btnAuthenticate.setBounds(175, 155, 109, 23);
+		}
+		return btnAuthenticate;
 	}
 }
