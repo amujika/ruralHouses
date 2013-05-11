@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 
 public class StartWindow extends JFrame {
 	
-	public static boolean clientServer = false;
+	public static boolean clientServer = !false;
 
 	private static final long serialVersionUID = 1L;
 	

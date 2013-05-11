@@ -12,9 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-import businessLogic.AddRuralHouseBL;
 import businessLogic.ApplicationFacadeInterface;
-import businessLogic.RemoveRuralHouseBL;
 
 import domain.Owner;
 import domain.RuralHouse;

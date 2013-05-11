@@ -11,7 +11,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 import businessLogic.ApplicationFacadeInterface;
-import businessLogic.IntroduceOfferBL;
 
 import com.toedter.calendar.JCalendar;
 

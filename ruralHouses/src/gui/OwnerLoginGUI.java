@@ -18,7 +18,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
 import businessLogic.ApplicationFacadeInterface;
-import businessLogic.OwnerLoginBL;
 
 import com.db4o.ObjectContainer;
 

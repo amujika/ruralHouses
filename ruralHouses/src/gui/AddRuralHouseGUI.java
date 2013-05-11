@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
-import businessLogic.AddRuralHouseBL;
+
 import businessLogic.ApplicationFacadeInterface;
 
 import domain.Owner;

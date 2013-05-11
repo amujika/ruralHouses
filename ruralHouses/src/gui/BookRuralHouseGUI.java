@@ -1,7 +1,6 @@
 package gui;
 
 import businessLogic.ApplicationFacadeInterface;
-import businessLogic.BookRuralHouseBL;
 
 import com.toedter.calendar.*;
 

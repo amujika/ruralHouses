@@ -3,7 +3,6 @@ package gui;
 import javax.swing.*;
 
 import businessLogic.ApplicationFacadeInterface;
-import businessLogic.BookRuralHouseBL;
 
 import java.awt.*;
 import java.awt.event.*;

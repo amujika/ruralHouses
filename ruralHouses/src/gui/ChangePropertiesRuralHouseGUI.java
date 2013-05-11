@@ -13,9 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import businessLogic.AddRuralHouseBL;
+
 import businessLogic.ApplicationFacadeInterface;
-import businessLogic.RemoveRuralHouseBL;
 
 import domain.Owner;
 import domain.RuralHouse;
