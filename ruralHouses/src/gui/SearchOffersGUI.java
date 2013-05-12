@@ -28,7 +28,7 @@ public class SearchOffersGUI extends JFrame {
 	private JLabel lblRuralHouse = new JLabel();
 	private JComboBox jCBRuralHouse;
 	private JButton btnSearch = new JButton();
-	private JButton btnClose = new JButton();
+	private JButton btnCancel = new JButton();
 	private Calendar myCalendar = null;
 	private JList showOffers = new JList();
 	
@@ -38,6 +38,7 @@ public class SearchOffersGUI extends JFrame {
 	private JTextField txtTelephone;
 
 	public SearchOffersGUI() {
+		getContentPane().setBackground(new Color(152, 251, 152));
 		try {
 			jbInit();
 		}
@@ -61,27 +62,29 @@ public class SearchOffersGUI extends JFrame {
 		});
 
 		this.getContentPane().setLayout(null);
-		this.setSize(new Dimension(440, 375));
+		this.setSize(new Dimension(460, 360));
 		this.setTitle("Search available rural houses");
 		lblRuralHouse.setText("Rural house:");
 		jCBRuralHouse.setBounds(new Rectangle(10, 10, 115, 25));
 		lblRuralHouse.setBounds(new Rectangle(40, 20, 105, 25));
 		jCBRuralHouse.setBounds(new Rectangle(115, 30, 115, 20));
+		btnSearch.setBackground(new Color(152, 251, 152));
 		btnSearch.setText("Search");
-		btnSearch.setBounds(new Rectangle(10, 281, 130, 30));
+		btnSearch.setBounds(new Rectangle(15, 281, 130, 30));
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnAccept_actionPerformed(e);
 			}
 		});
-		btnClose.setText("Close");
-		btnClose.setBounds(new Rectangle(284, 281, 130, 30));
-		btnClose.addActionListener(new ActionListener() {
+		btnCancel.setBackground(new Color(152, 251, 152));
+		btnCancel.setText("Cancel");
+		btnCancel.setBounds(new Rectangle(295, 281, 130, 30));
+		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnClose_actionPerformed(e);
 			}
 		});
-		this.getContentPane().add(btnClose, null);
+		this.getContentPane().add(btnCancel, null);
 		this.getContentPane().add(btnSearch, null);
 		this.getContentPane().add(jCBRuralHouse, null);
 		this.getContentPane().add(lblRuralHouse, null);
@@ -90,6 +93,7 @@ public class SearchOffersGUI extends JFrame {
 		getContentPane().add(showOffers);
 		
 		JButton btnBook = new JButton();
+		btnBook.setBackground(new Color(152, 251, 152));
 		btnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				btnBook_actionPerformed();
@@ -97,7 +101,7 @@ public class SearchOffersGUI extends JFrame {
 		});
 		btnBook.setText("Book");
 		btnBook.setBounds(new Rectangle(284, 281, 130, 30));
-		btnBook.setBounds(144, 281, 130, 30);
+		btnBook.setBounds(155, 281, 130, 30);
 		getContentPane().add(btnBook);
 		
 		txtTelephone = new JTextField();

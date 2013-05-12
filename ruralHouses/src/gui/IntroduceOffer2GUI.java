@@ -41,6 +41,7 @@ public class IntroduceOffer2GUI extends JFrame  {
 	private ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 	public IntroduceOffer2GUI(Vector<RuralHouse> v)	{
+		getContentPane().setBackground(new Color(152, 251, 152));
 		try	{
 			jbInit(v);
 		}
@@ -51,7 +52,7 @@ public class IntroduceOffer2GUI extends JFrame  {
 
 	private void jbInit(Vector<RuralHouse> v) throws Exception {
 		this.getContentPane().setLayout(null);
-		this.setSize(new Dimension(513, 433));
+		this.setSize(new Dimension(523, 407));
 		this.setTitle("Set availability");
 
 		jCBListHouses = new JComboBox(v);
@@ -70,8 +71,9 @@ public class IntroduceOffer2GUI extends JFrame  {
 		lblPrice.setBounds(new Rectangle(260, 30, 75, 20));
 		txtPrice.setBounds(new Rectangle(350, 30, 115, 20));
 		txtPrice.setText("0");
+		btnAccept.setBackground(new Color(152, 251, 152));
 		btnAccept.setText("Accept");
-		btnAccept.setBounds(new Rectangle(100, 360, 130, 30));
+		btnAccept.setBounds(new Rectangle(306, 328, 130, 30));
 		txtPrice.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e) {}
 			public void focusLost(FocusEvent e) {
@@ -83,17 +85,20 @@ public class IntroduceOffer2GUI extends JFrame  {
 				btnAccept_actionPerformed(e);
 			}
 		});
+		btnCancel.setBackground(new Color(152, 251, 152));
 		btnCancel.setText("Cancel");
-		btnCancel.setBounds(new Rectangle(270, 360, 130, 30));
+		btnCancel.setBounds(new Rectangle(75, 328, 130, 30));
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnCancel_actionPerformed(e);
 			}
 		});
-		lblSpace.setBounds(new Rectangle(100, 320, 300, 20));
+		lblSpace.setBounds(new Rectangle(100, 301, 305, 20));
 		lblSpace.setForeground(Color.red);
 		lblSpace.setSize(new Dimension(305, 20));
+		jCalendar1.getDayChooser().setBackground(new Color(152, 251, 152));
 		jCalendar1.setBounds(new Rectangle(25, 100, 220, 165));
+		jCalendar2.getDayChooser().setBackground(new Color(152, 251, 152));
 		jCalendar2.setBounds(new Rectangle(260, 100, 220, 165));
 
 		// Code for JCalendar

@@ -43,7 +43,7 @@ public class OwnerGUI extends JFrame {
 
 	private void initialize() {
 		// this.setSize(271, 295);
-		this.setSize(355, 305);
+		this.setSize(460, 360);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Use Cases");
 	}
@@ -51,19 +51,28 @@ public class OwnerGUI extends JFrame {
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
+			jContentPane.setBackground(new Color(152, 251, 152));
 			jContentPane.setLayout(null);
 			jContentPane.add(getBtnIntroduceOffer());
 			jContentPane.add(getBtnAddRuralHouse());
 			jContentPane.add(getBtnRemoveRuralHouse());
 			jContentPane.add(getBtnRecordPayment());
 			jContentPane.add(getBtnChangeProperties());			
+			{
+				JLabel lblOwner = new JLabel("OWNER");
+				lblOwner.setForeground(new Color(47, 79, 79));
+				lblOwner.setFont(new Font("Calibri", Font.BOLD, 30));
+				lblOwner.setBounds(160, 32, 99, 37);
+				jContentPane.add(lblOwner);
+			}
 		}
 		return jContentPane;
 	}
 
 	private JButton getBtnAddRuralHouse() {
 		JButton btnAddRH = new JButton("Add a Rural House");
-		btnAddRH.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		btnAddRH.setBackground(new Color(152, 251, 152));
+		btnAddRH.setFont(new Font("Calibri", Font.PLAIN, 24));
 		btnAddRH.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Owner owner = StartWindow.OWNER;
@@ -81,13 +90,14 @@ public class OwnerGUI extends JFrame {
 				a.setVisible(true);
 			}
 		});
-		btnAddRH.setBounds(57, 23, 245, 39);
+		btnAddRH.setBounds(97, 80, 245, 37);
 		return btnAddRH;
 	}
 
 	private JButton getBtnChangeProperties() {
 		JButton	btnChangeProperties = new JButton("Change Properties");
-		btnChangeProperties.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		btnChangeProperties.setBackground(new Color(152, 251, 152));
+		btnChangeProperties.setFont(new Font("Calibri", Font.PLAIN, 24));
 		btnChangeProperties.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Owner owner = StartWindow.OWNER;
@@ -107,13 +117,14 @@ public class OwnerGUI extends JFrame {
 		});
 		btnChangeProperties.setText("Change Properties");
 
-		btnChangeProperties.setBounds(57, 73, 245, 37);
+		btnChangeProperties.setBounds(97, 128, 245, 37);
 		return btnChangeProperties;
 	}
 
 	private JButton getBtnRemoveRuralHouse() {
 		JButton btnRemoveRH = new JButton("Remove Rural House");
-		btnRemoveRH.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		btnRemoveRH.setBackground(new Color(152, 251, 152));
+		btnRemoveRH.setFont(new Font("Calibri", Font.PLAIN, 24));
 		btnRemoveRH.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Owner owner = StartWindow.OWNER;
@@ -131,15 +142,16 @@ public class OwnerGUI extends JFrame {
 				a.setVisible(true);
 			}
 		});
-		btnRemoveRH.setBounds(57, 122, 245, 37);
+		btnRemoveRH.setBounds(97, 273, 245, 38);
 		return btnRemoveRH;
 	}
 
 	private JButton getBtnIntroduceOffer() {
 		if (btnIntroduceOffer == null) {
 			btnIntroduceOffer = new JButton();
-			btnIntroduceOffer.setBounds(57, 169, 245, 37);
-			btnIntroduceOffer.setFont(new Font("Tahoma", Font.PLAIN, 22));
+			btnIntroduceOffer.setBackground(new Color(152, 251, 152));
+			btnIntroduceOffer.setBounds(97, 176, 245, 37);
+			btnIntroduceOffer.setFont(new Font("Calibri", Font.PLAIN, 24));
 			btnIntroduceOffer.setText("Introduce new offer");
 			btnIntroduceOffer.setAlignmentX(Component.CENTER_ALIGNMENT);
 			btnIntroduceOffer
@@ -171,6 +183,7 @@ public class OwnerGUI extends JFrame {
 
 	private JButton getBtnRecordPayment() {
 		btnRecordPayment = new JButton("Record Payment");
+		btnRecordPayment.setBackground(new Color(152, 251, 152));
 		btnRecordPayment.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Owner owner = StartWindow.OWNER;
@@ -188,8 +201,8 @@ public class OwnerGUI extends JFrame {
 				a.setVisible(true);
 			}
 		});
-		btnRecordPayment.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		btnRecordPayment.setBounds(57, 217, 245, 38);
+		btnRecordPayment.setFont(new Font("Calibri", Font.PLAIN, 24));
+		btnRecordPayment.setBounds(97, 224, 245, 38);
 		return btnRecordPayment;
 	}
 } // @jve:decl-index=0:visual-constraint="0,0"

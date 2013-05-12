@@ -46,6 +46,7 @@ public class BookRuralHouseGUI extends JFrame {
 	private JLabel lblSpace = new JLabel();
 
 	public BookRuralHouseGUI() {
+		getContentPane().setBackground(new Color(152, 251, 152));
 		try {
 			jbInit();
 		}
@@ -64,15 +65,15 @@ public class BookRuralHouseGUI extends JFrame {
 	}
 
 	private void jbInit() throws Exception {
-
-		this.getContentPane().setLayout(null);
-		this.setSize(new Dimension(430, 440));
+		this.setSize(new Dimension(460, 360));
 		this.setTitle("Book Rural House");
+		lblRuralHouse.setBounds(15, 10, 115, 20);
 		lblRuralHouse.setText("Rural house:");
 		final ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 		Vector<RuralHouse> ruralHouses=facade.getAllRuralHouses();
 
 		jCBRuralHouse = new JComboBox<RuralHouse>(ruralHouses);
+		jCBRuralHouse.setBounds(120, 10, 175, 20);
 		jCBRuralHouse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				showInfo.setVisible(false);
@@ -80,9 +81,7 @@ public class BookRuralHouseGUI extends JFrame {
 				showInfo.setVisible(true);
 			}
 		});
-
-		lblRuralHouse.setBounds(new Rectangle(15, 10, 115, 20));
-		jCBRuralHouse.setBounds(new Rectangle(120, 10, 175, 20));
+		txtNumNights.setBounds(107, 227, 40, 20);
 
 		txtNumNights.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e) {}
@@ -90,27 +89,26 @@ public class BookRuralHouseGUI extends JFrame {
 				txtNumNights_focusLost();
 			}
 		});
+		txtTelephone.setBounds(294, 227, 140, 20);
 		txtTelephone.addFocusListener(new FocusListener() {
 			public void focusGained(FocusEvent e) { }
 			public void focusLost(FocusEvent e) {
 				txtTelephone_focusLost();
 			}
 		});
+		lblArrivalDay.setBounds(15, 41, 115, 20);
 		lblArrivalDay.setText("Arrival day:");
-		lblArrivalDay.setBounds(new Rectangle(15, 40, 115, 20));
+		lblNumNights.setBounds(15, 227, 115, 20);
 		lblNumNights.setText("Number of nights:");
-		lblNumNights.setBounds(new Rectangle(15, 240, 115, 20));
+		lblTelephone.setBounds(155, 227, 140, 20);
 		lblTelephone.setText("Telephone contact number:");
-		lblTelephone.setBounds(new Rectangle(15, 270, 140, 20));
-		txtDate.setBounds(new Rectangle(155, 205, 140, 20));
+		txtDate.setBounds(155, 196, 140, 20);
 		txtDate.setEditable(false);
-		txtNumNights.setBounds(new Rectangle(155, 240, 140, 20));
 		txtNumNights.setText("0");
-		txtTelephone.setBounds(new Rectangle(155, 270, 140, 20));
 		txtTelephone.setText("0");
+		btnAccept.setBackground(new Color(152, 251, 152));
+		btnAccept.setBounds(267, 281, 130, 30);
 		btnAccept.setText("Accept");
-		btnAccept.setBounds(new Rectangle(50, 345, 130, 30));
-		btnAccept.setSize(new Dimension(130, 30));
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// House code
@@ -140,29 +138,32 @@ public class BookRuralHouseGUI extends JFrame {
 				}
 			}
 		});
+		btnCancel.setBackground(new Color(152, 251, 152));
+		btnCancel.setBounds(41, 281, 130, 30);
 		btnCancel.setText("Cancel");
-		btnCancel.setBounds(new Rectangle(220, 345, 130, 30));
-		btnCancel.setSize(new Dimension(130, 30));
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnCancel_actionPerformed(e);
 			}
 		});
-		lblSpace.setBounds(new Rectangle(50, 310, 300, 20));
+		lblSpace.setBounds(81, 258, 300, 20);
 		lblSpace.setForeground(Color.red);
-		jCalendar1.setBounds(new Rectangle(155, 50, 235, 145));
-		this.getContentPane().add(jCalendar1, null);
-		this.getContentPane().add(lblSpace, null);
-		this.getContentPane().add(btnCancel, null);
-		this.getContentPane().add(btnAccept, null);
-		this.getContentPane().add(txtTelephone, null);
-		this.getContentPane().add(txtNumNights, null);
-		this.getContentPane().add(txtDate, null);
-		this.getContentPane().add(lblTelephone, null);
-		this.getContentPane().add(lblNumNights, null);
-		this.getContentPane().add(lblArrivalDay, null);
-		this.getContentPane().add(jCBRuralHouse, null);
-		this.getContentPane().add(lblRuralHouse, null);
+		getContentPane().setLayout(null);
+		jCalendar1.getDayChooser().setBackground(new Color(152, 251, 152));
+		jCalendar1.getYearChooser().setBackground(new Color(152, 251, 152));
+		jCalendar1.setBounds(155, 50, 235, 145);
+		this.getContentPane().add(jCalendar1);
+		this.getContentPane().add(lblSpace);
+		this.getContentPane().add(btnCancel);
+		this.getContentPane().add(btnAccept);
+		this.getContentPane().add(txtTelephone);
+		this.getContentPane().add(txtNumNights);
+		this.getContentPane().add(txtDate);
+		this.getContentPane().add(lblTelephone);
+		this.getContentPane().add(lblNumNights);
+		this.getContentPane().add(lblArrivalDay);
+		this.getContentPane().add(jCBRuralHouse);
+		this.getContentPane().add(lblRuralHouse);
 
 		// Code for JCalendar
 		this.jCalendar1.addPropertyChangeListener(new PropertyChangeListener() {

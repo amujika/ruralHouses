@@ -30,6 +30,7 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 	private ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 	public BookRuralHouseConfirmationWindow(Booking booking, Offer offer) {
+		getContentPane().setBackground(new Color(152, 251, 152));
 		try {
 			jbInit(booking,offer);
 		}
@@ -41,40 +42,41 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 	private void jbInit(final Booking booking, final Offer offer) throws Exception {
 
 		this.getContentPane().setLayout(null);
-		this.setSize(new Dimension(416, 316));
+		this.setSize(new Dimension(460, 360));
 		this.setTitle("Confirm Booking");
 		this.setResizable(false);
 		lblBankAccNum.setText("Owner Bank account number:");
-		lblBankAccNum.setBounds(new Rectangle(20, 20, 200, 25));
-		txtBankAccNum.setBounds(new Rectangle(225, 20, 165, 25));
+		lblBankAccNum.setBounds(new Rectangle(20, 39, 200, 25));
+		txtBankAccNum.setBounds(new Rectangle(225, 39, 165, 25));
 		txtBankAccNum.setEditable(false);
 		txtBankAccNum.setText(booking.getOffer().getRuralHouse().getOwner().getBankAccount());
 
 		lblBookingNum.setText("Booking number:");
-		lblBookingNum.setBounds(new Rectangle(20, 60, 130, 25));
-		txtBookingNum.setBounds(new Rectangle(225, 60, 165, 25));
+		lblBookingNum.setBounds(new Rectangle(20, 75, 130, 25));
+		txtBookingNum.setBounds(new Rectangle(225, 75, 165, 25));
 		txtBookingNum.setEditable(false);
 
 		txtBookingNum.setText(Integer.toString(booking.getBookNumber()));
 
 		lblDepositAdvertise.setText("You ought to transfer 20% of the total price of the booking in the next three days.");
-		lblDepositAdvertise.setBounds(new Rectangle(20, 105, 370, 25));
+		lblDepositAdvertise.setBounds(new Rectangle(20, 127, 424, 37));
+		btnAccept.setBackground(new Color(152, 251, 152));
 		btnAccept.setText("Accept");
-		btnAccept.setBounds(new Rectangle(135, 235, 130, 30));
+		btnAccept.setBounds(new Rectangle(144, 273, 130, 30));
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnAccept_actionPerformed(e,booking,offer);
 			}
 		});
 		lblTotalPayment.setText("Total:");
-		lblTotalPayment.setBounds(new Rectangle(70, 140, 85, 25));
+		lblTotalPayment.setBounds(new Rectangle(70, 175, 85, 25));
 		lblDepositAmount.setText("Deposit amount:");
-		lblDepositAmount.setBounds(new Rectangle(70, 175, 100, 25));
-		txtTotalPayment.setBounds(new Rectangle(180, 140, 115, 25));
+		lblDepositAmount.setBounds(new Rectangle(70, 225, 100, 25));
+		txtTotalPayment.setBounds(new Rectangle(180, 175, 115, 25));
 		txtTotalPayment.setEditable(false);
 
 		txtTotalPayment.setText(Float.toString(booking.getPrice()) + " €");
-		txtDepositAmount.setBounds(new Rectangle(180, 175, 115, 25));
+		txtDepositAmount.setBounds(new Rectangle(180, 225, 115, 25));
 		txtDepositAmount.setEditable(false);
 		txtDepositAmount.setText(Float.toString(booking.getPrice()*(float)0.2) + " €");
 		this.getContentPane().add(txtDepositAmount, null);

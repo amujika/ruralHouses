@@ -21,6 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.rmi.RemoteException;
+import java.awt.Color;
 
 public class AddRuralHouseGUI extends JFrame {
 
@@ -37,8 +38,9 @@ public class AddRuralHouseGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public AddRuralHouseGUI(final Owner owner) {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 460, 360);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(152, 251, 152));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -53,7 +55,7 @@ public class AddRuralHouseGUI extends JFrame {
 		txtHouseNum.setColumns(10);
 
 		JLabel lblDescription = new JLabel("Description:");
-		lblDescription.setBounds(32, 60, 68, 23);
+		lblDescription.setBounds(32, 73, 68, 23);
 		contentPane.add(lblDescription);
 
 		JLabel lblTown = new JLabel("Town:");
@@ -66,21 +68,23 @@ public class AddRuralHouseGUI extends JFrame {
 		txtTown.setColumns(10);
 
 		txtDescription = new JTextField();
-		txtDescription.setBounds(109, 63, 238, 107);
+		txtDescription.setBounds(109, 77, 238, 142);
 		contentPane.add(txtDescription);
 		txtDescription.setColumns(10);
 
-		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.setBackground(new Color(152, 251, 152));
+		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 			}
 		});
-		btnBack.setBounds(131, 228, 89, 23);
-		contentPane.add(btnBack);
+		btnCancel.setBounds(109, 266, 89, 23);
+		contentPane.add(btnCancel);
 
-		JButton btnFinish = new JButton("Finish");
-		btnFinish.addActionListener(new ActionListener() {
+		JButton btnAccept = new JButton("Accept");
+		btnAccept.setBackground(new Color(152, 251, 152));
+		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 				int houseNumber = Integer.parseInt(txtHouseNum.getText());
@@ -100,11 +104,12 @@ public class AddRuralHouseGUI extends JFrame {
 
 			}
 		});
-	btnFinish.setBounds(243, 228, 89, 23);
+	btnAccept.setBounds(258, 266, 89, 23);
 
-		contentPane.add(btnFinish);
+		contentPane.add(btnAccept);
 
-		JButton btnImage = new JButton("Image");
+		JButton btnImage = new JButton("Search image");
+		btnImage.setBackground(new Color(152, 251, 152));
 		btnImage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -127,7 +132,7 @@ public class AddRuralHouseGUI extends JFrame {
 				}
 			}
 		});
-		btnImage.setBounds(109, 182, 117, 25);
+		btnImage.setBounds(172, 230, 117, 25);
 		contentPane.add(btnImage);
 	}
 

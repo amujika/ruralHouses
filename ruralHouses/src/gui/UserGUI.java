@@ -30,8 +30,8 @@ public class UserGUI extends JFrame {
 	private JButton cancelBookingButton = null;
 
 	public static ApplicationFacadeInterface facadeInterface;
-	private JButton btnRegistrate;
 	private JButton btnAuthenticate;
+	private JLabel lblUser;
 	
 	public UserGUI() {
 		super();
@@ -45,7 +45,7 @@ public class UserGUI extends JFrame {
 	
 	private void initialize() {
 		// this.setSize(271, 295);
-		this.setSize(350, 258);
+		this.setSize(460, 360);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Use Cases");
 	}
@@ -53,12 +53,13 @@ public class UserGUI extends JFrame {
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
+			jContentPane.setBackground(new Color(152, 251, 152));
 			jContentPane.setLayout(null);
 			jContentPane.add(getSearchAvailabilityButton());
 			jContentPane.add(getBtnBookRH());
 			jContentPane.add(getCancelBookingButton());
-			jContentPane.add(getBtnRegistrate());
 			jContentPane.add(getBtnAuthenticate());
+			jContentPane.add(getLblUser());
 		}
 		return jContentPane;
 	}
@@ -66,8 +67,9 @@ public class UserGUI extends JFrame {
 	private JButton getBtnBookRH() {
 		if (btnBookRH == null) {
 			btnBookRH = new JButton();
-			btnBookRH.setBounds(56, 59, 245, 37);
-			btnBookRH.setFont(new Font("Tahoma", Font.PLAIN, 24));
+			btnBookRH.setBackground(new Color(152, 251, 152));
+			btnBookRH.setBounds(97, 214, 245, 37);
+			btnBookRH.setFont(new Font("Calibri", Font.PLAIN, 24));
 			btnBookRH.setText("Book rural house");
 			btnBookRH.setAlignmentX(Component.CENTER_ALIGNMENT);
 			btnBookRH.addActionListener(new java.awt.event.ActionListener() {
@@ -83,9 +85,10 @@ public class UserGUI extends JFrame {
 	private JButton getSearchAvailabilityButton() {
 		if (searchAvailabilityButton == null) {
 			searchAvailabilityButton = new JButton();
+			searchAvailabilityButton.setBackground(new Color(152, 251, 152));
 			searchAvailabilityButton.setEnabled(true);
-			searchAvailabilityButton.setBounds(56, 11, 245, 37);
-			searchAvailabilityButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
+			searchAvailabilityButton.setBounds(97, 166, 245, 37);
+			searchAvailabilityButton.setFont(new Font("Calibri", Font.PLAIN, 24));
 			searchAvailabilityButton.setText("Search availability");
 			searchAvailabilityButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 			searchAvailabilityButton.addActionListener(new java.awt.event.ActionListener() {
@@ -101,9 +104,10 @@ public class UserGUI extends JFrame {
 	private JButton getCancelBookingButton(){
 		if (cancelBookingButton == null) {
 			cancelBookingButton = new JButton();
+			cancelBookingButton.setBackground(new Color(152, 251, 152));
 			cancelBookingButton.setEnabled(true);
-			cancelBookingButton.setBounds(56, 107, 245, 37);
-			cancelBookingButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
+			cancelBookingButton.setBounds(97, 262, 245, 33);
+			cancelBookingButton.setFont(new Font("Calibri", Font.PLAIN, 24));
 			cancelBookingButton.setText("Cancel booking");
 			cancelBookingButton.setAlignmentX(Component.CENTER_ALIGNMENT);		
 			cancelBookingButton.addActionListener(new ActionListener() {
@@ -115,23 +119,22 @@ public class UserGUI extends JFrame {
 		}
 		return cancelBookingButton;
 	}
-	private JButton getBtnRegistrate() {
-		if (btnRegistrate == null) {
-			btnRegistrate = new JButton("Registrate");
-			btnRegistrate.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					JFrame a = new ClientRegistrationGUI();
-					a.setVisible(true);}
-			});
-			btnRegistrate.setBounds(53, 155, 89, 23);
-		}
-		return btnRegistrate;
-	}
 	private JButton getBtnAuthenticate() {
 		if (btnAuthenticate == null) {
 			btnAuthenticate = new JButton("Authenticate");
-			btnAuthenticate.setBounds(175, 155, 109, 23);
+			btnAuthenticate.setBackground(new Color(152, 251, 152));
+			btnAuthenticate.setFont(new Font("Calibri", Font.PLAIN, 30));
+			btnAuthenticate.setBounds(97, 93, 245, 54);
 		}
 		return btnAuthenticate;
+	}
+	private JLabel getLblUser() {
+		if (lblUser == null) {
+			lblUser = new JLabel("USER");
+			lblUser.setFont(new Font("Calibri", Font.BOLD, 30));
+			lblUser.setForeground(new Color(47, 79, 79));
+			lblUser.setBounds(179, 28, 80, 54);
+		}
+		return lblUser;
 	}
 }

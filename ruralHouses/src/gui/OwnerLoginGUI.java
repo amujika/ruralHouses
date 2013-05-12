@@ -50,10 +50,12 @@ public class OwnerLoginGUI extends JFrame {
 		setResizable(false);
 		setBounds(100, 100, 333, 262);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(152, 251, 152));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		JLabel lblUserAuthen = new JLabel("User authentication:");		
+		lblUserAuthen.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setToolTipText("Please, introduce your password");
 		JLabel lblUsername = new JLabel("Username");
@@ -65,6 +67,7 @@ public class OwnerLoginGUI extends JFrame {
 		final JLabel lblAccess = new JLabel("");
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.setBackground(new Color(152, 251, 152));
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -108,14 +111,11 @@ public class OwnerLoginGUI extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(62, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 							.addComponent(btnLogin)
 							.addGap(125))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblUserAuthen)
-							.addGap(105))
-						.addGroup(gl_contentPane.createSequentialGroup()
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblPassword)
 								.addComponent(lblUsername))
@@ -124,16 +124,19 @@ public class OwnerLoginGUI extends JFrame {
 								.addComponent(txtUsername, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
 								.addComponent(txtPassword, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
 							.addGap(67))
-						.addGroup(gl_contentPane.createSequentialGroup()
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 							.addComponent(lblAccess, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
-							.addGap(53))))
+							.addGap(53))
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addComponent(lblUserAuthen, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+							.addGap(89))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblUserAuthen)
-					.addGap(38)
+					.addComponent(lblUserAuthen, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUsername)
 						.addComponent(txtUsername, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -141,7 +144,7 @@ public class OwnerLoginGUI extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblPassword)
 						.addComponent(txtPassword, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
 					.addComponent(lblAccess, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 					.addGap(7)
 					.addComponent(btnLogin)

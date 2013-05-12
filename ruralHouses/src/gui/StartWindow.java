@@ -31,6 +31,8 @@ public class StartWindow extends JFrame {
 	public static ApplicationFacadeInterface facadeInterface;
 	private JButton btnUser;
 	private JButton btnOwner;
+	private JLabel lblVillatripasDeArriba;
+	private JLabel lblTheBestRural;
 	
 	public StartWindow() {
 		super();
@@ -44,7 +46,7 @@ public class StartWindow extends JFrame {
 	
 	private void initialize() {
 		// this.setSize(271, 295);
-		this.setSize(350, 291);
+		this.setSize(460, 360);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Use Cases");
 	}
@@ -52,9 +54,12 @@ public class StartWindow extends JFrame {
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
+			jContentPane.setBackground(new Color(152, 251, 152));
 			jContentPane.setLayout(null);
 			jContentPane.add(getBtnUser());
 			jContentPane.add(getBtnOwner());
+			jContentPane.add(getLblVillatripasDeArriba());
+			jContentPane.add(getLblTheBestRural());
 		}
 		return jContentPane;
 	}
@@ -90,6 +95,8 @@ public class StartWindow extends JFrame {
 	private JButton getBtnUser() {
 		if (btnUser == null) {
 			btnUser = new JButton("User");
+			btnUser.setBackground(new Color(152, 251, 152));
+			btnUser.setFont(new Font("Calibri", Font.BOLD, 20));
 			btnUser.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					StartWindow.this.setVisible(false);
@@ -98,13 +105,15 @@ public class StartWindow extends JFrame {
 					
 				}
 			});
-			btnUser.setBounds(51, 65, 230, 43);
+			btnUser.setBounds(109, 130, 230, 43);
 		}
 		return btnUser;
 	}
 	private JButton getBtnOwner() {
 		if (btnOwner == null) {
 			btnOwner = new JButton("Owner");
+			btnOwner.setBackground(new Color(152, 251, 152));
+			btnOwner.setFont(new Font("Calibri", Font.BOLD, 20));
 			btnOwner.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					StartWindow.this.setVisible(false);
@@ -112,8 +121,25 @@ public class StartWindow extends JFrame {
 					a.setVisible(true);					
 				}
 			});
-			btnOwner.setBounds(51, 150, 230, 38);
+			btnOwner.setBounds(109, 196, 230, 43);
 		}
 		return btnOwner;
+	}
+	private JLabel getLblVillatripasDeArriba() {
+		if (lblVillatripasDeArriba == null) {
+			lblVillatripasDeArriba = new JLabel("Villatripas de Arriba");
+			lblVillatripasDeArriba.setForeground(new Color(47, 79, 79));
+			lblVillatripasDeArriba.setFont(new Font("Calibri", Font.BOLD, 30));
+			lblVillatripasDeArriba.setBounds(99, 46, 250, 50);
+		}
+		return lblVillatripasDeArriba;
+	}
+	private JLabel getLblTheBestRural() {
+		if (lblTheBestRural == null) {
+			lblTheBestRural = new JLabel("The best rural houses, the best prices!");
+			lblTheBestRural.setFont(new Font("Calibri", Font.BOLD, 15));
+			lblTheBestRural.setBounds(109, 82, 240, 24);
+		}
+		return lblTheBestRural;
 	}
 } //@jve:decl-index=0:visual-constraint="0,0"

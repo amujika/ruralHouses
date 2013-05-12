@@ -9,6 +9,8 @@ import java.util.Vector;
 import businessLogic.ApplicationFacadeInterface;
 import domain.Owner;
 import domain.RuralHouse;
+import java.awt.Font;
+import java.awt.Color;
 
 
 public class IntroduceOfferGUI extends JFrame {
@@ -24,7 +26,7 @@ public class IntroduceOfferGUI extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(449, 293);
+		this.setSize(460, 360);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Choose owner");
 
@@ -33,6 +35,7 @@ public class IntroduceOfferGUI extends JFrame {
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
+			jContentPane.setBackground(new Color(152, 251, 152));
 			jContentPane.setLayout(null);
 			jContentPane.add(getJCBOwner(), null);
 			jContentPane.add(getBtnShowHouses(), null);
@@ -46,7 +49,7 @@ public class IntroduceOfferGUI extends JFrame {
 				ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 				Vector<Owner> owners=facade.getOwners();
 				jCBOwner = new JComboBox(owners);
-				jCBOwner.setBounds(new Rectangle(63, 38, 175, 44));
+				jCBOwner.setBounds(new Rectangle(62, 82, 329, 46));
 			}
 			catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -59,7 +62,9 @@ public class IntroduceOfferGUI extends JFrame {
 	private JButton getBtnShowHouses() {
 		if (btnShowHouses == null) {
 			btnShowHouses = new JButton();
-			btnShowHouses.setBounds(new Rectangle(113, 146, 95, 59));
+			btnShowHouses.setBackground(new Color(152, 251, 152));
+			btnShowHouses.setFont(new Font("Tahoma", Font.PLAIN, 28));
+			btnShowHouses.setBounds(new Rectangle(104, 171, 239, 46));
 			btnShowHouses.setText("Show houses");
 			btnShowHouses.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
