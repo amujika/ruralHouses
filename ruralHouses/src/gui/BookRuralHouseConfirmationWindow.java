@@ -95,7 +95,7 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 		
 		try {
 			//TO CHANGE!
-			Client client=new Client("Bob","userBob","passBob");
+			Client client=new Client("Email","Password","Telephone", true);
 			facade.bookRuralHouse(booking, offer,client);
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block

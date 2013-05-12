@@ -5,53 +5,27 @@ import java.util.Vector;
 
 @SuppressWarnings("serial")
 public class Client implements Serializable, Comparable<Client> {
-
-	private String telephoneNumber;
-	private String name;
-	private String username;
+	
+	private String email;
 	private String password;
+	private String telephoneNumber;
+	private boolean authenticated;
 	private Vector<Booking> bookings;
 	//private Vector<RuralHouse> ruralHouses;
 
-	public Client(String name,String login, String password) {
-		this.name=name;
-		this.username=login;
-		this.password=password;
-		bookings=new Vector<Booking>();
-		//ruralHouses=new Vector<RuralHouse>();		
-	}
-
-	public Client(String name,String login, String password, String telephoneNumber) {
-		this.telephoneNumber=telephoneNumber;
-		this.name=name;
-		this.username=login;
-		this.password=password;
-		bookings=new Vector<Booking>();
-		//ruralHouses=new Vector<RuralHouse>();		
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getTelephoneNumber() {
-		return this.telephoneNumber;
-	}
-
-	public void setTelephoneNumber(String telephoneNumber) {
+	public Client(String email, String password, String telephoneNumber, boolean authenticated){
+		this.email = email;
+		this.password = password;
 		this.telephoneNumber = telephoneNumber;
+		this.authenticated = authenticated;
 	}
 
-	public String getUsername() {
-		return this.username;
+	public String getEmail() {
+		return this.email;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -62,6 +36,22 @@ public class Client implements Serializable, Comparable<Client> {
 		this.password = password;
 	}
 	
+	public String getTelephoneNumber() {
+		return this.telephoneNumber;
+	}
+
+	public void setTelephoneNumber(String telephoneNumber) {
+		this.telephoneNumber = telephoneNumber;
+	}
+	
+	public boolean getAuthentication() {
+		return this.authenticated;
+	}
+
+	public void setAuthentication(boolean authentication) {
+		this.authenticated = authentication;
+	}
+		
 	public Vector<Booking> getBookings(){
 		return this.bookings;
 	}
@@ -74,28 +64,18 @@ public class Client implements Serializable, Comparable<Client> {
 		this.bookings.remove(b);
 	}
 
-	//	public Vector<RuralHouse> getRuralHouses() {
-	//		return ruralHouses;
-	//	}
-	//
-	//	public RuralHouse addRuralHouse(int houseNumber, String description, String city) {
-	//		RuralHouse rh=new RuralHouse(houseNumber,  this,  description,  city);
-	//		ruralHouses.add(rh);
-	//		return rh;
-	//	}
-
 	public String toString(){
-		return name;
+		return email;
 	}
 
 	public int compareTo(Client other) {
-		return (this.telephoneNumber + '\n' + this.name + '\n' + this.password
-				+ '\n' + this.username).compareTo(other.telephoneNumber + '\n'
-						+ other.name + '\n' + other.password + '\n' + other.username);
+		return (this.email + '\n' + '\n' + this.password
+				+ '\n' + this.telephoneNumber).compareTo(other.email + '\n'
+						+ other.password + '\n' + '\n' + other.telephoneNumber);
 	}
 
 	public boolean equals(Object o) {
 		Client other= (Client) o;		
-		return ( this.password + '\n' + this.username).equals(other.password + '\n' + other.username);
+		return ( this.password + '\n' + this.email).equals(other.password + '\n' + other.email);
 	}
 }
