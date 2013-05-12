@@ -44,8 +44,12 @@ public class BookRuralHouseGUI extends JFrame {
 	private JCalendar jCalendar1 = new JCalendar();
 	private Calendar myCalendar = null;
 	private JLabel lblSpace = new JLabel();
+	private final JLabel lblEmail = new JLabel("Email:");
+	private final JTextField txtEmail = new JTextField();
 
 	public BookRuralHouseGUI() {
+		txtEmail.setBounds(294, 259, 140, 20);
+		txtEmail.setColumns(10);
 		getContentPane().setBackground(new Color(152, 251, 152));
 		try {
 			jbInit();
@@ -65,7 +69,7 @@ public class BookRuralHouseGUI extends JFrame {
 	}
 
 	private void jbInit() throws Exception {
-		this.setSize(new Dimension(460, 360));
+		this.setSize(new Dimension(460, 400));
 		this.setTitle("Book Rural House");
 		lblRuralHouse.setBounds(15, 10, 115, 20);
 		lblRuralHouse.setText("Rural house:");
@@ -107,7 +111,7 @@ public class BookRuralHouseGUI extends JFrame {
 		txtNumNights.setText("0");
 		txtTelephone.setText("0");
 		btnAccept.setBackground(new Color(152, 251, 152));
-		btnAccept.setBounds(267, 281, 130, 30);
+		btnAccept.setBounds(260, 321, 130, 30);
 		btnAccept.setText("Accept");
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -122,6 +126,12 @@ public class BookRuralHouseGUI extends JFrame {
 				Date lastDay= new Date((long)(firstDay.getTime()+nights));
 				// Contact telephone
 				String telephone=txtTelephone.getText();
+				// Contact email
+				String email=txtEmail.getText();
+				//IF LOGGED
+				//IF NOT LOGGED BUT REGISTERED
+				//IF NOT REGISTERED
+				
 				try {
 					Offer auxOffer = facade.getOffer(ruralHouse, firstDay, lastDay);
 					if(auxOffer!= null && auxOffer.getBooking()==null){					
@@ -139,14 +149,14 @@ public class BookRuralHouseGUI extends JFrame {
 			}
 		});
 		btnCancel.setBackground(new Color(152, 251, 152));
-		btnCancel.setBounds(41, 281, 130, 30);
+		btnCancel.setBounds(41, 321, 130, 30);
 		btnCancel.setText("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnCancel_actionPerformed(e);
 			}
 		});
-		lblSpace.setBounds(81, 258, 300, 20);
+		lblSpace.setBounds(90, 290, 300, 20);
 		lblSpace.setForeground(Color.red);
 		getContentPane().setLayout(null);
 		jCalendar1.getDayChooser().setBackground(new Color(152, 251, 152));
@@ -164,6 +174,11 @@ public class BookRuralHouseGUI extends JFrame {
 		this.getContentPane().add(lblArrivalDay);
 		this.getContentPane().add(jCBRuralHouse);
 		this.getContentPane().add(lblRuralHouse);
+		lblEmail.setBounds(256, 265, 28, 14);
+		
+		getContentPane().add(lblEmail);
+		
+		getContentPane().add(txtEmail);
 
 		// Code for JCalendar
 		this.jCalendar1.addPropertyChangeListener(new PropertyChangeListener() {

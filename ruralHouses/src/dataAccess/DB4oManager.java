@@ -109,16 +109,16 @@ public class DB4oManager {
 		}
 	}
 	
-	public boolean getClient(Client client) {
+	public Client getClient(Client client) {
 		ObjectContainer db = DB4oManager.getContainer();
 
 		try {
 			List<Client> result = db.queryByExample(client);
 
 			if (result.isEmpty()) {
-				return false;
+				return null;
 			} else {
-				return true;
+				return result.get(0);
 			} // END if
 
 		} finally {
@@ -127,6 +127,12 @@ public class DB4oManager {
 	}
 	
 	public void registerClient(Client client){
+		db.store(client);
+		db.commit();
+	}
+	
+	public void authenticateClient(Client client){
+		client.setAuthentication(true);
 		db.store(client);
 		db.commit();
 	}

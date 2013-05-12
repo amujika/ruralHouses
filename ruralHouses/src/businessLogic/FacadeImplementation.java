@@ -112,7 +112,7 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	}
 	
 	//clientRegistration
-	public boolean clientRegistered (Client cli) {		
+	public Client clientRegistered (Client cli) {		
 		DB4oManager dbManager = DB4oManager.getInstance();		
 		return dbManager.getClient(cli);		
 	}
@@ -120,6 +120,11 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	public void registerClient (Client cli){
 		DB4oManager dbManager = DB4oManager.getInstance();		
 		dbManager.registerClient(cli);
+	}
+	
+	public void authenticateClient (Client cli){
+		DB4oManager dbManager = DB4oManager.getInstance();		
+		dbManager.authenticateClient(cli);
 	}
 	
 	//removeRuralHouse
