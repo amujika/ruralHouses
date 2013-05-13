@@ -2,6 +2,7 @@ package domain;
 
 import java.io.*;
 import java.util.Date;
+import java.util.Random;
 
 import businessLogic.BookingManager;
 
@@ -18,7 +19,7 @@ public class Booking implements Serializable {
 
 	public Booking(String telephone, Offer offer) {
 		
-		this.bookingNumber = BookingManager.getNumber();
+		this.bookingNumber = new Random().nextInt(1000000);
 		this.telephone=telephone;
 		this.offer = offer;
 		//this.price = price;
