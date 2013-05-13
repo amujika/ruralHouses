@@ -130,56 +130,22 @@ public class BookRuralHouseGUI extends JFrame {
 				String telephone=txtTelephone.getText();
 				// Contact email
 				String email=txtEmail.getText();
-				//IF LOGGED
-				if(StartWindow.CLIENT != null){
-					Offer auxOffer;
-					try {
-						auxOffer = facade.getOffer(ruralHouse, firstDay, lastDay);
-						if(auxOffer!= null && auxOffer.getBooking()==null){					
-							Booking auxBooking = auxOffer.createBook(telephone);						
-							BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer);
-							confirmWindow.setVisible(true);
-							setVisible(false);
-						}
-						else
-							JOptionPane.showMessageDialog(null, "Not a valid offer");
-					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+				
+				Offer auxOffer;
+				try {
+					auxOffer = facade.getOffer(ruralHouse, firstDay, lastDay);
+					if(auxOffer!= null && auxOffer.getBooking()==null){					
+						Booking auxBooking = auxOffer.createBook(telephone);						
+						BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer, email, telephone);
+						confirmWindow.setVisible(true);
+						setVisible(false);
 					}
-				}else{
-					Client client = new Client(email, null, telephone);
-					try {
-						if(facade.clientRegistered(client)!=null){
-							JFrame a = new ClientAuthenticationGUI();
-							a.setVisible(true);
-						}else{
-							client = new Client(email,"password",telephone);
-							facade.registerClient(client);
-							StartWindow.CLIENT=client;
-							JOptionPane.showMessageDialog(null, "User registrated!");
-							
-							Offer auxOffer = facade.getOffer(ruralHouse, firstDay, lastDay);
-							if(auxOffer!= null && auxOffer.getBooking()==null){					
-								Booking auxBooking = auxOffer.createBook(telephone);						
-								BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer);
-								confirmWindow.setVisible(true);
-								setVisible(false);
-							}
-							else
-								JOptionPane.showMessageDialog(null, "Not a valid offer");
-							
-						}
-					} catch (HeadlessException | RemoteException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					else
+						JOptionPane.showMessageDialog(null, "Not a valid offer");
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
-			
-				
-				
-					
-			
 			}
 		});
 		btnCancel.setBackground(new Color(152, 251, 152));

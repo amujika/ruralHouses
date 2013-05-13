@@ -82,9 +82,7 @@ public class ClientAuthenticationGUI extends JFrame {
 					if(facade.clientRegistered(client)!=null){
 						JOptionPane.showMessageDialog(null, "Access granted.");
 						StartWindow.CLIENT=facade.clientRegistered(client);
-						setVisible(false);
-						JFrame a = new UserGUI();
-						a.setVisible(true);
+						setVisible(false);	
 					}
 					else{
 						JOptionPane.showMessageDialog(null, "Access denied.");

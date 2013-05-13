@@ -36,6 +36,7 @@ public class SearchOffersGUI extends JFrame {
 	
 	private DefaultListModel<Offer> offerList;
 	private JTextField txtTelephone;
+	private JTextField txtEmail;
 
 	public SearchOffersGUI() {
 		getContentPane().setBackground(new Color(152, 251, 152));
@@ -65,7 +66,7 @@ public class SearchOffersGUI extends JFrame {
 		this.setSize(new Dimension(460, 360));
 		this.setTitle("Search available rural houses");
 		lblRuralHouse.setText("Rural house:");
-		jCBRuralHouse.setBounds(new Rectangle(10, 10, 115, 25));
+		jCBRuralHouse.setBounds(new Rectangle(109, 20, 115, 20));
 		lblRuralHouse.setBounds(new Rectangle(40, 20, 105, 25));
 		jCBRuralHouse.setBounds(new Rectangle(115, 30, 115, 20));
 		btnSearch.setBackground(new Color(152, 251, 152));
@@ -116,6 +117,15 @@ public class SearchOffersGUI extends JFrame {
 		label.setBounds(55, 87, 140, 20);
 		getContentPane().add(label);
 		
+		JLabel lblEmail = new JLabel("Email:");
+		lblEmail.setBounds(55, 56, 46, 14);
+		getContentPane().add(lblEmail);
+		
+		txtEmail = new JTextField();
+		txtEmail.setBounds(109, 53, 158, 20);
+		getContentPane().add(txtEmail);
+		txtEmail.setColumns(10);
+		
 		showInfo = new ShowHouseInfoGUI((RuralHouse) jCBRuralHouse.getSelectedItem());
 		showInfo.setVisible(true);
 
@@ -138,9 +148,10 @@ public class SearchOffersGUI extends JFrame {
 
 	private void btnBook_actionPerformed(){
 		String telephone=txtTelephone.getText();
+		String email=txtEmail.getText();
 		Offer auxOffer = (Offer) showOffers.getSelectedValue();
 		Booking auxBooking = auxOffer.createBook(telephone);						
-		BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer);
+		BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer, email, telephone);
 		confirmWindow.setVisible(true);
 	}
 }
