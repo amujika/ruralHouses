@@ -6,7 +6,6 @@ import java.util.Vector;
 import java.util.Date;
 
 import dataAccess.DB4oManager;
-import domain.Administrator;
 import domain.Booking;
 import domain.Client;
 import domain.Offer;
@@ -88,9 +87,6 @@ public interface ApplicationFacadeInterface extends Remote {
 
 	//ownerLogin
 	public Owner ownerloginBL (Owner own) throws RemoteException;
-
-	//administratorLogin
-	public Administrator administratorloginBL (Administrator adm) throws RemoteException;
 
 	//clientRegistration
 	public Client clientRegistered (Client cli) throws RemoteException;

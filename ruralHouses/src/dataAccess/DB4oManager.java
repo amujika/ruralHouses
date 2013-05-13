@@ -17,7 +17,6 @@ import com.db4o.*;
 
 import configuration.Config;
 
-import domain.Administrator;
 import domain.Booking;
 import domain.Client;
 import domain.Offer;
@@ -48,7 +47,6 @@ public class DB4oManager {
 			new File(db4oFileName).delete();
 			db=Db4o.openFile(Db4o.newConfiguration(), db4oFileName);
 			db.ext().configure().updateDepth(5);
-			Administrator intxi = new Administrator("Intxi", "userIntxi", "passIntxi");
 			Owner jon = new Owner("Jon", "userJon", "passJon");
 			Owner alfredo = new Owner("Alfredo","userAlfredo", "passAlfredo");
 			String img = null;
@@ -99,23 +97,6 @@ public class DB4oManager {
 
 		try {
 			List<Owner> result = db.queryByExample(owner);
-
-			if (result.isEmpty()) {
-				return null;
-			} else {
-				return result.get(0);
-			} // END if
-
-		} finally {
-			// db.close();
-		}
-	}
-
-	public Administrator getAdministrator(Administrator adm) {
-		ObjectContainer db = DB4oManager.getContainer();
-
-		try {
-			List<Administrator> result = db.queryByExample(adm);
 
 			if (result.isEmpty()) {
 				return null;

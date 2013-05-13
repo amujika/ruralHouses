@@ -14,7 +14,6 @@ import java.sql.SQLException;
 
 import dataAccess.DB4oManager;
 
-import domain.Administrator;
 import domain.Booking;
 import domain.Client;
 import domain.Offer;
@@ -109,12 +108,6 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	public Owner ownerloginBL (Owner own) {		
 		DB4oManager dbManager = DB4oManager.getInstance();		
 		return dbManager.getOwner(own);		
-	}
-
-	//administratorLogin
-	public Administrator administratorloginBL(Administrator adm) {
-		DB4oManager dbManager = DB4oManager.getInstance();		
-		return dbManager.getAdministrator(adm);
 	}
 
 	//clientRegistration
