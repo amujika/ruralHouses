@@ -131,12 +131,6 @@ public class DB4oManager {
 		db.commit();
 	}
 
-	public void authenticateClient(Client client){
-		client.setAuthentication(true);
-		db.store(client);
-		db.commit();
-	}
-
 	public Vector<RuralHouse> getAllRuralHouses() throws RemoteException,
 	Exception {
 		ObjectContainer db=DB4oManager.getContainer();

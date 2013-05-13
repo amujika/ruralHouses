@@ -77,14 +77,18 @@ public class ClientAuthenticationGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				String email = txtEmail.getText();
 				String password = txtPassword.getText();
-				Client client = new Client(email,password,null,false);
+				Client client = new Client(email,password,null);
 				try {
 					if(facade.clientRegistered(client)!=null){
 						JOptionPane.showMessageDialog(null, "Access granted.");
+						StartWindow.CLIENT=facade.clientRegistered(client);
 						setVisible(false);
+						JFrame a = new UserGUI();
+						a.setVisible(true);
 					}
 					else{
 						JOptionPane.showMessageDialog(null, "Access denied.");
+						
 					}
 				} catch (HeadlessException | RemoteException e) {
 					// TODO Auto-generated catch block

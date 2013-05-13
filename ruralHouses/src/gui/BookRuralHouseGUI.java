@@ -5,6 +5,7 @@ import businessLogic.ApplicationFacadeInterface;
 import com.toedter.calendar.*;
 
 import domain.Booking;
+import domain.Client;
 import domain.Offer;
 import domain.RuralHouse;
 
@@ -12,6 +13,7 @@ import exceptions.OfferCanNotBeBooked;
 
 import java.beans.*;
 
+import java.rmi.RemoteException;
 import java.sql.Date;
 import java.text.*;
 import java.util.*;
@@ -129,23 +131,55 @@ public class BookRuralHouseGUI extends JFrame {
 				// Contact email
 				String email=txtEmail.getText();
 				//IF LOGGED
-				//IF NOT LOGGED BUT REGISTERED
-				//IF NOT REGISTERED
-				
-				try {
-					Offer auxOffer = facade.getOffer(ruralHouse, firstDay, lastDay);
-					if(auxOffer!= null && auxOffer.getBooking()==null){					
-						Booking auxBooking = auxOffer.createBook(telephone);						
-						BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer);
-						confirmWindow.setVisible(true);
+				if(StartWindow.CLIENT != null){
+					Offer auxOffer;
+					try {
+						auxOffer = facade.getOffer(ruralHouse, firstDay, lastDay);
+						if(auxOffer!= null && auxOffer.getBooking()==null){					
+							Booking auxBooking = auxOffer.createBook(telephone);						
+							BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer);
+							confirmWindow.setVisible(true);
+							setVisible(false);
+						}
+						else
+							JOptionPane.showMessageDialog(null, "Not a valid offer");
+					} catch (RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
-					else
-						JOptionPane.showMessageDialog(null, "Not a valid offer");
-						//System.out.println("Not a valid offer");
+				}else{
+					Client client = new Client(email, null, telephone);
+					try {
+						if(facade.clientRegistered(client)!=null){
+							JFrame a = new ClientAuthenticationGUI();
+							a.setVisible(true);
+						}else{
+							client = new Client(email,"password",telephone);
+							facade.registerClient(client);
+							StartWindow.CLIENT=client;
+							JOptionPane.showMessageDialog(null, "User registrated!");
+							
+							Offer auxOffer = facade.getOffer(ruralHouse, firstDay, lastDay);
+							if(auxOffer!= null && auxOffer.getBooking()==null){					
+								Booking auxBooking = auxOffer.createBook(telephone);						
+								BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer);
+								confirmWindow.setVisible(true);
+								setVisible(false);
+							}
+							else
+								JOptionPane.showMessageDialog(null, "Not a valid offer");
+							
+						}
+					} catch (HeadlessException | RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
-				catch (Exception e1) {
-					e1.printStackTrace();
-				}
+			
+				
+				
+					
+			
 			}
 		});
 		btnCancel.setBackground(new Color(152, 251, 152));

@@ -122,6 +122,13 @@ public class UserGUI extends JFrame {
 	private JButton getBtnAuthenticate() {
 		if (btnAuthenticate == null) {
 			btnAuthenticate = new JButton("Authenticate");
+			btnAuthenticate.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JFrame a = new ClientAuthenticationGUI();
+					a.setVisible(true);
+					setVisible(false);
+				}
+			});
 			btnAuthenticate.setBackground(new Color(152, 251, 152));
 			btnAuthenticate.setFont(new Font("Calibri", Font.PLAIN, 30));
 			btnAuthenticate.setBounds(97, 93, 245, 54);

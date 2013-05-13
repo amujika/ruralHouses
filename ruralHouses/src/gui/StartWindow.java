@@ -12,6 +12,7 @@ import java.util.Vector;
 import configuration.Config;
 import javax.swing.border.BevelBorder;
 
+import domain.Client;
 import domain.Owner;
 import domain.RuralHouse;
 
@@ -25,6 +26,7 @@ public class StartWindow extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public static Owner OWNER;
+	public static Client CLIENT;
 
 	private JPanel jContentPane = null;
 

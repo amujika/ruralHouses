@@ -9,15 +9,13 @@ public class Client implements Serializable, Comparable<Client> {
 	private String email;
 	private String password;
 	private String telephoneNumber;
-	private boolean authenticated;
 	private Vector<Booking> bookings;
 	//private Vector<RuralHouse> ruralHouses;
 
-	public Client(String email, String password, String telephoneNumber, boolean authenticated){
+	public Client(String email, String password, String telephoneNumber){
 		this.email = email;
 		this.password = password;
 		this.telephoneNumber = telephoneNumber;
-		this.authenticated = authenticated;
 	}
 
 	public String getEmail() {
@@ -44,14 +42,6 @@ public class Client implements Serializable, Comparable<Client> {
 		this.telephoneNumber = telephoneNumber;
 	}
 	
-	public boolean getAuthentication() {
-		return this.authenticated;
-	}
-
-	public void setAuthentication(boolean authentication) {
-		this.authenticated = authentication;
-	}
-		
 	public Vector<Booking> getBookings(){
 		return this.bookings;
 	}
