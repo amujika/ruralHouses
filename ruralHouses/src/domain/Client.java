@@ -19,6 +19,7 @@ public class Client implements Serializable, Comparable<Client> {
 		this.email = email;
 		this.password = password;
 		this.telephoneNumber = telephoneNumber;
+		this.bookings = new Vector<Booking>();
 	}
 
 	public String getEmail() {

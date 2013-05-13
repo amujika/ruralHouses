@@ -237,7 +237,7 @@ public class DB4oManager {
 		client.addBooking(booking);
 		db.store(client);
 		db.store(booking);
-//		db.store(offer);
+		db.store(offer);
 		db.commit();
 
 	}

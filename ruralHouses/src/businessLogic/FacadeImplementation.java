@@ -139,12 +139,8 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	//bookRuralHouse
 
 	public void bookRuralHouse (Booking booking, Offer offer,Client client) {
-		try {
-			DB4oManager dbManager = DB4oManager.getInstance();
-			dbManager.storeBooking(booking, offer,client);
-		} catch (Exception e) {
-			System.out.println("There has been an error in businessLogic > DBookRuralHouseBL in line " + new Throwable().getStackTrace()[0].getLineNumber());
-		}
+		DB4oManager dbManager = DB4oManager.getInstance();
+		dbManager.storeBooking(booking, offer, client);
 	}
 
 	public RuralHouse getRuralHouseByNumber (int houseNumber) {
