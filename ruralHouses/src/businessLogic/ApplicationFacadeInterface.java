@@ -92,6 +92,9 @@ public interface ApplicationFacadeInterface extends Remote {
 	public Client clientRegistered (Client cli) throws RemoteException;
 	public void registerClient (Client cli) throws RemoteException;
 
+	//ownerRegistration
+	public void registerOwner(Owner owner) throws RemoteException;
+	
 	//storeRuralHouse
 	public void storeRuralHouse(RuralHouse rh) throws RemoteException;
 
@@ -109,7 +112,5 @@ public interface ApplicationFacadeInterface extends Remote {
 	public Vector<Booking> getBookings(Client client) throws RemoteException;
 
 	public void cancelBooking(Booking booking, Client client)throws RemoteException;
-
-
 
 }

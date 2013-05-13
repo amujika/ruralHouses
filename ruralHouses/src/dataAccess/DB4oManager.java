@@ -131,6 +131,11 @@ public class DB4oManager {
 		db.commit();
 	}
 
+	public void registerOwner(Owner owner) {
+		db.store(owner);
+		db.commit();		
+	}
+
 	public Vector<RuralHouse> getAllRuralHouses() throws RemoteException,
 	Exception {
 		ObjectContainer db=DB4oManager.getContainer();

@@ -121,6 +121,12 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 		dbManager.registerClient(cli);
 	}
 
+	//ownerRegistration	
+	public void registerOwner(Owner owner) {
+		DB4oManager dbManager = DB4oManager.getInstance();		
+		dbManager.registerOwner(owner);		
+	}
+
 	//removeRuralHouse
 
 	public void RemoveRuralHouse(RuralHouse rh){
