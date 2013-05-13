@@ -12,6 +12,7 @@ import javax.swing.JButton;
 
 import businessLogic.ApplicationFacadeInterface;
 
+import domain.Administrator;
 import domain.Owner;
 
 import java.awt.Component;
@@ -37,7 +38,7 @@ public class RegisterOwnerGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegisterOwnerGUI(final Owner owner) {
+	public RegisterOwnerGUI(final Administrator administrator) {
 		setBounds(100, 100, 460, 360);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(152, 251, 152));
@@ -94,7 +95,7 @@ public class RegisterOwnerGUI extends JFrame {
 				String image = chooser.getSelectedFile().getAbsolutePath();
 
 				try {
-					facade.addRuralHouse(houseNumber, owner , description, image, town);
+					facade.addRuralHouse(houseNumber, administrator , description, image, town);
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
@@ -106,33 +107,6 @@ public class RegisterOwnerGUI extends JFrame {
 	btnAccept.setBounds(258, 266, 89, 23);
 
 		contentPane.add(btnAccept);
-
-		JButton btnImage = new JButton("Search image");
-		btnImage.setBackground(new Color(152, 251, 152));
-		btnImage.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				chooser = new JFileChooser(); 
-				chooser.setCurrentDirectory(new java.io.File("."));
-				String choosertitle = null;
-				chooser.setDialogTitle(choosertitle);
-				chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-				chooser.setAcceptAllFileFilterUsed(true);
-
-				//Print for test if it works
-				if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) { 
-					System.out.println("getCurrentDirectory(): " 
-							+  chooser.getCurrentDirectory());
-					System.out.println("getSelectedFile() : " 
-							+  chooser.getSelectedFile());
-				}
-				else {
-					System.out.println("No Selection ");
-				}
-			}
-		});
-		btnImage.setBounds(172, 230, 117, 25);
-		contentPane.add(btnImage);
 	}
 
 }

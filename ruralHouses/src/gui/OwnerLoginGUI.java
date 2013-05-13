@@ -79,7 +79,6 @@ public class OwnerLoginGUI extends JFrame {
 				try {
 					ownerTriesToLogIn = facade.ownerloginBL(ownerTriesToLogIn);
 				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				

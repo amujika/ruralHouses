@@ -15,7 +15,7 @@ import domain.RuralHouse;
 
 import businessLogic.ApplicationFacadeInterface;
 
-public class AdministatorGUI extends JFrame {
+public class AdministratorGUI extends JFrame {
 
 	public static boolean clientServer = false;
 
@@ -25,7 +25,7 @@ public class AdministatorGUI extends JFrame {
 
 	public static ApplicationFacadeInterface facadeInterface;
 
-	public AdministatorGUI() {
+	public AdministratorGUI() {
 		super();
 		initialize();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

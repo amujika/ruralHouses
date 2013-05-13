@@ -6,6 +6,7 @@ import java.util.Vector;
 import java.util.Date;
 
 import dataAccess.DB4oManager;
+import domain.Administrator;
 import domain.Booking;
 import domain.Client;
 import domain.Offer;
@@ -57,60 +58,63 @@ public interface ApplicationFacadeInterface extends Remote {
 	 */
 	Vector<Offer> getOffers(RuralHouse houseNumber, Date firstDay, Date lastDay) 
 			throws RemoteException, Exception;
-	
+
 	/**
 	 * This method finds existing  owners 
 	 * 
 	 */
 	public Vector<Owner> getOwners() throws RemoteException,
-			Exception;
-	
+	Exception;
+
 	public Vector<RuralHouse> getAllRuralHouses()throws RemoteException,
 	Exception;
-	
+
 	public Vector<Booking> getBookings(RuralHouse rh)throws RemoteException,
 	Exception;
-	
+
 	public void storePayment(Booking booking) throws RemoteException,
 	Exception;
-	
+
 	public boolean paymentDone(Booking booking) throws RemoteException,
 	Exception;
-	
+
 	public void close() throws RemoteException;
-	
+
 	//addRuralHouse
 	public void addRuralHouse(int houseNumber, Owner owner, String description, String image, String town) throws RemoteException;
-	
+
 	//introduceOffer
 	public void createOffer(RuralHouse rh, Date firstDay, Date lastDay, Float price) throws RemoteException;
-	
+
 	//ownerLogin
 	public Owner ownerloginBL (Owner own) throws RemoteException;
-	
+
+	//administratorLogin
+	public Administrator administratorloginBL (Administrator adm) throws RemoteException;
+
 	//clientRegistration
 	public Client clientRegistered (Client cli) throws RemoteException;
 	public void registerClient (Client cli) throws RemoteException;
 	public void authenticateClient (Client cli) throws RemoteException;
-	
+
 	//storeRuralHouse
 	public void storeRuralHouse(RuralHouse rh) throws RemoteException;
-	
+
 	//removeRuralHouse
 	public void RemoveRuralHouse(RuralHouse rh)throws RemoteException;
-	
+
 	//bookRuralHouse
 	public void bookRuralHouse (Booking booking, Offer offer, Client client) throws RemoteException;
 
 	public RuralHouse getRuralHouseByNumber (int houseNumber) throws RemoteException;
-	
+
 	public Offer getOffer(RuralHouse ruralHouse, Date firstDay, Date lastDay) throws RemoteException;
-	
+
 	//cancelBooking
 	public Vector<Booking> getBookings(Client client) throws RemoteException;
-	
+
 	public void cancelBooking(Booking booking, Client client)throws RemoteException;
-	
-	
+
+
 
 }

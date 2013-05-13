@@ -14,6 +14,7 @@ import java.sql.SQLException;
 
 import dataAccess.DB4oManager;
 
+import domain.Administrator;
 import domain.Booking;
 import domain.Client;
 import domain.Offer;
@@ -105,28 +106,33 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	}
 
 	//ownerLogin
-
 	public Owner ownerloginBL (Owner own) {		
 		DB4oManager dbManager = DB4oManager.getInstance();		
 		return dbManager.getOwner(own);		
 	}
-	
+
+	//administratorLogin
+	public Administrator administratorloginBL(Administrator adm) {
+		DB4oManager dbManager = DB4oManager.getInstance();		
+		return dbManager.getAdministrator(adm);
+	}
+
 	//clientRegistration
 	public Client clientRegistered (Client cli) {		
 		DB4oManager dbManager = DB4oManager.getInstance();		
 		return dbManager.getClient(cli);		
 	}
-	
+
 	public void registerClient (Client cli){
 		DB4oManager dbManager = DB4oManager.getInstance();		
 		dbManager.registerClient(cli);
 	}
-	
+
 	public void authenticateClient (Client cli){
 		DB4oManager dbManager = DB4oManager.getInstance();		
 		dbManager.authenticateClient(cli);
 	}
-	
+
 	//removeRuralHouse
 
 	public void RemoveRuralHouse(RuralHouse rh){
@@ -162,7 +168,7 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	public Vector<Booking> getBookings(Client client){
 		return client.getBookings();
 	}
-	
+
 	public void cancelBooking(Booking booking, Client client){
 		DB4oManager dbManager = DB4oManager.getInstance();
 		dbManager.removeBooking(booking,client);
