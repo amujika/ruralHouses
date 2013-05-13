@@ -112,8 +112,13 @@ public class UserGUI extends JFrame {
 			cancelBookingButton.setAlignmentX(Component.CENTER_ALIGNMENT);		
 			cancelBookingButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFrame a = new CancelBookingGUI();
-				a.setVisible(true);			
+				if(StartWindow.CLIENT != null){
+					JFrame a = new CancelBookingGUI();
+					a.setVisible(true);	
+				}else{
+					JFrame a = new ClientAuthenticationGUI();
+					a.setVisible(true);	
+				}	
 			}
 			});
 		}

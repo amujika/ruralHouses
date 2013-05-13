@@ -96,7 +96,7 @@ public class SearchOffersGUI extends JFrame {
 		JButton btnBook = new JButton();
 		btnBook.setBackground(new Color(152, 251, 152));
 		btnBook.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				btnBook_actionPerformed();
 			}
 		});

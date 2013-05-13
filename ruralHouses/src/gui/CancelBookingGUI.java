@@ -69,7 +69,7 @@ public class CancelBookingGUI extends JFrame {
 				Booking b= (Booking) bookings.getSelectedItem();
 				ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 				try {
-					Client client = new Client("Email","Password","Telephone");
+					Client client = StartWindow.CLIENT;
 					facade.cancelBooking(b,client);
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
@@ -96,7 +96,7 @@ public class CancelBookingGUI extends JFrame {
 		JComboBox JCBBookings = new JComboBox();
 		JCBBookings.setBounds(133, 108, 206, 20);
 		contentPane.add(JCBBookings);
-		Client client = new Client("Email","Password","Telephone");
+		Client client = StartWindow.CLIENT;
 		Vector<Booking> bookingList = null;
 		
 		try {
