@@ -12,6 +12,7 @@ import java.util.Vector;
 import configuration.Config;
 import javax.swing.border.BevelBorder;
 
+import domain.Administrator;
 import domain.Owner;
 import domain.RuralHouse;
 
@@ -19,31 +20,33 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class StartWindow extends JFrame {
-	
+
 	public static boolean clientServer = !false;
 
 	private static final long serialVersionUID = 1L;
-	
+
 	public static Owner OWNER;
+	public static Administrator ADMINISTRATOR;
 
 	private JPanel jContentPane = null;
 
 	public static ApplicationFacadeInterface facadeInterface;
 	private JButton btnUser;
 	private JButton btnOwner;
+	private JButton btnAdministrator;
 	private JLabel lblVillatripasDeArriba;
 	private JLabel lblTheBestRural;
-	
+
 	public StartWindow() {
 		super();
 		initialize();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
+
 	public static ApplicationFacadeInterface getBusinessLogic(){
 		return facadeInterface;
 	}
-	
+
 	private void initialize() {
 		// this.setSize(271, 295);
 		this.setSize(460, 360);
@@ -58,6 +61,7 @@ public class StartWindow extends JFrame {
 			jContentPane.setLayout(null);
 			jContentPane.add(getBtnUser());
 			jContentPane.add(getBtnOwner());
+			jContentPane.add(getBtnAdministrator());
 			jContentPane.add(getLblVillatripasDeArriba());
 			jContentPane.add(getLblTheBestRural());
 		}
@@ -80,7 +84,7 @@ public class StartWindow extends JFrame {
 				int portNumber = Integer.parseInt(c.getPortRMI());
 				// RMI server host IP IP 
 				facadeInterface = (ApplicationFacadeInterface) Naming.lookup("rmi://"
-					+ serverRMI + ":" + portNumber + serviceName);
+						+ serverRMI + ":" + portNumber + serviceName);
 			} 
 
 		}
@@ -91,7 +95,7 @@ public class StartWindow extends JFrame {
 		JFrame a = new StartWindow();
 		a.setVisible(true);
 	}
-	
+
 	private JButton getBtnUser() {
 		if (btnUser == null) {
 			btnUser = new JButton("User");
@@ -102,10 +106,10 @@ public class StartWindow extends JFrame {
 					StartWindow.this.setVisible(false);
 					JFrame a = new UserGUI();
 					a.setVisible(true);
-					
+
 				}
 			});
-			btnUser.setBounds(109, 130, 230, 43);
+			btnUser.setBounds(109, 131, 230, 43);
 		}
 		return btnUser;
 	}
@@ -121,16 +125,34 @@ public class StartWindow extends JFrame {
 					a.setVisible(true);					
 				}
 			});
-			btnOwner.setBounds(109, 196, 230, 43);
+			btnOwner.setBounds(109, 185, 230, 43);
 		}
 		return btnOwner;
 	}
+
+	private JButton getBtnAdministrator() {
+		if (btnAdministrator == null) {
+			btnAdministrator = new JButton("Administrator");
+			btnAdministrator.setFont(new Font("Calibri", Font.BOLD, 20));
+			btnAdministrator.setBackground(new Color(152, 251, 152));
+			btnAdministrator.setBounds(109, 239, 230, 43);
+			btnOwner.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					StartWindow.this.setVisible(false);
+					JFrame a = new AdministratorLoginGUI();
+					a.setVisible(true);					
+				}
+			});			
+		}
+		return btnAdministrator;
+	}
+
 	private JLabel getLblVillatripasDeArriba() {
 		if (lblVillatripasDeArriba == null) {
 			lblVillatripasDeArriba = new JLabel("Villatripas de Arriba");
 			lblVillatripasDeArriba.setForeground(new Color(47, 79, 79));
 			lblVillatripasDeArriba.setFont(new Font("Calibri", Font.BOLD, 30));
-			lblVillatripasDeArriba.setBounds(99, 46, 250, 50);
+			lblVillatripasDeArriba.setBounds(99, 28, 250, 50);
 		}
 		return lblVillatripasDeArriba;
 	}
@@ -138,7 +160,7 @@ public class StartWindow extends JFrame {
 		if (lblTheBestRural == null) {
 			lblTheBestRural = new JLabel("The best rural houses, the best prices!");
 			lblTheBestRural.setFont(new Font("Calibri", Font.BOLD, 15));
-			lblTheBestRural.setBounds(109, 82, 240, 24);
+			lblTheBestRural.setBounds(109, 81, 240, 24);
 		}
 		return lblTheBestRural;
 	}
