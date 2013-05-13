@@ -61,7 +61,6 @@ public class StartWindow extends JFrame {
 			jContentPane.setLayout(null);
 			jContentPane.add(getBtnUser());
 			jContentPane.add(getBtnOwner());
-			jContentPane.add(getBtnAdministrator());
 			jContentPane.add(getLblVillatripasDeArriba());
 			jContentPane.add(getLblTheBestRural());
 		}
@@ -130,22 +129,6 @@ public class StartWindow extends JFrame {
 		return btnOwner;
 	}
 
-	private JButton getBtnAdministrator() {
-		if (btnAdministrator == null) {
-			btnAdministrator = new JButton("Administrator");
-			btnAdministrator.setFont(new Font("Calibri", Font.BOLD, 20));
-			btnAdministrator.setBackground(new Color(152, 251, 152));
-			btnAdministrator.setBounds(109, 239, 230, 43);
-			btnOwner.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					StartWindow.this.setVisible(false);
-					JFrame a = new AdministratorLoginGUI();
-					a.setVisible(true);					
-				}
-			});			
-		}
-		return btnAdministrator;
-	}
 
 	private JLabel getLblVillatripasDeArriba() {
 		if (lblVillatripasDeArriba == null) {
