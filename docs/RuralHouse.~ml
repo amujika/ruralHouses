@@ -4727,7 +4727,7 @@ A) Client has to be booking a house
 <XPD:REF name="Context">4HCW47RnRUSJRR0GTsvL3QAA</XPD:REF>
 <XPD:ATTR name="#OwnedDiagrams" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="OwnedDiagrams[0]" type="UMLSequenceDiagram" guid="VlxUIUIaWk+rwGgzZiXPlQAA">
-<XPD:ATTR name="Name" type="string">SDRemoveRuralHouse</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">SDremoveRuralHouse</XPD:ATTR>
 <XPD:ATTR name="MessageSignature" type="UMLMessageSignatureKind">mskNameOnly</XPD:ATTR>
 <XPD:REF name="DiagramOwner">/CB8WbpDBECziCGXZT1rqgAA</XPD:REF>
 <XPD:OBJ name="DiagramView" type="UMLSequenceDiagramView" guid="FIB+WDWtyEiYEY5lIf+avAAA">
@@ -5013,8 +5013,8 @@ A) Client has to be booking a house
 <XPD:REF name="Head">zo+Mlz3EokC9UOYYK/B3TAAA</XPD:REF>
 <XPD:REF name="Tail">E/inbglYqUqy35NRGfxkYgAA</XPD:REF>
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="yVQRcLrL9EmCYQy/E3Yp+AAA">
-<XPD:ATTR name="Alpha" type="real">-4.48559020907821</XPD:ATTR>
-<XPD:ATTR name="Distance" type="real">13.3416640641263</XPD:ATTR>
+<XPD:ATTR name="Alpha" type="real">15707963267949</XPD:ATTR>
+<XPD:ATTR name="Distance" type="real">10</XPD:ATTR>
 <XPD:ATTR name="Text" type="string">1 : &lt;rh1rh2,...rhN&gt; := findAllHouses()</XPD:ATTR>
 <XPD:REF name="Model">oKxKNfR3fky68Y94qbJk4gAA</XPD:REF>
 <XPD:REF name="HostEdge">IRgG60MNmESUwhZVtf7NqgAA</XPD:REF>
