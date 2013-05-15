@@ -102,6 +102,14 @@ public class BookRuralHouseGUI extends JFrame {
 				txtTelephone_focusLost();
 			}
 		});
+		txtEmail.addFocusListener(new FocusListener() {
+			public void focusGained(FocusEvent e) { }
+			public void focusLost(FocusEvent e) {
+				lblSpace.setText((txtEmail.getText().contains("@")) ? ""
+						: "Error: Please introduce a valid email");
+			}			
+		});
+		
 		lblArrivalDay.setBounds(15, 41, 115, 20);
 		lblArrivalDay.setText("Arrival day:");
 		lblNumNights.setBounds(15, 227, 115, 20);
@@ -117,6 +125,8 @@ public class BookRuralHouseGUI extends JFrame {
 		btnAccept.setText("Accept");
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (!lblSpace.getText().equals(""))
+					return;
 				// House code
 				RuralHouse ruralHouse=(RuralHouse)jCBRuralHouse.getSelectedItem();
 				// Arrival date
@@ -128,6 +138,7 @@ public class BookRuralHouseGUI extends JFrame {
 				Date lastDay= new Date((long)(firstDay.getTime()+nights));
 				// Contact telephone
 				String telephone=txtTelephone.getText();
+				
 				// Contact email
 				String email=txtEmail.getText();
 				
@@ -211,7 +222,7 @@ public class BookRuralHouseGUI extends JFrame {
 			new Integer (txtNumNights.getText());
 			lblSpace.setText("");
 		}
-		catch (NumberFormatException ex) {
+		catch (Exception ex) {
 			lblSpace.setText("Error: Please introduce a number");
 		}
 	}
@@ -219,11 +230,15 @@ public class BookRuralHouseGUI extends JFrame {
 	private void txtTelephone_focusLost() {
 		try {
 			new Integer (txtTelephone.getText());
+			if (txtTelephone.getText().length() != 9)
+				throw new Exception();
 			lblSpace.setText("");
 		}
-		catch (NumberFormatException ex) {
-			lblSpace.setText("Error: Please introduce a number");
+		catch (Exception ex) {
+			lblSpace.setText("Error: Please introduce a valid phone number");
 		}
 	}
+	//
+	
 
 }
