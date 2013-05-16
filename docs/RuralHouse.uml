@@ -2903,12 +2903,13 @@ A) Client has to be booking a house
 <XPD:REF name="Associations[3]">xDVfltLYB0Gr8aCw9gfUTgAA</XPD:REF>
 <XPD:REF name="Associations[4]">mPqMNI5brkWLQFcWUKFRhgAA</XPD:REF>
 <XPD:REF name="Associations[5]">9dWdRwjog0WA1yQ+uFG2gwAA</XPD:REF>
-<XPD:ATTR name="#Instances" type="integer">5</XPD:ATTR>
+<XPD:ATTR name="#Instances" type="integer">6</XPD:ATTR>
 <XPD:REF name="Instances[0]">boTtqZ+YtUWjLVViaPz2XQAA</XPD:REF>
 <XPD:REF name="Instances[1]">bgmJAI0nSEKXa9OEzt6cNAAA</XPD:REF>
 <XPD:REF name="Instances[2]">G1tiqqcLDUG/atvXcwQ0BgAA</XPD:REF>
 <XPD:REF name="Instances[3]">wkNQFMuWDECln5AU99nZcwAA</XPD:REF>
 <XPD:REF name="Instances[4]">EbKBMmE2IU6CIS54XLUTUgAA</XPD:REF>
+<XPD:REF name="Instances[5]">Y3EeI3ZlaUSZos6cafRV3AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[2]" type="UMLAssociation" guid="OaV5++xbK0iVJeueUB3JPgAA">
 <XPD:REF name="Namespace">7HH0vkcMI0K8+O3VVR8sCgAA</XPD:REF>
@@ -8339,7 +8340,7 @@ A) Client has to be booking a house
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="j7ZKDr8Do06/N2Odd/duywAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="hVjMPS4ZEU6cLIwLDv114wAA">
 <XPD:ATTR name="FontStyle" type="integer">4</XPD:ATTR>
-<XPD:ATTR name="Text" type="string"> : Actual client</XPD:ATTR>
+<XPD:ATTR name="Text" type="string"> : Owner</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="yEVfdi6eRUG54cVTqKp/4wAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -8885,7 +8886,7 @@ A) Client has to be booking a house
 </XPD:OBJ>
 <XPD:ATTR name="#ParticipatingInstances" type="integer">6</XPD:ATTR>
 <XPD:OBJ name="ParticipatingInstances[0]" type="UMLObject" guid="Y3EeI3ZlaUSZos6cafRV3AAA">
-<XPD:REF name="Classifier">FHNbyf9eWECzCqB/MR21yAAA</XPD:REF>
+<XPD:REF name="Classifier">qRha3QPpA0Kd/1xpLPxNgAAA</XPD:REF>
 <XPD:REF name="CollaborationInstanceSet">OewWTakeNU2E8aQLGLHTwwAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">2</XPD:ATTR>
 <XPD:REF name="Views[0]">zLly1WOskE2C1hvZnqc7AgAA</XPD:REF>
@@ -9670,9 +9671,8 @@ A) Client has to be booking a house
 <XPD:REF name="Associations[2]">LUNAdQ7OME655jeM7hWbmgAA</XPD:REF>
 <XPD:REF name="Associations[3]">VysctmRp6k6N3eqfsQGnMQAA</XPD:REF>
 <XPD:REF name="Associations[4]">JgmnnC+0s06WT01LxOVnvQAA</XPD:REF>
-<XPD:ATTR name="#Instances" type="integer">2</XPD:ATTR>
+<XPD:ATTR name="#Instances" type="integer">1</XPD:ATTR>
 <XPD:REF name="Instances[0]">iUYfy2DnuESAU2dISo5tUwAA</XPD:REF>
-<XPD:REF name="Instances[1]">Y3EeI3ZlaUSZos6cafRV3AAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[30]" type="UMLAssociation" guid="Wx/EybR0wUGP9tIs6FeEkQAA">
 <XPD:REF name="Namespace">7HH0vkcMI0K8+O3VVR8sCgAA</XPD:REF>
@@ -17191,8 +17191,8 @@ A) Client has to be booking a house
 <XPD:REF name="Participant">1gf4X3nTj0aH4AwEFqLqPQAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">c0LyvXHK50GwdspUrbhLLgAA</XPD:REF>
-<XPD:REF name="Views[1]">TxxwF5oom0CK1pw+V1T4BgAA</XPD:REF>
-<XPD:REF name="Views[2]">WotAy43XHEWglaOHUG7aOQAA</XPD:REF>
+<XPD:REF name="Views[1]">WotAy43XHEWglaOHUG7aOQAA</XPD:REF>
+<XPD:REF name="Views[2]">TxxwF5oom0CK1pw+V1T4BgAA</XPD:REF>
 <XPD:REF name="Views[3]">rT84kQcCqkOJpQOFUyersgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="w2wc75M4AUiwpO5AFInKgAAA">
@@ -17200,8 +17200,8 @@ A) Client has to be booking a house
 <XPD:REF name="Participant">7Vjarr8LmkS2llRn0GIDewAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">k+MwXF3LWkyimWDRjAWOogAA</XPD:REF>
-<XPD:REF name="Views[1]">9tsQAn/Iek65WLpFMCgAxgAA</XPD:REF>
-<XPD:REF name="Views[2]">OucYnuMBFUGjzntYdKawWwAA</XPD:REF>
+<XPD:REF name="Views[1]">OucYnuMBFUGjzntYdKawWwAA</XPD:REF>
+<XPD:REF name="Views[2]">9tsQAn/Iek65WLpFMCgAxgAA</XPD:REF>
 <XPD:REF name="Views[3]">jsTZHldY7EuF+3cPvUedEQAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
@@ -17218,8 +17218,8 @@ A) Client has to be booking a house
 <XPD:REF name="Participant">1gf4X3nTj0aH4AwEFqLqPQAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">8rwfol54Yk2uu75baWT46wAA</XPD:REF>
-<XPD:REF name="Views[1]">aA1xomJg6kaUicp+b9S/qAAA</XPD:REF>
-<XPD:REF name="Views[2]">/YVomKsan0mHoIRhV3vRawAA</XPD:REF>
+<XPD:REF name="Views[1]">/YVomKsan0mHoIRhV3vRawAA</XPD:REF>
+<XPD:REF name="Views[2]">aA1xomJg6kaUicp+b9S/qAAA</XPD:REF>
 <XPD:REF name="Views[3]">w4SPUUMgfE6dctxnNR7kDQAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Connections[1]" type="UMLAssociationEnd" guid="/p2l7jPXP02R0rXDy76rbAAA">
@@ -17227,8 +17227,8 @@ A) Client has to be booking a house
 <XPD:REF name="Participant">umJHIqZljEymTHeMTkbcWAAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">AVput6GqVEGa2nCkDl3VLwAA</XPD:REF>
-<XPD:REF name="Views[1]">HZ4milHCmEqgMO/qDJShBQAA</XPD:REF>
-<XPD:REF name="Views[2]">nacCPyodIEWoJpwkV8GImQAA</XPD:REF>
+<XPD:REF name="Views[1]">nacCPyodIEWoJpwkV8GImQAA</XPD:REF>
+<XPD:REF name="Views[2]">HZ4milHCmEqgMO/qDJShBQAA</XPD:REF>
 <XPD:REF name="Views[3]">0HAD1X3WFUqrro8weqC9zAAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
