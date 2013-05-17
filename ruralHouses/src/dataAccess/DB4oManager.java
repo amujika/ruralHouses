@@ -46,11 +46,11 @@ public class DB4oManager {
 			Owner jon = new Owner("Jon", "userJon", "passJon");
 			Owner alfredo = new Owner("Alfredo","userAlfredo", "passAlfredo");
 			String img = null;
-			jon.addRuralHouse(1, "Ezkioko etxea", img, "Ezkio");
-			jon.addRuralHouse(2, "Eskiatzeko etxea", img, "Jaca");
+			jon.addRuralHouse(1,3, 5, true, img, "Ezkio");
+			jon.addRuralHouse(2, 2, 3, false, img, "Jaca");
 			jon.setBankAccount("1349 5677 21 2133567777");
-			alfredo.addRuralHouse(3, "Casa del abuelo", img, "Pitillas");
-			alfredo.addRuralHouse(4, "Refugio", img, "Murgia");
+			alfredo.addRuralHouse(3, 3, 5, false, img, "Pitillas");
+			alfredo.addRuralHouse(4, 1, 2, false, img, "Murgia");
 			alfredo.setBankAccount("4144 0087 23 9700002133");
 
 			db.store(jon);
@@ -136,8 +136,8 @@ public class DB4oManager {
 	Exception {
 		ObjectContainer db=DB4oManager.getContainer();
 		try {
-			RuralHouse proto = new RuralHouse(0,null,null,null, null);
-			ObjectSet<Object> result = db.queryByExample(proto);
+
+			RuralHouse proto = new RuralHouse(0, null, 0, 0, null, null, null);			ObjectSet<Object> result = db.queryByExample(proto);
 			Vector<RuralHouse> ruralHouses=new Vector<RuralHouse>();
 			while(result.hasNext()) 
 				ruralHouses.add((RuralHouse)result.next());
@@ -151,8 +151,7 @@ public class DB4oManager {
 	public RuralHouse getRuralHouseByNumber(int houseNumber){
 		try {
 			ObjectContainer db=DB4oManager.getContainer();
-			RuralHouse rh = new RuralHouse(houseNumber, null, null, null, null);
-			ObjectSet<RuralHouse> result = db.queryByExample(rh);
+			RuralHouse rh = new RuralHouse(houseNumber, null, 0, 0, null, null, null);			ObjectSet<RuralHouse> result = db.queryByExample(rh);
 			return result.next();
 		} catch (Exception e) {
 			System.out.println("There has been an error in dataAccess > DB4oManager in line " + new Throwable().getStackTrace()[0].getLineNumber());
@@ -171,8 +170,7 @@ public class DB4oManager {
 			float price){
 		ObjectContainer db=DB4oManager.getContainer();
 		RuralHouse proto = new RuralHouse(ruralHouse.getHouseNumber(), null, 
-				ruralHouse.getDescription(), ruralHouse.getImage(), ruralHouse.getTown());
-		ObjectSet<Object> result = db.queryByExample(proto);
+				ruralHouse.getnumberOfRooms(), ruralHouse.getNumberOfBeds(), ruralHouse.getWifi(), ruralHouse.getImage(), ruralHouse.getTown());		ObjectSet<Object> result = db.queryByExample(proto);
 		RuralHouse rh=(RuralHouse)result.next();
 		Offer o=rh.createOffer(firstDay, lastDay, price);
 		db.store(o);
@@ -193,8 +191,7 @@ public class DB4oManager {
 		try {
 			ObjectContainer db=DB4oManager.getContainer();
 			RuralHouse proto = new RuralHouse(rh.getHouseNumber(), null,
-					rh.getDescription(), rh.getImage(), rh.getTown());
-			ObjectSet<Object> result = db.queryByExample(proto);
+					rh.getnumberOfRooms(), rh.getNumberOfBeds(), rh.getWifi(), rh.getImage(), rh.getTown());			ObjectSet<Object> result = db.queryByExample(proto);
 			return  rh=(RuralHouse)result.next();
 		} catch (Exception exc) {
 			exc.printStackTrace();

@@ -66,14 +66,16 @@ public class Owner implements Serializable, Comparable<Owner> {
 		return ruralHouses;
 	}
 
-	public RuralHouse addRuralHouse(int houseNumber, String description, String image, String city) {
-		RuralHouse rh=new RuralHouse(houseNumber,  this,  description, image,  city);
+	public RuralHouse addRuralHouse(int houseNumber, int numberOfRooms, int numberOfBeds, Boolean wifi, String image, String city) {
+		RuralHouse rh=new RuralHouse(houseNumber,  this,  numberOfRooms, numberOfBeds, wifi, image,  city);
 		ruralHouses.add(rh);
 		return rh;
 	}
 	
-	public void changePropertiesRuralHouse(RuralHouse rh, String properties) {
-		rh.setDescription(properties);
+	public void changePropertiesRuralHouse(RuralHouse rh, int numberOfRooms, int numberOfBeds, Boolean wifi) {
+		rh.setNumberOfRooms(numberOfRooms);
+		rh.setNumberOfBeds(numberOfBeds);
+		rh.setWifi(wifi);
 	}
 
 	public void removeRuralHouse(RuralHouse rh){

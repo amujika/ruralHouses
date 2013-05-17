@@ -24,6 +24,7 @@ import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.util.Vector;
 import java.awt.Color;
+import javax.swing.JCheckBox;
 
 public class ChangePropertiesRuralHouseGUI extends JFrame {
 
@@ -33,7 +34,9 @@ public class ChangePropertiesRuralHouseGUI extends JFrame {
 	private ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 	private DefaultComboBoxModel<RuralHouse> ruralHouses = new DefaultComboBoxModel<RuralHouse>();
-	private JTextField txtProperties;
+	private JTextField txtNumberOfRooms;
+	private JTextField txtNumberOfBeds;
+	private JCheckBox chckbxWifi = new JCheckBox();
 
 	/**
 	 * Create the frame.
@@ -49,7 +52,7 @@ public class ChangePropertiesRuralHouseGUI extends JFrame {
 		contentPane.add(getRuralHousesJCB());
 
 		JLabel lblChooseRH = new JLabel("Choose a rural house to change it's properties:");
-		lblChooseRH.setBounds(97, 68, 231, 20);
+		lblChooseRH.setBounds(97, 31, 231, 20);
 		contentPane.add(lblChooseRH);
 
 		JButton btnAccept = new JButton("Accept");
@@ -57,12 +60,17 @@ public class ChangePropertiesRuralHouseGUI extends JFrame {
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RuralHouse rh = (RuralHouse) ruralHouses.getSelectedItem();
-				String properties = txtProperties.getText();
 
-				rh.setDescription(properties);
+				int numberOfRooms = Integer.parseInt(txtNumberOfRooms.getText());
+				int numberOfBeds = Integer.parseInt(txtNumberOfBeds.getText());
+				Boolean wifi = (Boolean)chckbxWifi.isSelected();
+			
+				rh.setNumberOfRooms(numberOfRooms);
+				rh.setNumberOfBeds(numberOfBeds);
+				rh.setWifi(wifi);
 
 				setVisible(false);
-				
+
 				try {
 					facade.storeRuralHouse(rh);
 				} catch (RemoteException e1) {
@@ -83,19 +91,32 @@ public class ChangePropertiesRuralHouseGUI extends JFrame {
 		btnCancel.setBounds(97, 258, 89, 23);
 		contentPane.add(btnCancel);
 
-		JLabel lblSetProperties = new JLabel("New Properties:");
-		lblSetProperties.setBounds(97, 174, 80, 14);
-		contentPane.add(lblSetProperties);
+		JLabel lblNumberOfRooms = new JLabel("Number of Rooms:");
+		lblNumberOfRooms.setBounds(97, 119, 80, 14);
+		contentPane.add(lblNumberOfRooms);
 
-		txtProperties = new JTextField();
-		txtProperties.setBounds(187, 171, 141, 20);
-		contentPane.add(txtProperties);
-		txtProperties.setColumns(10);
+		txtNumberOfRooms = new JTextField();
+		txtNumberOfRooms.setBounds(187, 116, 141, 20);
+		contentPane.add(txtNumberOfRooms);
+		txtNumberOfRooms.setColumns(10);
+
+		JLabel lblNumberOfBeds = new JLabel("Number of Beds:");
+		lblNumberOfBeds.setBounds(97, 150, 80, 14);
+		contentPane.add(lblNumberOfBeds);
+
+		JCheckBox chckbxWifi = new JCheckBox("Wifi");
+		chckbxWifi.setBounds(187, 174, 97, 23);
+		contentPane.add(chckbxWifi);
+
+		txtNumberOfBeds = new JTextField();
+		txtNumberOfBeds.setBounds(187, 147, 141, 20);
+		contentPane.add(txtNumberOfBeds);
+		txtNumberOfBeds.setColumns(10);
 	}
 
 	private JComboBox getRuralHousesJCB(){
 		JComboBox JCBChooseRH = new JComboBox();
-		JCBChooseRH.setBounds(97, 99, 231, 20);
+		JCBChooseRH.setBounds(97, 62, 231, 20);
 		Owner owner = StartWindow.OWNER;
 		Vector<RuralHouse> houseList = null;
 

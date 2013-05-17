@@ -13,7 +13,9 @@ public class RuralHouse implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int houseNumber;
-	private String description;
+	private int numberOfRooms;
+	private int numberOfBeds;
+	private Boolean wifi;
 	private String image;
 	private Owner owner;
 	private String town; 
@@ -23,9 +25,11 @@ public class RuralHouse implements Serializable {
 		super();
 	}
 
-	public RuralHouse(int houseNumber, Owner owner, String description, String image, String town) {
+	public RuralHouse(int houseNumber, Owner owner, int numberOfRooms, int numberOfBeds, Boolean wifi, String image, String town) {
 		this.houseNumber = houseNumber;
-		this.description = description;
+		this.numberOfRooms = numberOfRooms;
+		this.numberOfBeds = numberOfBeds;
+		this.wifi = wifi;
 		this.image = image;
 		this.owner = owner;
 		this.town = town;
@@ -40,12 +44,28 @@ public class RuralHouse implements Serializable {
 		this.houseNumber = houseNumber;
 	}
 
-	public String getDescription() {
-		return description;
+	public int getnumberOfRooms() {
+		return numberOfRooms;
 	}
 
-	public void setDescription(String description) {
-		this.description=description;
+	public void setNumberOfRooms(int numberOfRooms) {
+		this.numberOfRooms=numberOfRooms;
+	}
+
+	public int getNumberOfBeds() {
+		return numberOfBeds;
+	}
+
+	public void setNumberOfBeds(int numberOfBeds) {
+		this.numberOfBeds=numberOfBeds;
+	}
+
+	public boolean getWifi() {
+		return wifi;
+	}
+
+	public void setWifi (Boolean wifi) {
+		this.wifi=wifi;
 	}
 
 	public String getImage() {

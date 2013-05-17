@@ -22,16 +22,20 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.awt.Color;
+import javax.swing.JRadioButton;
+import javax.swing.JCheckBox;
 
 public class AddRuralHouseGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtHouseNum;
 	private JTextField txtTown;
-	private JTextField txtDescription;
+	private JTextField txtNumberOfRooms;
+	private JTextField txtNumberOfBeds;
+	private JCheckBox chckbxWifi = new JCheckBox();
 	private JFileChooser chooser; 
 
-//	private AddRuralHouseBL BL = new AddRuralHouseBL();
+	//	private AddRuralHouseBL BL = new AddRuralHouseBL();
 	private ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 	/**
@@ -46,17 +50,17 @@ public class AddRuralHouseGUI extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblHouseNum = new JLabel("House number:");
-		lblHouseNum.setBounds(32, 21, 85, 41);
+		lblHouseNum.setBounds(32, 21, 93, 41);
 		contentPane.add(lblHouseNum);
 
 		txtHouseNum = new JTextField();
-		txtHouseNum.setBounds(109, 31, 86, 20);
+		txtHouseNum.setBounds(121, 31, 74, 20);
 		contentPane.add(txtHouseNum);
 		txtHouseNum.setColumns(10);
 
-		JLabel lblDescription = new JLabel("Description:");
-		lblDescription.setBounds(32, 73, 68, 23);
-		contentPane.add(lblDescription);
+		JLabel lblNumberOfBeds = new JLabel("Number of Rooms:");
+		lblNumberOfBeds.setBounds(32, 91, 93, 23);
+		contentPane.add(lblNumberOfBeds);
 
 		JLabel lblTown = new JLabel("Town:");
 		lblTown.setBounds(223, 34, 46, 14);
@@ -67,10 +71,10 @@ public class AddRuralHouseGUI extends JFrame {
 		contentPane.add(txtTown);
 		txtTown.setColumns(10);
 
-		txtDescription = new JTextField();
-		txtDescription.setBounds(109, 77, 238, 142);
-		contentPane.add(txtDescription);
-		txtDescription.setColumns(10);
+		txtNumberOfRooms = new JTextField();
+		txtNumberOfRooms.setBounds(135, 92, 212, 20);
+		contentPane.add(txtNumberOfRooms);
+		txtNumberOfRooms.setColumns(10);
 
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setBackground(new Color(152, 251, 152));
@@ -89,13 +93,14 @@ public class AddRuralHouseGUI extends JFrame {
 
 				int houseNumber = Integer.parseInt(txtHouseNum.getText());
 				String town = txtTown.getText();
-				String description = txtDescription.getText();
-				//chooser returns File but we need Image
-				String image = chooser.getSelectedFile().getAbsolutePath();
+				int numberOfRooms = Integer.parseInt(txtNumberOfRooms.getText());
+				int numberOfBeds = Integer.parseInt(txtNumberOfBeds.getText());
+				Boolean wifi = (Boolean)chckbxWifi.isSelected();
+						//chooser returns File but we need Image
+						String image = chooser.getSelectedFile().getAbsolutePath();
 
 				try {
-					facade.addRuralHouse(houseNumber, owner , description, image, town);
-					StartWindow.OWNER = facade.ownerloginBL(new Owner(owner.getName(),owner.getUsername(), owner.getPassword()));
+					facade.addRuralHouse(houseNumber, owner , numberOfRooms, numberOfBeds, wifi, image, town);
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -105,7 +110,7 @@ public class AddRuralHouseGUI extends JFrame {
 
 			}
 		});
-	btnAccept.setBounds(258, 266, 89, 23);
+		btnAccept.setBounds(258, 266, 89, 23);
 
 		contentPane.add(btnAccept);
 
@@ -133,8 +138,20 @@ public class AddRuralHouseGUI extends JFrame {
 				}
 			}
 		});
-		btnImage.setBounds(172, 230, 117, 25);
+		btnImage.setBounds(172, 216, 117, 25);
 		contentPane.add(btnImage);
-	}
 
+		JLabel lblNumberOfBeds_1 = new JLabel("Number of Beds:");
+		lblNumberOfBeds_1.setBounds(32, 125, 93, 14);
+		contentPane.add(lblNumberOfBeds_1);
+
+		txtNumberOfBeds = new JTextField();
+		txtNumberOfBeds.setBounds(135, 122, 212, 20);
+		contentPane.add(txtNumberOfBeds);
+		txtNumberOfBeds.setColumns(10);
+
+		JCheckBox chckbxWifi = new JCheckBox("Wifi");
+		chckbxWifi.setBounds(135, 163, 97, 23);
+		contentPane.add(chckbxWifi);
+	}
 }

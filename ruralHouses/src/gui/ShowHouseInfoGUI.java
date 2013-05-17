@@ -12,10 +12,12 @@ import javax.swing.border.EmptyBorder;
 
 import domain.RuralHouse;
 import javax.swing.JLabel;
+import javax.swing.JCheckBox;
 
 public class ShowHouseInfoGUI extends JFrame {
 
 	private JPanel contentPane;
+	private JCheckBox chckbxWifi = new JCheckBox();
 
 
 	/**
@@ -30,7 +32,7 @@ public class ShowHouseInfoGUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblHouseNum = new JLabel();
-		lblHouseNum.setText("<html>House Number:"+ rh.getHouseNumber() +"<br>Description: " + rh.getDescription() + "</html>");
+		lblHouseNum.setText("<html>House Number:"+ rh.getHouseNumber() +"<br>Number of Rooms: " + rh.getnumberOfRooms() + "<br>Number of Beds: " + rh.getNumberOfBeds()  + "<br>Wifi: " + rh.getWifi() + "</html>");
 		if (rh.getImage()!= null){
 			JLabel l = new JLabel();
 			ImageIcon icon = new ImageIcon(rh.getImage());
@@ -38,8 +40,10 @@ public class ShowHouseInfoGUI extends JFrame {
 			l.setBounds(10,10,200,200);
 			contentPane.add(l);			
 		}
+		
 		lblHouseNum.setBounds(10, 200, 312, 58);
 		contentPane.add(lblHouseNum);
+		
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 	}
 }

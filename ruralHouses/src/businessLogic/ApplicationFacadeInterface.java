@@ -77,7 +77,7 @@ public interface ApplicationFacadeInterface extends Remote {
 	public void close() throws RemoteException;
 
 	//addRuralHouse
-	public void addRuralHouse(int houseNumber, Owner owner, String description, String image, String town) throws RemoteException;
+	public void addRuralHouse(int houseNumber, Owner owner, int numberOfRooms, int numberdOfBeds, Boolean wifi, String image, String town) throws RemoteException;
 
 	//introduceOffer
 	public void createOffer(RuralHouse rh, Date firstDay, Date lastDay, Float price) throws RemoteException;
@@ -91,7 +91,7 @@ public interface ApplicationFacadeInterface extends Remote {
 
 	//ownerRegistration
 	public void registerOwner(Owner owner) throws RemoteException;
-	
+
 	//storeRuralHouse
 	public void storeRuralHouse(RuralHouse rh) throws RemoteException;
 
