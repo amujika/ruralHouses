@@ -86,7 +86,7 @@ public class Booking implements Serializable {
 	}
 	
 	public String toString(){
-		return bookingNumber + "" + bookingDate;
+		return this.offer.getRuralHouse().toString() + ": " + this.offer.toString();
 	}
 	@Override
 	public boolean equals(Object b){

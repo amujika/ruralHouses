@@ -146,6 +146,10 @@ public class SearchOffersGUI extends JFrame {
 	private void btnBook_actionPerformed(){
 		String telephone=txtTelephone.getText();
 		String email=txtEmail.getText();
+		if (telephone.length() != 9 || email.length() < 4 || !email.contains("@") || !email.contains(".")){
+			JOptionPane.showMessageDialog(null, "Wrong " + ((telephone.length() != 9)?"phone":"email"));
+			return;
+		}
 		Offer auxOffer = (Offer) showOffers.getSelectedValue();
 		Booking auxBooking = auxOffer.createBook(telephone);						
 		BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer, email, telephone);

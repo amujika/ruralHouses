@@ -112,11 +112,12 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 						JFrame a = new ClientAuthenticationGUI();
 						a.setVisible(true);
 					}else{
-						client = new Client(email,"password",telephone);
+						String pass = Integer.toString(email.hashCode());
+						client = new Client(email,pass,telephone);
 						facade.registerClient(client);
 						facade.bookRuralHouse(booking, offer,client);
 						StartWindow.CLIENT = facade.clientRegistered(new Client(client.getEmail(), null, null));
-						JOptionPane.showMessageDialog(null, "User registered!");
+						JOptionPane.showMessageDialog(null, "User registered with pass: " + pass);
 						setVisible(false);						
 					}
 				} catch (HeadlessException | RemoteException e1) {
