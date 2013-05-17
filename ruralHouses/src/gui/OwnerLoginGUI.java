@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 //import java.awt.Window.Type;
@@ -84,10 +85,10 @@ public class OwnerLoginGUI extends JFrame {
 				
 				if (ownerTriesToLogIn == null) {
 					lblAccess.setForeground(new Color(253, 0, 0));
-					lblAccess.setText("ACCESS DENIED!");
+					JOptionPane.showMessageDialog(null, "Access denied!");
 				} else {
 					lblAccess.setForeground(new Color(0, 128, 0));
-					lblAccess.setText("ACCESS GRANTED!");
+					JOptionPane.showMessageDialog(null, "Access granted");
 					StartWindow.OWNER = ownerTriesToLogIn;
 					JFrame a = new OwnerGUI();
 					a.setVisible(true);
