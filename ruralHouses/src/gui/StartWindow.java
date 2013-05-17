@@ -7,14 +7,11 @@ import businessLogic.FacadeImplementation;
 import businessLogic.ApplicationFacadeInterface;
 
 import java.rmi.*;
-import java.util.Vector;
 
 import configuration.Config;
-import javax.swing.border.BevelBorder;
 
 import domain.Client;
 import domain.Owner;
-import domain.RuralHouse;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

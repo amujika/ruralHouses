@@ -55,7 +55,7 @@ public class Client implements Serializable, Comparable<Client> {
 	}
 	
 	public void removeBooking (Booking b){
-		this.bookings.remove(b);
+		this.bookings.removeElement(b);
 	}
 
 	public String toString(){

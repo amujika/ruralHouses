@@ -1,17 +1,14 @@
 package dataAccess;
 
-import java.awt.Image;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
-import javax.swing.ImageIcon;
+//import javax.swing.ImageIcon;
 //import java.util.Enumeration;
 //import java.util.Vector;
-
-import businessLogic.BookingManager;
 
 import com.db4o.*;
 
@@ -22,7 +19,6 @@ import domain.Client;
 import domain.Offer;
 import domain.Owner;
 import domain.RuralHouse;
-import exceptions.OfferCanNotBeBooked;
 
 public class DB4oManager { 
 
@@ -82,10 +78,10 @@ public class DB4oManager {
 
 		try {
 			Owner proto = new Owner(null,null,null,null);
-			ObjectSet result = db.queryByExample(proto);
+			ObjectSet<Owner> result = db.queryByExample(proto);
 			Vector<Owner> owners=new Vector<Owner>();
 			while(result.hasNext())				 
-				owners.add((Owner)result.next());
+				owners.add(result.next());
 			return owners;
 		} finally {
 			//db.close();
@@ -141,7 +137,7 @@ public class DB4oManager {
 		ObjectContainer db=DB4oManager.getContainer();
 		try {
 			RuralHouse proto = new RuralHouse(0,null,null,null, null);
-			ObjectSet result = db.queryByExample(proto);
+			ObjectSet<Object> result = db.queryByExample(proto);
 			Vector<RuralHouse> ruralHouses=new Vector<RuralHouse>();
 			while(result.hasNext()) 
 				ruralHouses.add((RuralHouse)result.next());
@@ -176,7 +172,7 @@ public class DB4oManager {
 		ObjectContainer db=DB4oManager.getContainer();
 		RuralHouse proto = new RuralHouse(ruralHouse.getHouseNumber(), null, 
 				ruralHouse.getDescription(), ruralHouse.getImage(), ruralHouse.getTown());
-		ObjectSet result = db.queryByExample(proto);
+		ObjectSet<Object> result = db.queryByExample(proto);
 		RuralHouse rh=(RuralHouse)result.next();
 		Offer o=rh.createOffer(firstDay, lastDay, price);
 		db.store(o);
@@ -185,7 +181,7 @@ public class DB4oManager {
 	}
 
 	public Offer getOffer(Offer offer){
-		List<Offer> result = db.queryByExample(offer);
+		List<Offer> result = db.queryByExample(new Offer(offer.getOfferNumber()));
 
 		if (result.isEmpty())
 			return null;
@@ -198,18 +194,25 @@ public class DB4oManager {
 			ObjectContainer db=DB4oManager.getContainer();
 			RuralHouse proto = new RuralHouse(rh.getHouseNumber(), null,
 					rh.getDescription(), rh.getImage(), rh.getTown());
-			ObjectSet result = db.queryByExample(proto);
+			ObjectSet<Object> result = db.queryByExample(proto);
 			return  rh=(RuralHouse)result.next();
 		} catch (Exception exc) {
 			exc.printStackTrace();
 			return null;
 		}
 	}
+	
+	public Booking getBooking (Booking b) {
+		List<Booking> result = db.queryByExample(new Booking(b.getBookNumber()));
+
+		if (result.isEmpty())
+			return null;
+		else
+			return result.get(0);
+	}
 
 	public Vector<Booking> getBookingByRH(RuralHouse rh){
 		try{
-			ObjectContainer db=DB4oManager.getContainer();
-			Booking proto = new Booking (null, null);
 			RuralHouse ruHo = getRuralHouse(rh);
 			Vector<Offer> of = ruHo.offers;
 			Vector<Booking> bookings = new Vector <Booking>();
@@ -234,6 +237,7 @@ public class DB4oManager {
 	}
 
 	public void storeBooking(Booking booking, Offer offer, Client client){
+		client = getClient(new Client(client.getEmail(), null, null));
 		client.addBooking(booking);
 		db.store(client);
 		db.store(booking);
@@ -254,9 +258,9 @@ public class DB4oManager {
 	}
 
 	public void removeBooking(Booking booking, Client client){
-		client.removeBooking(booking);
 		db.store(client);
 		db.delete(booking);
+		db.store(booking.getOffer());
 		db.commit();
 	}
 

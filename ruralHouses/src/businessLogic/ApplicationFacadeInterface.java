@@ -5,14 +5,11 @@ import java.rmi.*;
 import java.util.Vector;
 import java.util.Date;
 
-import dataAccess.DB4oManager;
 import domain.Booking;
 import domain.Client;
 import domain.Offer;
 import domain.Owner;
 import domain.RuralHouse;
-
-import exceptions.OfferCanNotBeBooked; 
 
 public interface ApplicationFacadeInterface extends Remote {
 

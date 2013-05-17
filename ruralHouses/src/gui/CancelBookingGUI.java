@@ -1,8 +1,5 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,24 +22,14 @@ import java.awt.Color;
 
 public class CancelBookingGUI extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private DefaultComboBoxModel<Booking> bookings = new DefaultComboBoxModel<Booking>();
+	private ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CancelBookingGUI frame = new CancelBookingGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -67,10 +54,8 @@ public class CancelBookingGUI extends JFrame {
 		btnAccept.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Booking b= (Booking) bookings.getSelectedItem();
-				ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 				try {
-					Client client = StartWindow.CLIENT;
-					facade.cancelBooking(b,client);
+					facade.cancelBooking(b,StartWindow.CLIENT);
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -92,15 +77,14 @@ public class CancelBookingGUI extends JFrame {
 		contentPane.add(btnCancel);
 		
 	}
-	private JComboBox getBookings(){
-		JComboBox JCBBookings = new JComboBox();
+	private JComboBox<Booking> getBookings(){
+		JComboBox<Booking> JCBBookings = new JComboBox<Booking>();
 		JCBBookings.setBounds(133, 108, 206, 20);
 		contentPane.add(JCBBookings);
 		Client client = StartWindow.CLIENT;
 		Vector<Booking> bookingList = null;
 		
 		try {
-			ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 			bookingList=facade.getBookings(client);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

@@ -4,8 +4,6 @@ import java.io.*;
 import java.util.Date;
 import java.util.Random;
 
-import businessLogic.BookingManager;
-
 @SuppressWarnings("serial")
 public class Booking implements Serializable {
 	private int bookingNumber;
@@ -17,15 +15,18 @@ public class Booking implements Serializable {
 	public Booking() {
 	}
 
-	public Booking(String telephone, Offer offer) {
-		
-		this.bookingNumber = new Random().nextInt(1000000);
+	public Booking(String telephone, Offer offer) {		
+		this.bookingNumber = new Random().nextInt(10000000);
 		this.telephone=telephone;
 		this.offer = offer;
 		//this.price = price;
 		//Booking date is assigned to actual date
 		this.bookingDate= new java.util.Date(System.currentTimeMillis());
 		this.isPaid=false;
+	}
+	
+	public Booking (int n) {
+		this.bookingNumber = n;
 	}
 	
 	public void imprimete(){
@@ -87,4 +88,11 @@ public class Booking implements Serializable {
 	public String toString(){
 		return bookingNumber + "" + bookingDate;
 	}
+	@Override
+	public boolean equals(Object b){
+		if (b == null)
+			return false;
+		return this.bookingNumber ==  ((Booking) b).bookingNumber;
+	}
+	
 }

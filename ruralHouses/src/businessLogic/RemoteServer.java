@@ -1,10 +1,8 @@
 package businessLogic;
 
 import java.rmi.Naming;
-import java.rmi.RMISecurityManager;
 
 import configuration.Config;
-import dataAccess.DB4oManager;
 
 public class RemoteServer {
 

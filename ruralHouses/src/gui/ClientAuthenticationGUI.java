@@ -82,11 +82,10 @@ public class ClientAuthenticationGUI extends JFrame {
 					if(facade.clientRegistered(client)!=null){
 						JOptionPane.showMessageDialog(null, "Access granted.");
 						StartWindow.CLIENT=facade.clientRegistered(client);
-						setVisible(false);	
+						setVisible(false);
 					}
 					else{
-						JOptionPane.showMessageDialog(null, "Access denied.");
-						
+						JOptionPane.showMessageDialog(null, "Access denied.");						
 					}
 				} catch (HeadlessException | RemoteException e) {
 					// TODO Auto-generated catch block

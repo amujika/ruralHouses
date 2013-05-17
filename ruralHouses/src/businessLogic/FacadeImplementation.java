@@ -45,7 +45,7 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	}
 
 	public Offer createOffer(RuralHouse ruralHouse, Date firstDay, Date lastDay,
-			float price) throws RemoteException, Exception {		 
+			float price) throws RemoteException, Exception {	
 		return dbMngr.createOffer(ruralHouse, firstDay, lastDay, price);
 	}
 
@@ -95,8 +95,11 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	//addRuralHouse
 
 	public void addRuralHouse(int houseNumber, Owner owner, String description, String image, String town){ 
+		owner = dbMngr.getOwner(new Owner(owner.getName(), owner.getUsername(), owner.getPassword()));
 		RuralHouse rh=owner.addRuralHouse(houseNumber, description, image, town);
-		DB4oManager.getInstance().addRuralHouse(owner,rh);}
+		DB4oManager.getInstance().addRuralHouse(owner,rh);
+		
+	}
 
 	//introduceOffer
 
@@ -130,6 +133,7 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	//removeRuralHouse
 
 	public void RemoveRuralHouse(RuralHouse rh){
+		rh = dbMngr.getRuralHouse(rh);
 		Owner owner = rh.getOwner();
 		owner.removeRuralHouse(rh);
 		DB4oManager.getInstance().updateOwner(owner);
@@ -139,6 +143,10 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	//bookRuralHouse
 
 	public void bookRuralHouse (Booking booking, Offer offer,Client client) {
+		client = dbMngr.getClient(new Client(client.getEmail(), null, null));
+		offer = dbMngr.getOffer(offer);
+		offer.setBooking(booking);
+		booking.setOffer(offer);
 		DB4oManager dbManager = DB4oManager.getInstance();
 		dbManager.storeBooking(booking, offer, client);
 	}
@@ -160,6 +168,11 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	}
 
 	public void cancelBooking(Booking booking, Client client){
+		booking = dbMngr.getBooking(booking);
+		client = dbMngr.getClient(new Client(client.getEmail(), null, null));
+		client.removeBooking(booking);
+		booking.getOffer().setBooking(null);
+		System.out.println(client.getBookings().size());
 		DB4oManager dbManager = DB4oManager.getInstance();
 		dbManager.removeBooking(booking,client);
 	}

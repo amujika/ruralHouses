@@ -35,6 +35,10 @@ public class Offer implements Serializable {
 		  this.offerNumber=number;
 	}
 	
+	public Offer(int number) {
+		this.offerNumber=number;
+	}
+	
 	public RuralHouse getRuralHouse() {
 		return this.ruralHouse;
 	}

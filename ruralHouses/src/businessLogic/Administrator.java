@@ -95,10 +95,10 @@ public class Administrator extends JFrame {
 					String password = textFieldPassword.getText();
 					String bank = textFieldBank.getText();	
 
-					Owner owner = new Owner(bank, name, username, password);
+					Owner owner = new Owner(name, username, password, bank);
 
 					try {
-						facade.registerOwner(owner);
+						facadeInterface.registerOwner(owner);
 					} catch (RemoteException e1) {
 						e1.printStackTrace();
 					}
