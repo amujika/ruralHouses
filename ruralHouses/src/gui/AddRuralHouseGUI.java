@@ -97,7 +97,9 @@ public class AddRuralHouseGUI extends JFrame {
 				int numberOfBeds = Integer.parseInt(txtNumberOfBeds.getText());
 				Boolean wifi = (Boolean)chckbxWifi.isSelected();
 						//chooser returns File but we need Image
-						String image = chooser.getSelectedFile().getAbsolutePath();
+				String image = null;
+				if (chooser != null)
+					image = chooser.getSelectedFile().getAbsolutePath();
 
 				try {
 					facade.addRuralHouse(houseNumber, owner , numberOfRooms, numberOfBeds, wifi, image, town);

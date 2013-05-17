@@ -46,6 +46,12 @@ public class SearchOffersGUI extends JFrame {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		addWindowListener(new WindowAdapter() {
+			   public void windowClosing(WindowEvent evt) {
+				   showInfo.setVisible(false);
+				   setVisible(false);
+			   }
+		});
 	}
 
 	private void jbInit() throws Exception {
