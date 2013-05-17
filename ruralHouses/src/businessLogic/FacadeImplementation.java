@@ -94,9 +94,9 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 
 	//addRuralHouse
 
-	public void addRuralHouse(int houseNumber, Owner owner, int numberOfRooms, int numberOfBeds, Boolean wifi, String image, String town){ 
+	public void addRuralHouse(int houseNumber, Owner owner, int bedRooms, int bathRooms, int kitchens, int diningRooms, int parkingSpaces, Boolean wifi, String image, String town){ 
 		owner = dbMngr.getOwner(new Owner(owner.getName(), owner.getUsername(), owner.getPassword()));
-		RuralHouse rh=owner.addRuralHouse(houseNumber, numberOfRooms, numberOfBeds, wifi, image, town);
+		RuralHouse rh=owner.addRuralHouse(houseNumber, bedRooms, bathRooms, kitchens, diningRooms, parkingSpaces, wifi, image, town);
 		DB4oManager.getInstance().addRuralHouse(owner,rh);
 		
 	}

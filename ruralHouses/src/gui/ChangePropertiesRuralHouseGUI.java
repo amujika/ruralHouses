@@ -34,9 +34,12 @@ public class ChangePropertiesRuralHouseGUI extends JFrame {
 	private ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 	private DefaultComboBoxModel<RuralHouse> ruralHouses = new DefaultComboBoxModel<RuralHouse>();
-	private JTextField txtNumberOfRooms;
-	private JTextField txtNumberOfBeds;
+	private JTextField txtBedRooms;
+	private JTextField txtBathRooms;
 	private JCheckBox chckbxWifi = new JCheckBox();
+	private JTextField txtKitchens;
+	private JTextField txtDiningRooms;
+	private JTextField txtParkingSpaces;
 
 	/**
 	 * Create the frame.
@@ -61,18 +64,29 @@ public class ChangePropertiesRuralHouseGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				RuralHouse rh = (RuralHouse) ruralHouses.getSelectedItem();
 
-				int numberOfRooms = Integer.parseInt(txtNumberOfRooms.getText());
-				int numberOfBeds = Integer.parseInt(txtNumberOfBeds.getText());
+				int bedRooms = Integer.parseInt(txtBedRooms.getText());
+				int bathRooms = Integer.parseInt(txtBathRooms.getText());
+				int kitchens = Integer.parseInt(txtKitchens.getText());
+				int diningRooms = Integer.parseInt(txtDiningRooms.getText());
+				int parkingSpaces = Integer.parseInt(txtParkingSpaces.getText());
 				Boolean wifi = (Boolean)chckbxWifi.isSelected();
 			
-				rh.setNumberOfRooms(numberOfRooms);
-				rh.setNumberOfBeds(numberOfBeds);
+				
+				rh.setBedRooms(bedRooms);
+				rh.setBathRooms(bathRooms);
+				rh.setKitchens(kitchens);
+				rh.setDiningRooms(diningRooms);
+				rh.setParkingSpaces(parkingSpaces);
 				rh.setWifi(wifi);
 
-				setVisible(false);
+				
 
 				try {
+					if(bedRooms<3 || bathRooms<2 || kitchens<1){
+						JOptionPane.showMessageDialog(null, "The number of bedrooms should be 3 at least, the number of bathrooms 2 and at leas one kitchen.");
+					}else{
 					facade.storeRuralHouse(rh);
+					setVisible(false);}
 				} catch (RemoteException e1) {
 					e1.printStackTrace();
 				}
@@ -91,27 +105,55 @@ public class ChangePropertiesRuralHouseGUI extends JFrame {
 		btnCancel.setBounds(97, 258, 89, 23);
 		contentPane.add(btnCancel);
 
-		JLabel lblNumberOfRooms = new JLabel("Number of Rooms:");
-		lblNumberOfRooms.setBounds(97, 119, 80, 14);
-		contentPane.add(lblNumberOfRooms);
+		JLabel lblBedRooms = new JLabel("Number of bedrooms:");
+		lblBedRooms.setBounds(37, 119, 104, 14);
+		contentPane.add(lblBedRooms);
 
-		txtNumberOfRooms = new JTextField();
-		txtNumberOfRooms.setBounds(187, 116, 141, 20);
-		contentPane.add(txtNumberOfRooms);
-		txtNumberOfRooms.setColumns(10);
+		txtBedRooms = new JTextField();
+		txtBedRooms.setBounds(151, 116, 42, 20);
+		contentPane.add(txtBedRooms);
+		txtBedRooms.setColumns(10);
 
-		JLabel lblNumberOfBeds = new JLabel("Number of Beds:");
-		lblNumberOfBeds.setBounds(97, 150, 80, 14);
-		contentPane.add(lblNumberOfBeds);
+		JLabel lblBathRooms = new JLabel("Number of bathrooms:");
+		lblBathRooms.setBounds(33, 150, 108, 14);
+		contentPane.add(lblBathRooms);
 
 		JCheckBox chckbxWifi = new JCheckBox("Wifi");
-		chckbxWifi.setBounds(187, 174, 97, 23);
+		chckbxWifi.setBackground(new Color(152, 251, 152));
+		chckbxWifi.setBounds(271, 184, 97, 23);
 		contentPane.add(chckbxWifi);
 
-		txtNumberOfBeds = new JTextField();
-		txtNumberOfBeds.setBounds(187, 147, 141, 20);
-		contentPane.add(txtNumberOfBeds);
-		txtNumberOfBeds.setColumns(10);
+		txtBathRooms = new JTextField();
+		txtBathRooms.setBounds(151, 147, 42, 20);
+		contentPane.add(txtBathRooms);
+		txtBathRooms.setColumns(10);
+		
+		JLabel lblKitchens = new JLabel("Numer of kitchens:");
+		lblKitchens.setBounds(231, 119, 97, 14);
+		contentPane.add(lblKitchens);
+		
+		JLabel lblDiningRooms = new JLabel("Number of dining rooms:");
+		lblDiningRooms.setBounds(203, 150, 125, 14);
+		contentPane.add(lblDiningRooms);
+		
+		txtKitchens = new JTextField();
+		txtKitchens.setBounds(326, 116, 42, 20);
+		contentPane.add(txtKitchens);
+		txtKitchens.setColumns(10);
+		
+		txtDiningRooms = new JTextField();
+		txtDiningRooms.setBounds(326, 147, 42, 20);
+		contentPane.add(txtDiningRooms);
+		txtDiningRooms.setColumns(10);
+		
+		JLabel lblParkingSpaces = new JLabel("Number of parking spaces:");
+		lblParkingSpaces.setBounds(13, 188, 128, 14);
+		contentPane.add(lblParkingSpaces);
+		
+		txtParkingSpaces = new JTextField();
+		txtParkingSpaces.setColumns(10);
+		txtParkingSpaces.setBounds(151, 185, 42, 20);
+		contentPane.add(txtParkingSpaces);
 	}
 
 	private JComboBox getRuralHousesJCB(){

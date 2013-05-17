@@ -13,8 +13,11 @@ public class RuralHouse implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int houseNumber;
-	private int numberOfRooms;
-	private int numberOfBeds;
+	private int bedRooms;
+	private int bathRooms;
+	private int kitchens;
+	private int diningRooms;
+	private int parkingSpaces;
 	private Boolean wifi;
 	private String image;
 	private Owner owner;
@@ -26,13 +29,16 @@ public class RuralHouse implements Serializable {
 		super();
 	}
 
-	public RuralHouse(int houseNumber, Owner owner, int numberOfRooms, int numberOfBeds, Boolean wifi, String image, String town) {
+	public RuralHouse(int houseNumber, Owner owner, int bedRooms, int bathRooms, int kitchens, int diningRooms, int parkingSpaces, Boolean wifi, String image, String town) {
 		this.houseNumber = houseNumber;
-		this.numberOfRooms = numberOfRooms;
-		this.numberOfBeds = numberOfBeds;
+		this.owner = owner;
+		this.bedRooms = bedRooms;
+		this.bathRooms = bathRooms;
+		this.kitchens = kitchens;
+		this.diningRooms = diningRooms;
+		this.parkingSpaces = parkingSpaces;
 		this.wifi = wifi;
 		this.image = image;
-		this.owner = owner;
 		this.town = town;
 		offers=new Vector<Offer>();
 		comments = new Vector<String>();
@@ -46,20 +52,44 @@ public class RuralHouse implements Serializable {
 		this.houseNumber = houseNumber;
 	}
 
-	public int getnumberOfRooms() {
-		return numberOfRooms;
+	public int getBedRooms() {
+		return bedRooms;
 	}
 
-	public void setNumberOfRooms(int numberOfRooms) {
-		this.numberOfRooms=numberOfRooms;
+	public void setBedRooms(int bedRooms) {
+		this.bedRooms=bedRooms;
 	}
 
-	public int getNumberOfBeds() {
-		return numberOfBeds;
+	public int getBathRooms() {
+		return bathRooms;
 	}
 
-	public void setNumberOfBeds(int numberOfBeds) {
-		this.numberOfBeds=numberOfBeds;
+	public void setBathRooms(int bathRooms) {
+		this.bathRooms=bathRooms;
+	}
+	
+	public int getKitchens() {
+		return kitchens;
+	}
+
+	public void setKitchens(int kitchens) {
+		this.kitchens=kitchens;
+	}
+	
+	public int getDiningRooms() {
+		return diningRooms;
+	}
+
+	public void setDiningRooms(int diningRooms) {
+		this.diningRooms=diningRooms;
+	}
+	
+	public int getParkingSpaces() {
+		return parkingSpaces;
+	}
+
+	public void setParkingSpaces(int parkingSpaces) {
+		this.parkingSpaces=parkingSpaces;
 	}
 
 	public boolean getWifi() {

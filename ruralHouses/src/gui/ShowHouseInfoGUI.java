@@ -39,8 +39,9 @@ public class ShowHouseInfoGUI extends JFrame {
 		JLabel lblHouseNum = new JLabel();
 		lblHouseNum.setVerticalAlignment(SwingConstants.TOP);
 		lblHouseNum.setHorizontalAlignment(SwingConstants.LEFT);
-		lblHouseNum.setText("<html>-Number of Rooms: " + rh.getnumberOfRooms()
-				+ "<br>Number of Beds: " + rh.getNumberOfBeds() + "<br>Wifi: "
+		lblHouseNum.setText("<html>-Number of bedrooms: " + rh.getBedRooms()
+				+ "<br>Number of bathrooms: " + rh.getBathRooms() + "<br>Number of kitchens: " + rh.getKitchens()+ "<br>Number of dining rooms: " + 
+				rh.getDiningRooms() + "<br>Number of parking spaces: " + rh.getParkingSpaces()  + "<br>Wifi: "
 				+ rh.getWifi() + "<br>Comments: <br>" + comments +"</html>");
 		if (rh.getImage() != null) {
 			JLabel l = new JLabel();
