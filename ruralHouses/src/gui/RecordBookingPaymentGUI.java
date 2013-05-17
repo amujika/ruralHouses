@@ -114,7 +114,6 @@ public class RecordBookingPaymentGUI extends JFrame {
 			//Obtain the business logic from a StartWindow class (local or remote)
 			ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 			houseList=facade.getRuralHouses(owner);
-
 		}
 		catch (Exception e1) {
 			e1.printStackTrace();
@@ -146,8 +145,11 @@ public class RecordBookingPaymentGUI extends JFrame {
 				if (bookingList.isEmpty())
 					System.out.println("Rural house or offers do not exist or have not registered bookings ");
 
-				for (Booking v : bookingList)
-					bookingNumber.addElement(v);
+				for (Booking v : bookingList) {
+					if (!v.isPaid())
+						bookingNumber.addElement(v);
+										
+				}
 			}
 		});
 

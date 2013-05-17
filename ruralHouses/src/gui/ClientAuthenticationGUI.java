@@ -34,7 +34,6 @@ public class ClientAuthenticationGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public ClientAuthenticationGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 460, 360);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(152, 251, 152));

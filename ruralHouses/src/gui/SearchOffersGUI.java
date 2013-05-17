@@ -27,7 +27,6 @@ public class SearchOffersGUI extends JFrame {
 
 	private JLabel lblRuralHouse = new JLabel();
 	private JComboBox jCBRuralHouse;
-	private JButton btnSearch = new JButton();
 	private JButton btnCancel = new JButton();
 	private Calendar myCalendar = null;
 	private JList showOffers = new JList();
@@ -52,6 +51,7 @@ public class SearchOffersGUI extends JFrame {
 				   setVisible(false);
 			   }
 		});
+		btnAccept_actionPerformed();
 	}
 
 	private void jbInit() throws Exception {
@@ -64,7 +64,7 @@ public class SearchOffersGUI extends JFrame {
 				showInfo.setVisible(false);
 				showInfo = new ShowHouseInfoGUI((RuralHouse) jCBRuralHouse.getSelectedItem());
 				showInfo.setVisible(true);
-				btnAccept_actionPerformed(arg0);
+				btnAccept_actionPerformed();
 			}
 		});
 
@@ -75,24 +75,15 @@ public class SearchOffersGUI extends JFrame {
 		jCBRuralHouse.setBounds(new Rectangle(109, 20, 115, 20));
 		lblRuralHouse.setBounds(new Rectangle(40, 20, 105, 25));
 		jCBRuralHouse.setBounds(new Rectangle(115, 30, 115, 20));
-		btnSearch.setBackground(new Color(152, 251, 152));
-		btnSearch.setText("Search");
-		btnSearch.setBounds(new Rectangle(15, 281, 130, 30));
-		btnSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btnAccept_actionPerformed(e);
-			}
-		});
 		btnCancel.setBackground(new Color(152, 251, 152));
 		btnCancel.setText("Cancel");
-		btnCancel.setBounds(new Rectangle(295, 281, 130, 30));
+		btnCancel.setBounds(new Rectangle(55, 281, 130, 30));
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnClose_actionPerformed(e);
 			}
 		});
 		this.getContentPane().add(btnCancel, null);
-		this.getContentPane().add(btnSearch, null);
 		this.getContentPane().add(jCBRuralHouse, null);
 		this.getContentPane().add(lblRuralHouse, null);
 		showOffers.setBounds(55, 126, 305, 125);
@@ -108,7 +99,7 @@ public class SearchOffersGUI extends JFrame {
 		});
 		btnBook.setText("Book");
 		btnBook.setBounds(new Rectangle(284, 281, 130, 30));
-		btnBook.setBounds(155, 281, 130, 30);
+		btnBook.setBounds(230, 281, 130, 30);
 		getContentPane().add(btnBook);
 		
 		txtTelephone = new JTextField();
@@ -142,7 +133,7 @@ public class SearchOffersGUI extends JFrame {
 		showInfo.setVisible(false);
 	}
 
-	private void btnAccept_actionPerformed(ActionEvent e) {	
+	private void btnAccept_actionPerformed() {	
 		RuralHouse rh = (RuralHouse) jCBRuralHouse.getSelectedItem();
 		offerList = new DefaultListModel<Offer>();
 		for (Offer offer : rh.offers)
@@ -158,6 +149,8 @@ public class SearchOffersGUI extends JFrame {
 		Offer auxOffer = (Offer) showOffers.getSelectedValue();
 		Booking auxBooking = auxOffer.createBook(telephone);						
 		BookRuralHouseConfirmationWindow confirmWindow=new BookRuralHouseConfirmationWindow(auxBooking,auxOffer, email, telephone);
+		setVisible(false);
+		showInfo.setVisible(false);
 		confirmWindow.setVisible(true);
 	}
 }
