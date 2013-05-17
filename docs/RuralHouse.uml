@@ -3131,7 +3131,7 @@ A) Client has to be booking a house
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="2nYFgRgPJE+5iX3HiKIclAAA">
 <XPD:ATTR name="Alpha" type="real">-4.17196956181875</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">11.6619037896906</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">1 : hNumb, town, desc, image</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">1 : hNumb, town, numberOfRooms, numberOfBeds, wifi, image</XPD:ATTR>
 <XPD:REF name="Model">PxtATyw+ikCtDbhCP+pOCwAA</XPD:REF>
 <XPD:REF name="HostEdge">2gAJhwhNPky8p3PVGvQxzQAA</XPD:REF>
 </XPD:OBJ>
@@ -3168,7 +3168,7 @@ A) Client has to be booking a house
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="pp13pM1iF0Ga+laXZhzB+gAA">
 <XPD:ATTR name="Alpha" type="real">1.5707963267949</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">10</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">2 : addRuralHouse(hNumb, town, desc, image)</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">2 : addRuralHouse(hNumb, town, numberOfRooms, numberOfBeds, wifi, image)</XPD:ATTR>
 <XPD:REF name="Model">cSHUoilq9EGYHM5NXV1ewQAA</XPD:REF>
 <XPD:REF name="HostEdge">yc722iRUWkaC7KCnR1NI9AAA</XPD:REF>
 </XPD:OBJ>
@@ -3204,7 +3204,7 @@ A) Client has to be booking a house
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="chBU87YldE25A1PEcN+NowAA">
 <XPD:ATTR name="Alpha" type="real">1.5707963267949</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">10</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">3 : rh := createRuralHouse(hNumb, town, desc, image)</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">3 : rh := createRuralHouse(hNumb, town, numberOfRooms, numberOfBeds, wifi, image)</XPD:ATTR>
 <XPD:REF name="Model">ptfuNO1yIkivPxlkRSZYxgAA</XPD:REF>
 <XPD:REF name="HostEdge">MMVsKX8oNkiYHV9DEqzkpwAA</XPD:REF>
 </XPD:OBJ>
@@ -3342,7 +3342,7 @@ A) Client has to be booking a house
 </XPD:OBJ>
 <XPD:ATTR name="#ParticipatingStimuli" type="integer">6</XPD:ATTR>
 <XPD:OBJ name="ParticipatingStimuli[0]" type="UMLStimulus" guid="PxtATyw+ikCtDbhCP+pOCwAA">
-<XPD:ATTR name="Name" type="string">hNumb, town, desc, image</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">hNumb, town, numberOfRooms, numberOfBeds, wifi, image</XPD:ATTR>
 <XPD:REF name="Sender">G1tiqqcLDUG/atvXcwQ0BgAA</XPD:REF>
 <XPD:REF name="Receiver">FNP+QCP+s02NqdNKsu72kQAA</XPD:REF>
 <XPD:OBJ name="Action" type="UMLSendAction" guid="0JlI2Zgx4UicyXuY8Ed12gAA">
@@ -3357,7 +3357,7 @@ A) Client has to be booking a house
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingStimuli[1]" type="UMLStimulus" guid="cSHUoilq9EGYHM5NXV1ewQAA">
 <XPD:ATTR name="Name" type="string">addRuralHouse</XPD:ATTR>
-<XPD:ATTR name="Arguments" type="string">hNumb, town, desc, image</XPD:ATTR>
+<XPD:ATTR name="Arguments" type="string">hNumb, town, numberOfRooms, numberOfBeds, wifi, image</XPD:ATTR>
 <XPD:REF name="Sender">FNP+QCP+s02NqdNKsu72kQAA</XPD:REF>
 <XPD:REF name="Receiver">Fbfc9HEoJEOiPq2Qejij5AAA</XPD:REF>
 <XPD:OBJ name="Action" type="UMLCallAction" guid="+rK5Mhzl/0mkNQq8YvMMfQAA">
@@ -3372,7 +3372,7 @@ A) Client has to be booking a house
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingStimuli[2]" type="UMLStimulus" guid="ptfuNO1yIkivPxlkRSZYxgAA">
 <XPD:ATTR name="Name" type="string">createRuralHouse</XPD:ATTR>
-<XPD:ATTR name="Arguments" type="string">hNumb, town, desc, image</XPD:ATTR>
+<XPD:ATTR name="Arguments" type="string">hNumb, town, numberOfRooms, numberOfBeds, wifi, image</XPD:ATTR>
 <XPD:ATTR name="Return" type="string">rh</XPD:ATTR>
 <XPD:REF name="Sender">Fbfc9HEoJEOiPq2Qejij5AAA</XPD:REF>
 <XPD:REF name="Receiver">7x8Gs6iDWU29h25ZCyTvPQAA</XPD:REF>
@@ -8629,7 +8629,7 @@ A) Client has to be booking a house
 <XPD:OBJ name="NameLabel" type="EdgeLabelView" guid="DHo5O5RlMUKdiVG8VLDL7AAA">
 <XPD:ATTR name="Alpha" type="real">1.44644071686357</XPD:ATTR>
 <XPD:ATTR name="Distance" type="real">16.1245154965971</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">5 : new_properties</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">5 : numberOfRooms, numberOfBeds, wifi</XPD:ATTR>
 <XPD:REF name="Model">yEhtqys3C0eQxmwPqt9VkQAA</XPD:REF>
 <XPD:REF name="HostEdge">DNtkWRuzT0q9RCIMXNseDgAA</XPD:REF>
 </XPD:OBJ>
@@ -8825,7 +8825,7 @@ A) Client has to be booking a house
 <XPD:REF name="Views[3]">LnnZvOSrWE6os6v3NFJU7gAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingStimuli[4]" type="UMLStimulus" guid="yEhtqys3C0eQxmwPqt9VkQAA">
-<XPD:ATTR name="Name" type="string">new_properties</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">numberOfRooms, numberOfBeds, wifi</XPD:ATTR>
 <XPD:REF name="Sender">Y3EeI3ZlaUSZos6cafRV3AAA</XPD:REF>
 <XPD:REF name="Receiver">fRnYqDFO6kGpN/EDrotOyQAA</XPD:REF>
 <XPD:OBJ name="Action" type="UMLSendAction" guid="9nSIi+Xv10qmXxJ8YCqtHAAA">
@@ -8840,7 +8840,7 @@ A) Client has to be booking a house
 </XPD:OBJ>
 <XPD:OBJ name="ParticipatingStimuli[5]" type="UMLStimulus" guid="VNAx6kFk1UG/m1yAbb01igAA">
 <XPD:ATTR name="Name" type="string">setProperties</XPD:ATTR>
-<XPD:ATTR name="Arguments" type="string">newProperties</XPD:ATTR>
+<XPD:ATTR name="Arguments" type="string">numberOfRooms, numberOfBeds, wifi</XPD:ATTR>
 <XPD:REF name="Sender">fRnYqDFO6kGpN/EDrotOyQAA</XPD:REF>
 <XPD:REF name="Receiver">15ImzYlXzUyxOK/CwYVS6AAA</XPD:REF>
 <XPD:OBJ name="Action" type="UMLCallAction" guid="dwulTfxfVEe4JE1E95ylYQAA">
@@ -12568,7 +12568,7 @@ A) Client has to be booking a house
 <XPD:ATTR name="FontSize" type="integer">10</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">220</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">284</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">142</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">174</XPD:ATTR>
 <XPD:ATTR name="ShowCompartmentVisibility" type="boolean">False</XPD:ATTR>
 <XPD:REF name="Model">9wYlrn90hk2aPXGX9X7qygAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="a0ohC/1vYUycRtxeVWtrEwAA">
@@ -12728,7 +12728,7 @@ A) Client has to be booking a house
 <XPD:OBJ name="OwnedViews[5]" type="UMLAssociationView" guid="/n98NOGA00i7klw9F30vTwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">109,73;220,72</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">109,76;220,80</XPD:ATTR>
 <XPD:REF name="Model">SvQKQ1IeFEaeah54j33fcgAA</XPD:REF>
 <XPD:REF name="Head">DdaKOI1LfEaasnXuAIjrBwAA</XPD:REF>
 <XPD:REF name="Tail">lpJ/2KO7ekulBIem7S1nLAAA</XPD:REF>
@@ -12812,7 +12812,7 @@ A) Client has to be booking a house
 <XPD:OBJ name="OwnedViews[6]" type="UMLAssociationView" guid="zJvIeZTd1EKfSTtzgzT0bQAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">362,256;361,141</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">362,256;362,173</XPD:ATTR>
 <XPD:REF name="Model">dlcf180f1kuQxir8BGSZvwAA</XPD:REF>
 <XPD:REF name="Head">DdaKOI1LfEaasnXuAIjrBwAA</XPD:REF>
 <XPD:REF name="Tail">ZHEjjEOPqUCbzhEimGL+KAAA</XPD:REF>
@@ -13088,33 +13088,41 @@ A) Client has to be booking a house
 <XPD:REF name="Associations[8]">J40mpJ0JlUCgVK/kQqpKTgAA</XPD:REF>
 <XPD:REF name="Associations[9]">uNGWSWj5aE6X3ocU9OL9wAAA</XPD:REF>
 <XPD:REF name="Associations[10]">Y6X4OrUVlEK1vFdgZBZzQwAA</XPD:REF>
-<XPD:ATTR name="#Attributes" type="integer">6</XPD:ATTR>
+<XPD:ATTR name="#Attributes" type="integer">8</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="VPagE+P860OSGmfJEUQC1QAA">
 <XPD:ATTR name="Name" type="string">houseNumber</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:REF name="Owner">9wYlrn90hk2aPXGX9X7qygAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[1]" type="UMLAttribute" guid="iVLlTSAbeU659MIhS86rswAA">
-<XPD:ATTR name="Name" type="string">description</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">numberOfRooms</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:REF name="Owner">9wYlrn90hk2aPXGX9X7qygAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="Tcb+CwfXX0KEIeQ84f0XpwAA">
+<XPD:OBJ name="Attributes[2]" type="UMLAttribute" guid="qccyECXlvU+yJ8Kr/F6kLQAA">
+<XPD:ATTR name="Name" type="string">numberOfBeds</XPD:ATTR>
+<XPD:REF name="Owner">9wYlrn90hk2aPXGX9X7qygAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="x3nj/nHgV0q9bYvViS9d9AAA">
+<XPD:ATTR name="Name" type="string">wifi</XPD:ATTR>
+<XPD:REF name="Owner">9wYlrn90hk2aPXGX9X7qygAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="Tcb+CwfXX0KEIeQ84f0XpwAA">
 <XPD:ATTR name="Name" type="string">image</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:REF name="Owner">9wYlrn90hk2aPXGX9X7qygAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[3]" type="UMLAttribute" guid="rxYUwZYOvUWSeTUIhc+9+wAA">
+<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="rxYUwZYOvUWSeTUIhc+9+wAA">
 <XPD:ATTR name="Name" type="string">owner</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:REF name="Owner">9wYlrn90hk2aPXGX9X7qygAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="cz7stAIwAUiHL1/YFwXC9AAA">
+<XPD:OBJ name="Attributes[6]" type="UMLAttribute" guid="cz7stAIwAUiHL1/YFwXC9AAA">
 <XPD:ATTR name="Name" type="string">town</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:REF name="Owner">9wYlrn90hk2aPXGX9X7qygAA</XPD:REF>
 </XPD:OBJ>
-<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="vJPANzwCRE+KFVj4IoDjXAAA">
+<XPD:OBJ name="Attributes[7]" type="UMLAttribute" guid="vJPANzwCRE+KFVj4IoDjXAAA">
 <XPD:ATTR name="Name" type="string">offers</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:REF name="Owner">9wYlrn90hk2aPXGX9X7qygAA</XPD:REF>
