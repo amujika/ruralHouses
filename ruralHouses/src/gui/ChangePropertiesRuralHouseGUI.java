@@ -124,6 +124,7 @@ public class ChangePropertiesRuralHouseGUI extends JFrame {
 			//Obtain the business logic from a StartWindow class (local or remote)
 			ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 			houseList=facade.getRuralHouses(owner);
+			
 		}
 		catch (Exception e1) {
 			e1.printStackTrace();

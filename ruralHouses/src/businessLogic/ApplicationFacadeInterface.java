@@ -110,4 +110,6 @@ public interface ApplicationFacadeInterface extends Remote {
 
 	public void cancelBooking(Booking booking, Client client)throws RemoteException;
 
+	public void addComment(RuralHouse rh,String comment)throws RemoteException;
+
 }

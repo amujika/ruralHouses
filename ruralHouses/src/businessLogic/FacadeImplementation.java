@@ -183,6 +183,12 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 		dbMngr.storeRuralHouse(rh);
 	}
 
+	public void addComment(RuralHouse rh,String comment)throws RemoteException {
+		rh = dbMngr.getRuralHouseByNumber(rh.getHouseNumber());
+		rh.comments.add(comment);
+		dbMngr.storeRuralHouse(rh);
+	}
+	
 	/*public Booking createBooking(RuralHouse ruralHouse, Date firstDate, Date lastDate, String bookTelephoneNumber)
 			throws OfferCanNotBeBooked {
 		try {

@@ -101,6 +101,7 @@ public class AddRuralHouseGUI extends JFrame {
 
 				try {
 					facade.addRuralHouse(houseNumber, owner , numberOfRooms, numberOfBeds, wifi, image, town);
+					StartWindow.OWNER = facade.ownerloginBL(new Owner(owner.getName(),owner.getUsername(), owner.getPassword())); 
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

@@ -45,7 +45,7 @@ public class UserGUI extends JFrame {
 	
 	private void initialize() {
 		// this.setSize(271, 295);
-		this.setSize(460, 360);
+		this.setSize(460, 416);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Use Cases");
 	}
@@ -60,6 +60,21 @@ public class UserGUI extends JFrame {
 			jContentPane.add(getCancelBookingButton());
 			jContentPane.add(getBtnAuthenticate());
 			jContentPane.add(getLblUser());
+			
+			JButton commentHouseButton = new JButton();
+			commentHouseButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JFrame a = new CommentHouseGUI();
+					a.setVisible(true);
+				}
+			});
+			commentHouseButton.setText("Comment a house");
+			commentHouseButton.setFont(new Font("Calibri", Font.PLAIN, 24));
+			commentHouseButton.setEnabled(true);
+			commentHouseButton.setBackground(new Color(152, 251, 152));
+			commentHouseButton.setAlignmentX(0.5f);
+			commentHouseButton.setBounds(97, 310, 245, 33);
+			jContentPane.add(commentHouseButton);
 		}
 		return jContentPane;
 	}
