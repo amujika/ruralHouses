@@ -97,9 +97,9 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 		//IF LOGGED
 		if(StartWindow.CLIENT != null){
 			Client client = StartWindow.CLIENT;
-			client.addBooking(booking);
 			try {
 				facade.bookRuralHouse(booking, offer,client);
+				StartWindow.CLIENT = facade.clientRegistered(new Client(client.getEmail(), null, null));
 			} catch (RemoteException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -115,7 +115,7 @@ public class BookRuralHouseConfirmationWindow extends JFrame {
 						client = new Client(email,"password",telephone);
 						facade.registerClient(client);
 						facade.bookRuralHouse(booking, offer,client);
-						StartWindow.CLIENT=client;
+						StartWindow.CLIENT = facade.clientRegistered(new Client(client.getEmail(), null, null));
 						JOptionPane.showMessageDialog(null, "User registered!");
 						setVisible(false);						
 					}

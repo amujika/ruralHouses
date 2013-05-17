@@ -237,8 +237,6 @@ public class DB4oManager {
 	}
 
 	public void storeBooking(Booking booking, Offer offer, Client client){
-		client = getClient(new Client(client.getEmail(), null, null));
-		client.addBooking(booking);
 		db.store(client);
 		db.store(booking);
 		db.store(offer);

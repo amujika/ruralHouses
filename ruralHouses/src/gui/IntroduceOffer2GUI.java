@@ -14,6 +14,7 @@ import businessLogic.ApplicationFacadeInterface;
 
 import com.toedter.calendar.JCalendar;
 
+import domain.Owner;
 import domain.RuralHouse;
 
 public class IntroduceOffer2GUI extends JFrame  {
@@ -164,6 +165,7 @@ public class IntroduceOffer2GUI extends JFrame  {
 			//ApplicationFacadeInterface facade=StartWindow.getBusinessLogic();
 
 			facade.createOffer(ruralHouse, firstDay, lastDay, price); 
+			StartWindow.OWNER = facade.ownerloginBL(new Owner(null, StartWindow.OWNER.getUsername(), StartWindow.OWNER.getPassword()));
 
 			this.setVisible(false);
 		}

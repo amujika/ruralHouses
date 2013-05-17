@@ -56,6 +56,7 @@ public class CancelBookingGUI extends JFrame {
 				Booking b= (Booking) bookings.getSelectedItem();
 				try {
 					facade.cancelBooking(b,StartWindow.CLIENT);
+					StartWindow.CLIENT = facade.clientRegistered(new Client(StartWindow.CLIENT.getEmail(), null, null));
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

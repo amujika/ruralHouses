@@ -60,6 +60,7 @@ public class RemoveRuralHouseGUI extends JFrame {
 				RuralHouse rh = (RuralHouse) ruralHouses.getSelectedItem();			
 				try {
 					facade.RemoveRuralHouse(rh);
+					StartWindow.OWNER = facade.ownerloginBL(new Owner(null, StartWindow.OWNER.getUsername(), StartWindow.OWNER.getPassword()));
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

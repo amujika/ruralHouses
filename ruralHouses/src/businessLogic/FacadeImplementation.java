@@ -147,6 +147,7 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 		offer = dbMngr.getOffer(offer);
 		offer.setBooking(booking);
 		booking.setOffer(offer);
+		client.addBooking(booking);
 		DB4oManager dbManager = DB4oManager.getInstance();
 		dbManager.storeBooking(booking, offer, client);
 	}
