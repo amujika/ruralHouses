@@ -81,6 +81,7 @@ public class FacadeImplementation extends UnicastRemoteObject implements Applica
 	}
 
 	public void storePayment(Booking booking){
+		booking = dbMngr.getBooking(new Booking(booking.getBookNumber()));
 		dbMngr.storePayment(booking);
 	}
 

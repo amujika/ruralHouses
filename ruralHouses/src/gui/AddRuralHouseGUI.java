@@ -103,8 +103,10 @@ public class AddRuralHouseGUI extends JFrame {
 				int diningRooms = Integer.parseInt(txtDiningRooms.getText());
 				int parkingSpaces = Integer.parseInt(txtParkingSpaces.getText());
 				Boolean wifi = (Boolean)chckbxWifi.isSelected();
-						//chooser returns File but we need Image
-						String image = chooser.getSelectedFile().getAbsolutePath();
+				//chooser returns File but we need Image
+				String image = null;
+		        if (chooser != null)
+		        	image = chooser.getSelectedFile().getAbsolutePath();
 
 				try {
 					if(bedRooms<3 || bathRooms<2 || kitchens<1){
